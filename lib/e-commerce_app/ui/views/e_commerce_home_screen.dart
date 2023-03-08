@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ecommerce_category_widget.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import '../../ui/widgets/ecommerce_home_screen_header.dart';
 
@@ -12,14 +13,15 @@ class ECommerceHomeScreen extends StatelessWidget {
         children: [
           const EcommerceHomeScreenHeader(),
           Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.only(left: 12),
             alignment: Alignment.center,
-            height: 40,
+            height: 45,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: EcommerceColors.border1, width: 2),
             ),
             child: Row(children: [
-              const SizedBox(width: 12),
               Image.asset("assets/e_commerce_app/e_commerce_image/Search.png",
                   scale: 4.5),
               const SizedBox(
@@ -39,6 +41,7 @@ class ECommerceHomeScreen extends StatelessWidget {
             height: 17,
           ),
           Image.asset("assets/e_commerce_app/e_commerce_image/banner.png"),
+          const EcommerceCategoryWidget(),
         ],
       ),
     );
