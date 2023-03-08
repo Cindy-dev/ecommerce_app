@@ -42,6 +42,92 @@ class ECommerceHomeScreen extends StatelessWidget {
           ),
           Image.asset("assets/e_commerce_app/e_commerce_image/banner.png"),
           const EcommerceCategoryWidget(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Recent product",
+                  style: TextStyle(
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500,
+                      color: EcommerceColors.black,
+                      fontSize: 14),
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      "Filters",
+                      style: TextStyle(
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.w400,
+                          color: EcommerceColors.black,
+                          fontSize: 12),
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Image.asset(
+                        "assets/e_commerce_app/e_commerce_image/Filter.png",
+                        scale: 4),
+                  ],
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 13,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+                child: Container(
+              //height: 217,
+              width: MediaQuery.of(context).size.width / 2,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: EcommerceColors.gray)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    "assets/e_commerce_app/e_commerce_image/television.png",
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 13, vertical: 13),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Monitor LG 22”inc 4K 120Fps",
+                          style: TextStyle(
+                              fontFamily: "Inter",
+                              fontWeight: FontWeight.w400,
+                              color: EcommerceColors.black,
+                              fontSize: 12),
+                        ),
+                       const SizedBox(height: 4,),
+                        const Text(
+                          "\$199.99",
+                          style: TextStyle(
+                              fontFamily: "Inter",
+                              fontWeight: FontWeight.w600,
+                              color: EcommerceColors.black,
+                              fontSize: 14),
+                        ),
+                        const SizedBox(height: 11),
+                        Container(
+                          
+
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )),
+          )
         ],
       ),
     );
