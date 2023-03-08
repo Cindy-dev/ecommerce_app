@@ -8,7 +8,8 @@ class EcommerceHomeScreenHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.only(top: deviceH / 15),
+      padding:
+          EdgeInsets.only(top: deviceH / 15, bottom: 16, left: 20, right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
