@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ecommerce_category_widget.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ecommerce_category_widget.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/item_card.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
-import '../../ui/widgets/ecommerce_home_screen_header.dart';
+import '../widgets/ec_home_widget/ecommerce_home_screen_header.dart';
 
 class ECommerceHomeScreen extends StatelessWidget {
   const ECommerceHomeScreen({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class ECommerceHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const EcommerceHomeScreenHeader(),
           Container(
@@ -79,56 +81,25 @@ class ECommerceHomeScreen extends StatelessWidget {
           const SizedBox(
             height: 13,
           ),
-          Expanded(
-            child: SingleChildScrollView(
-                child: Container(
-              //height: 217,
-              width: MediaQuery.of(context).size.width / 2,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: EcommerceColors.gray)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    "assets/e_commerce_app/e_commerce_image/television.png",
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 13, vertical: 13),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Monitor LG 22”inc 4K 120Fps",
-                          style: TextStyle(
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w400,
-                              color: EcommerceColors.black,
-                              fontSize: 12),
-                        ),
-                       const SizedBox(height: 4,),
-                        const Text(
-                          "\$199.99",
-                          style: TextStyle(
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w600,
-                              color: EcommerceColors.black,
-                              fontSize: 14),
-                        ),
-                        const SizedBox(height: 11),
-                        Container(
-
-
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )),
-          )
+          const ECItemCard()
         ],
+      ),
+      bottomNavigationBar: Container(
+        alignment: Alignment.center,
+        height: 102,
+        child: BottomNavigationBar(
+          selectedItemColor: EcommerceColors.green,
+          unselectedItemColor: EcommerceColors.grayText,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_border_outlined), label: "Wishlist"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.text_snippet_outlined), label: "History"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_3_outlined), label: "Account"),
+          ],
+        ),
       ),
     );
   }

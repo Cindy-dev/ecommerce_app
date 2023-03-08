@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../util/e_commerce_colors.dart';
+import '../../../util/e_commerce_colors.dart';
 
 class EcommerceHomeScreenHeader extends StatelessWidget {
   const EcommerceHomeScreenHeader({Key? key}) : super(key: key);
