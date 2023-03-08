@@ -118,7 +118,7 @@ class ECommerceHomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 11),
                         Container(
-                          
+
 
                         )
                       ],
