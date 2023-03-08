@@ -87,7 +87,19 @@ class ECommerceHomeScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         alignment: Alignment.center,
         height: 102,
+        width: double.infinity,
         child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: const TextStyle(
+              fontFamily: "Inter",
+              fontWeight: FontWeight.w400,
+              color: EcommerceColors.black,
+              fontSize: 10),
+          unselectedLabelStyle: const TextStyle(
+              fontFamily: "Inter",
+              fontWeight: FontWeight.w400,
+              color: EcommerceColors.black,
+              fontSize: 10),
           selectedItemColor: EcommerceColors.green,
           unselectedItemColor: EcommerceColors.grayText,
           items: const [
