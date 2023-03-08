@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../ui/widgets/ecommerce_home_screen_header.dart';
 
 class ECommerceHomeScreen extends StatelessWidget {
   const ECommerceHomeScreen({Key? key}) : super(key: key);
@@ -6,8 +7,13 @@ class ECommerceHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+        children: const [
+          EcommerceHomeScreenHeader()
+        ],
+        ),
       ),
     );
   }

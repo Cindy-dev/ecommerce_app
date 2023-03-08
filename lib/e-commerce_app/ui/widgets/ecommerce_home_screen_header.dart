@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import '../../util/e_commerce_colors.dart';
+
+class EcommerceHomeScreenHeader extends StatelessWidget {
+  const EcommerceHomeScreenHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final deviceH = MediaQuery.of(context).size.height;
+    return Padding(
+      padding: EdgeInsets.only(top: deviceH / 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Delivery address",
+            style: TextStyle(
+                fontFamily: "Inter",
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+                color: EcommerceColors.gray),
+          ),
+          const SizedBox(
+            height: 1,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Lagos Nigeria",
+                style: TextStyle(
+                    fontFamily: "Inter",
+                    fontWeight: FontWeight.w500,
+                    color: EcommerceColors.black,
+                    fontSize: 14),
+              ),
+              Row(
+                children: [
+                  Image.asset(
+                    "assets/e_commerce_app/e_commerce_image/Buy.png",
+                    scale: 4,
+                  ),
+                  const SizedBox(
+                    width: 13,
+                  ),
+                  Image.asset(
+                      "assets/e_commerce_app/e_commerce_image/Notification.png",
+                      scale: 4.5),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
