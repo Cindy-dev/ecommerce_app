@@ -19,6 +19,11 @@ class ECSearchHeader extends StatelessWidget {
         const SizedBox(width: 11),
         Expanded(
           child: TextFormField(
+              style: const TextStyle(
+                  fontFamily: "Inter",
+                  fontWeight: FontWeight.w400,
+                  color: EcommerceColors.black,
+                  fontSize: 13),
               cursorColor: EcommerceColors.gray,
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -26,7 +31,7 @@ class ECSearchHeader extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8)),
                   prefixIcon: Image.asset(
                     "assets/e_commerce_app/e_commerce_image/Search.png",
-                    scale: 3,
+                    scale: 4,
                   ),
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(color: EcommerceColors.gray),

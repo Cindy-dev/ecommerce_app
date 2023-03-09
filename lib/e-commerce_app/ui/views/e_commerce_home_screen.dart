@@ -50,10 +50,10 @@ class ECommerceHomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "Recent product",
+                  "Search result for “Earphone",
                   style: TextStyle(
                       fontFamily: "Inter",
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                       color: EcommerceColors.black,
                       fontSize: 14),
                 ),
@@ -89,6 +89,7 @@ class ECommerceHomeScreen extends StatelessWidget {
         height: 102,
         width: double.infinity,
         child: BottomNavigationBar(
+          elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedLabelStyle: const TextStyle(
               fontFamily: "Inter",
