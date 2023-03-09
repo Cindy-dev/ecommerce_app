@@ -61,16 +61,21 @@ class _ECSearchResultState extends State<ECSearchResult> {
                 children: [
                   Expanded(
                     child: Container(
-                     // margin: const EdgeInsets.symmetric(horizontal: 20),
+                      // margin: const EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: EcommerceColors.gray)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            "assets/e_commerce_app/e_commerce_image/imgslider.png",
-                            fit: BoxFit.contain,
+                          Container(
+                            height: MediaQuery.of(context).size.height / 6.5,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: AssetImage(
+                                      "assets/e_commerce_app/e_commerce_image/imgslider.png",
+                                    ))),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -134,9 +139,14 @@ class _ECSearchResultState extends State<ECSearchResult> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            "assets/e_commerce_app/e_commerce_image/imgslider.png",
-                            fit: BoxFit.contain,
+                          Container(
+                            height: MediaQuery.of(context).size.height / 6.5,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image: AssetImage(
+                                      "assets/e_commerce_app/e_commerce_image/earphone.png",
+                                    ))),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
