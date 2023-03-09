@@ -50,7 +50,7 @@ class ECommerceHomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "Search result for “Earphone",
+                  "Recent product",
                   style: TextStyle(
                       fontFamily: "Inter",
                       fontWeight: FontWeight.w400,

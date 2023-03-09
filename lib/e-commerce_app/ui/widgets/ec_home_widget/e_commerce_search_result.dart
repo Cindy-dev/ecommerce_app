@@ -12,8 +12,9 @@ class ECSearchResult extends StatefulWidget {
 class _ECSearchResultState extends State<ECSearchResult> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Padding(
-        padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
+        padding:  EdgeInsets.only(top: height/16, left: 20, right: 20),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const ECSearchHeader(),
           const SizedBox(height: 14),
@@ -61,7 +62,6 @@ class _ECSearchResultState extends State<ECSearchResult> {
                 children: [
                   Expanded(
                     child: Container(
-                      // margin: const EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: EcommerceColors.gray)),
@@ -132,7 +132,6 @@ class _ECSearchResultState extends State<ECSearchResult> {
                   ),
                   Expanded(
                     child: Container(
-                      //margin: const EdgeInsets.symmetric(horizontal: 20),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: EcommerceColors.gray)),
