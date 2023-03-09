@@ -26,6 +26,7 @@ class ECSearchHeader extends StatelessWidget {
                   fontSize: 13),
               cursorColor: EcommerceColors.gray,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(0),
                   focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: EcommerceColors.gray),
                       borderRadius: BorderRadius.circular(8)),

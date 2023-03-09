@@ -14,7 +14,7 @@ class _ECSearchResultState extends State<ECSearchResult> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Padding(
-        padding:  EdgeInsets.only(top: height/16, left: 20, right: 20),
+        padding: EdgeInsets.only(top: height / 16, left: 20, right: 20),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const ECSearchHeader(),
           const SizedBox(height: 14),
@@ -85,6 +85,7 @@ class _ECSearchResultState extends State<ECSearchResult> {
                               children: [
                                 const Text(
                                   "Earphones for monitor",
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontFamily: "Inter",
                                       fontWeight: FontWeight.w400,
@@ -155,6 +156,7 @@ class _ECSearchResultState extends State<ECSearchResult> {
                               children: [
                                 const Text(
                                   "Earphones for monitor",
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontFamily: "Inter",
                                       fontWeight: FontWeight.w400,
