@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/e_commerce_search_result.dart';
 import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_search_header.dart';
-
 import '../../util/e_commerce_colors.dart';
 
 class ECSearchPage extends StatelessWidget {
