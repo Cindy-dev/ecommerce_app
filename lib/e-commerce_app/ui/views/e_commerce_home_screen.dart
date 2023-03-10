@@ -42,7 +42,19 @@ class ECommerceHomeScreen extends StatelessWidget {
           const SizedBox(
             height: 17,
           ),
-          Image.asset("assets/e_commerce_app/e_commerce_image/banner.png"),
+          Expanded(
+            child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                children: [
+                  Image.asset(
+                      "assets/e_commerce_app/e_commerce_image/banner1.png"),
+                  Image.asset(
+                      "assets/e_commerce_app/e_commerce_image/banner2.png"),
+                  Image.asset(
+                      "assets/e_commerce_app/e_commerce_image/banner3.png")
+                ]),
+          ),
           const EcommerceCategoryWidget(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
