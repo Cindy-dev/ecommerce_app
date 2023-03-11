@@ -7,8 +7,10 @@ class ECDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceH = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
@@ -41,19 +43,75 @@ class ECDetailScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 3,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      "assets/e_commerce_app/e_commerce_image/imgslider.png",
-                    ))),
+            height: deviceH /2.5,
+            child: ListView(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Container(
+                      width: 390,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                          "assets/e_commerce_app/e_commerce_image/imgslider.png",
+                        )),
+                      )),
+                  Container(
+                      width: 390,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                          "assets/e_commerce_app/e_commerce_image/max1.png",
+                        )),
+                      )),
+                  Container(
+                      width: 390,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                          "assets/e_commerce_app/e_commerce_image/max2.png",
+                        )),
+                      )),
+                  Container(
+                      width: 390,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                          "assets/e_commerce_app/e_commerce_image/max3.png",
+                        )),
+                      )),
+                ]),
           ),
+          //  Container(
+          //    height: deviceH/2.5,
+          //     child: ListView(
+          //         shrinkWrap: true,
+          //         scrollDirection: Axis.horizontal,
+          //         children: [
+          //           Image.asset(
+          //             "assets/e_commerce_app/e_commerce_image/imgslider.png"
+          //             ,
+          //             fit: BoxFit.cover,
+          //           ),
+          //           Image.asset(
+          //             "assets/e_commerce_app/e_commerce_image/max1.png",
+          //
+          //           ),
+          //           Image.asset(
+          //             "assets/e_commerce_app/e_commerce_image/max2.png",
+          //             width: 390,
+          //           ),
+          //           Image.asset(
+          //             "assets/e_commerce_app/e_commerce_image/max3.png",
+          //             width: 390,
+          //           ),
+          //         ]),
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
             child: Column(
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "Air pods max by Apple",
                   style: TextStyle(
                     fontSize: 16,
@@ -63,7 +121,7 @@ class ECDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
