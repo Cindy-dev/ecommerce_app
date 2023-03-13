@@ -17,9 +17,11 @@ class ECButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.height;
     return Container(
       alignment: Alignment.center,
-      height: 40,
+      height: 45,
+      width: width / 5.4,
       decoration: BoxDecoration(
           color: buttonColor,
           borderRadius: BorderRadius.circular(4),
