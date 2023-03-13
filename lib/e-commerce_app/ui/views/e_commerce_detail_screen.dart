@@ -119,81 +119,117 @@ class ECDetailScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                const Text(
-                  "Choose the color",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: EcommerceColors.grayText,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Row(children: [
-                  Container(
-                    height: 41,
-                    width: 61,
-                    margin: const EdgeInsets.only(top: 9, bottom: 12),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.orange),
-                  ),
-                ]),
-                const Divider(),
-                Row(
-                  children: [
-                    Image.asset(
-                      "assets/e_commerce_app/e_commerce_image/apple.png",
-                      scale: 4,
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Apple Store",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: "Inter",
-                            fontWeight: FontWeight.w500,
+                 Container(
+                   height: 250,
+                   child:  MediaQuery.removePadding(
+                       context: context,
+                       removeTop: true,
+                       child: ListView(
+                          scrollDirection: Axis.vertical,
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            children: [
+                              const Text(
+                                "Choose the color",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: EcommerceColors.grayText,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Row(children: [
+                                Container(
+                                  height: 41,
+                                  width: 61,
+                                  margin: const EdgeInsets.only(top: 9, bottom: 12),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.orange),
+                                ),
+                              ]),
+                              const Divider(),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/e_commerce_app/e_commerce_image/apple.png",
+                                    scale: 4,
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: const [
+                                      Text(
+                                        "Apple Store",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: "Inter",
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Text(
+                                        "online 12 mins ago",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Inter",
+                                          color: EcommerceColors.grayText,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 37,
+                                    alignment: Alignment.center,
+                                    width: MediaQuery.of(context).size.width / 4,
+                                    margin: EdgeInsets.only(
+                                        left:
+                                            MediaQuery.of(context).size.width / 5.5),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        border:
+                                            Border.all(color: EcommerceColors.gray)),
+                                    child: const Text(
+                                      "Follow",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Inter",
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const Divider(),
+                              const Text(
+                                "Description of product",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              const Text(
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet arcu id tincidunt tellus arcu rhoncus, turpis nisl sed. Neque viverra ipsum orci, morbi semper. Nulla bibendum purus tempor semper purus. Ut curabitur platea sed blandit. Amet non at proin justo nulla et. A, blandit morbi suspendisse vel malesuada purus massa mi. Faucibus neque a mi hendrerit.Audio Technologyv \n Apple-designed dynamic driver \nActive Noise Cancellation\nTransparency mode\nAdaptive EQ\nSpatial audio with dynamic head tracking1\nSensors\nOptical sensor (each ear cup)\nPosition sensor (each ear cup)\nCase-detect sensor (each ear cup)\nAccelerometer (each ear cup)\nGyroscope (left ear cup)Microphones\nNine microphones total:Eight microphones for Active Noise Cancellation\nThree microphones for voice pickup (two shared with Active Noise Cancellation and one additional microphone)",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        Text(
-                          "online 12 mins ago",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: "Inter",
-                            color: EcommerceColors.grayText,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 37,
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width / 4,
-                      margin: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width / 5.5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: EcommerceColors.gray)),
-                      child: const Text(
-                        "Follow",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: "Inter",
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                const Divider()
+                     ),
+                   ),
+
               ],
             ),
           ),
         ],
       ),
+      persistentFooterButtons: [
+        Container(height: 102,)
+      ],
     );
   }
 }
