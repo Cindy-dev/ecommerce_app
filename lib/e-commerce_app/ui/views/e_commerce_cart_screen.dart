@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_cart_header.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 
 class ECCartScreen extends StatefulWidget {
@@ -62,7 +63,8 @@ class _ECCartScreenState extends State<ECCartScreen> {
                           borderRadius: BorderRadius.circular(4),
                           image: const DecorationImage(
                               image: AssetImage(
-                                  "assets/e_commerce_app/e_commerce_image/television.png"))),
+                                  "assets/e_commerce_app/e_commerce_image/television.png"),
+                              fit: BoxFit.fitHeight)),
                     ),
                     const SizedBox(
                       width: 10,
@@ -70,7 +72,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Air pods max by Apple",
                           style: TextStyle(
                             fontSize: 14,
@@ -78,10 +80,10 @@ class _ECCartScreenState extends State<ECCartScreen> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
-                        Text(
+                        const Text(
                           "Variant: Grey",
                           style: TextStyle(
                             fontSize: 12,
@@ -90,12 +92,13 @@ class _ECCartScreenState extends State<ECCartScreen> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "\$ 1999,99",
                               style: TextStyle(
                                 fontSize: 14,
@@ -103,50 +106,26 @@ class _ECCartScreenState extends State<ECCartScreen> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 9,
+                            ),
                             Row(
-                              children: [
-                                Container(
-                                  height: 24,
-                                  width: 24,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(color: EcommerceColors.gray),
-                                      color: EcommerceColors.white),
-                                  child: const Icon(
-                                    Icons.remove,
-                                    color: EcommerceColors.gray,
-                                    size: 17,
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                ECCartButton(cartIcon: Icons.remove),
+                                SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  "1",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: "Inter",
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                Container(
-                                  height: 24,
-                                  width: 24,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(color: EcommerceColors.gray),
-                                      color: EcommerceColors.white),
-                                  child: const Icon(
-                                    Icons.add,
-                                    color: EcommerceColors.gray,
-                                    size: 17,
-                                  ),
-                                ),
-                                Container(
-                                  height: 24,
-                                  width: 24,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(color: EcommerceColors.gray),
-                                      color: EcommerceColors.white),
-                                  child: const Icon(
-                                    Icons.delete_outline,
-                                    color: EcommerceColors.gray,
-                                    size: 17,
-                                  ),
-                                ),
+                                ECCartButton(cartIcon: Icons.add),
+                                ECCartButton(cartIcon: Icons.delete_outline),
                               ],
                             )
                           ],
@@ -160,6 +139,53 @@ class _ECCartScreenState extends State<ECCartScreen> {
           )
         ],
       ),
+      persistentFooterButtons: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Totals",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    "\$ 1999,99",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 45,
+                alignment: Alignment.center,
+                margin: const EdgeInsets.only(top: 18),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: EcommerceColors.green),
+                child: const Text(
+                  "Continue for payments",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: "Inter",
+                    color: EcommerceColors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }
