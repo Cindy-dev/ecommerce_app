@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_cart_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_detail_screen.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(debugShowCheckedModeBanner: false,
         home:
-        ECDetailScreen()
+        ECCartScreen()
         );
   }
 }

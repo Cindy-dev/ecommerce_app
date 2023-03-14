@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_details_header.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
-
 import '../../util/e_commerce_colors.dart';
 
 class ECDetailScreen extends StatelessWidget {
@@ -208,12 +207,13 @@ class ECDetailScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                      const SizedBox(height: 9,),
                       const Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet arcu id tincidunt tellus arcu rhoncus, turpis nisl sed. Neque viverra ipsum orci, morbi semper. Nulla bibendum purus tempor semper purus. Ut curabitur platea sed blandit. Amet non at proin justo nulla et. A, blandit morbi suspendisse vel malesuada purus massa mi. Faucibus neque a mi hendrerit.Audio Technologyv \n Apple-designed dynamic driver \nActive Noise Cancellation\nTransparency mode\nAdaptive EQ\nSpatial audio with dynamic head tracking1\nSensors\nOptical sensor (each ear cup)\nPosition sensor (each ear cup)\nCase-detect sensor (each ear cup)\nAccelerometer (each ear cup)\nGyroscope (left ear cup)Microphones\nNine microphones total:Eight microphones for Active Noise Cancellation\nThree microphones for voice pickup (two shared with Active Noise Cancellation and one additional microphone)",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 12,
                           fontFamily: "Inter",
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     ],
@@ -225,7 +225,7 @@ class ECDetailScreen extends StatelessWidget {
       persistentFooterButtons: [
         Padding(
           padding:
-              const EdgeInsets.only(top: 14, bottom: 43, left: 21, right: 21),
+              const EdgeInsets.only(top: 14, bottom: 15, left: 21, right: 21),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
