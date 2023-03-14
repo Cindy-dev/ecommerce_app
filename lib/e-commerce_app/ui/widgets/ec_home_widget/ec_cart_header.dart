@@ -8,8 +8,7 @@ class ECCartHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-      const EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 23),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -23,7 +22,9 @@ class ECCartHeader extends StatelessWidget {
                   color: EcommerceColors.black.withOpacity(0.7),
                 ),
               ),
-              const SizedBox(width: 20,),
+              const SizedBox(
+                width: 20,
+              ),
               const Text(
                 "Your Cart",
                 style: TextStyle(
@@ -34,7 +35,6 @@ class ECCartHeader extends StatelessWidget {
               ),
             ],
           ),
-
           Image.asset(
             "assets/e_commerce_app/e_commerce_image/Buy.png",
             scale: 4,

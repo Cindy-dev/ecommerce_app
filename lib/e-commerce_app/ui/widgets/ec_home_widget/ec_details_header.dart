@@ -9,7 +9,7 @@ class ECDetailsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-      const EdgeInsets.only(left: 20, right: 20, top: 50),
+      const EdgeInsets.only(left: 20, right: 20, top: 50,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
