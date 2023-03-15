@@ -9,6 +9,7 @@ class ECDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
+    final deviceW = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Column(
           mainAxisSize: MainAxisSize.min,
@@ -18,11 +19,12 @@ class ECDetailScreen extends StatelessWidget {
             SizedBox(
               height: deviceH / 2.5,
               child: ListView(
+                //physics: AlwaysScrollableScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: [
                     Container(
-                        width: 390,
+                        width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -30,7 +32,7 @@ class ECDetailScreen extends StatelessWidget {
                           )),
                         )),
                     Container(
-                        width: 390,
+                        width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -38,7 +40,7 @@ class ECDetailScreen extends StatelessWidget {
                           )),
                         )),
                     Container(
-                        width: 390,
+                        width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -46,7 +48,7 @@ class ECDetailScreen extends StatelessWidget {
                           )),
                         )),
                     Container(
-                        width: 390,
+                        width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -207,7 +209,9 @@ class ECDetailScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 9,),
+                      const SizedBox(
+                        height: 9,
+                      ),
                       const Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet arcu id tincidunt tellus arcu rhoncus, turpis nisl sed. Neque viverra ipsum orci, morbi semper. Nulla bibendum purus tempor semper purus. Ut curabitur platea sed blandit. Amet non at proin justo nulla et. A, blandit morbi suspendisse vel malesuada purus massa mi. Faucibus neque a mi hendrerit.Audio Technologyv \n Apple-designed dynamic driver \nActive Noise Cancellation\nTransparency mode\nAdaptive EQ\nSpatial audio with dynamic head tracking1\nSensors\nOptical sensor (each ear cup)\nPosition sensor (each ear cup)\nCase-detect sensor (each ear cup)\nAccelerometer (each ear cup)\nGyroscope (left ear cup)Microphones\nNine microphones total:Eight microphones for Active Noise Cancellation\nThree microphones for voice pickup (two shared with Active Noise Cancellation and one additional microphone)",
                         style: TextStyle(
