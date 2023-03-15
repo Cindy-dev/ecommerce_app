@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 
 class ECSearchHeader extends StatelessWidget {
   const ECSearchHeader({Key? key}) : super(key: key);
@@ -9,7 +10,9 @@ class ECSearchHeader extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-          onPressed: () {},
+          highlightColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          onPressed: () => navigatePop(context),
           icon: const Icon(
             Icons.arrow_back,
             size: 29,
@@ -17,16 +20,18 @@ class ECSearchHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 11),
-        Expanded(
+        Flexible(
+          flex: 3,
           child: TextFormField(
               style: const TextStyle(
-                  fontFamily: "Inter",
-                  fontWeight: FontWeight.w400,
-                  color: EcommerceColors.black,
-                  fontSize: 13),
+                fontFamily: "Inter",
+                fontWeight: FontWeight.w400,
+                color: EcommerceColors.black,
+                fontSize: 13,
+              ),
               cursorColor: EcommerceColors.gray,
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.all(0),
+                  contentPadding: const EdgeInsets.all(0),
                   focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: EcommerceColors.gray),
                       borderRadius: BorderRadius.circular(8)),

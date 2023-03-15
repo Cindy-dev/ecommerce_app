@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_detail_screen.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 
 import '../../../util/e_commerce_colors.dart';
 
@@ -17,8 +19,11 @@ class ECItemCard extends StatelessWidget {
             border: Border.all(color: EcommerceColors.gray)),
         child: Column(
           children: [
-            Image.asset(
-              "assets/e_commerce_app/e_commerce_image/television.png",
+            GestureDetector(
+              onTap: () => navigatePush(context, const ECDetailScreen()),
+              child: Image.asset(
+                "assets/e_commerce_app/e_commerce_image/television.png",
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 13),

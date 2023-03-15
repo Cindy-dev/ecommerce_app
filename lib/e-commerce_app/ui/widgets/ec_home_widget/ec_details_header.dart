@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 
 import '../../../util/e_commerce_colors.dart';
 
@@ -8,13 +9,18 @@ class ECDetailsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-      const EdgeInsets.only(left: 20, right: 20, top: 50,),
+      padding: const EdgeInsets.only(
+        left: 0,
+        right: 20,
+        top: 50,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            onPressed: () {},
+            highlightColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            onPressed: () => navigatePop(context),
             icon: Icon(
               Icons.arrow_back,
               size: 29,
