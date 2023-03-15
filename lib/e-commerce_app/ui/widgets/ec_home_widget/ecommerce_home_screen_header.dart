@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_cart_banner.dart';
 import '../../../util/e_commerce_colors.dart';
+import '../../../util/navigators.dart';
+import '../../views/e_commerce_cart_screen.dart';
 
 class EcommerceHomeScreenHeader extends StatelessWidget {
   const EcommerceHomeScreenHeader({Key? key}) : super(key: key);
@@ -37,9 +40,17 @@ class EcommerceHomeScreenHeader extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Image.asset(
-                    "assets/e_commerce_app/e_commerce_image/Buy.png",
-                    scale: 4,
+                  GestureDetector(
+                    onTap: () => navigatePushIos(context, const ECCartScreen()),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          "assets/e_commerce_app/e_commerce_image/Buy.png",
+                          scale: 4,
+                        ),
+                        const Positioned(right: 0, child: ECCartBanner()),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     width: 13,

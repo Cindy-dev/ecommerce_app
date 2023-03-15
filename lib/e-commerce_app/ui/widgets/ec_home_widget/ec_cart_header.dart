@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../util/e_commerce_colors.dart';
+import '../../../util/navigators.dart';
+import 'ec_cart_banner.dart';
 
 class ECCartHeader extends StatelessWidget {
   const ECCartHeader({Key? key}) : super(key: key);
@@ -8,14 +10,16 @@ class ECCartHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 50, bottom: 10),
+      padding: const EdgeInsets.only(left: 0, right: 20, top: 50, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               IconButton(
-                onPressed: () {},
+                highlightColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                onPressed: () => navigatePop(context),
                 icon: Icon(
                   Icons.arrow_back,
                   size: 29,
@@ -35,10 +39,15 @@ class ECCartHeader extends StatelessWidget {
               ),
             ],
           ),
-          Image.asset(
-            "assets/e_commerce_app/e_commerce_image/Buy.png",
-            scale: 4,
-          ),
+           Stack(
+              children: [
+                Image.asset(
+                  "assets/e_commerce_app/e_commerce_image/Buy.png",
+                  scale: 4,
+                ),
+                const Positioned(right: 0, child: ECCartBanner()),
+              ],
+            ),
         ],
       ),
     );

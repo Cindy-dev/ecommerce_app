@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_cart_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
+
+import 'ec_cart_banner.dart';
 
 class ECSearchHeader extends StatelessWidget {
   const ECSearchHeader({Key? key}) : super(key: key);
@@ -46,9 +49,17 @@ class ECSearchHeader extends StatelessWidget {
         const SizedBox(
           width: 11,
         ),
-        Image.asset(
-          "assets/e_commerce_app/e_commerce_image/Buy.png",
-          scale: 4,
+        GestureDetector(
+          onTap: () => navigatePushIos(context, const ECCartScreen()),
+          child: Stack(
+            children: [
+              Image.asset(
+                "assets/e_commerce_app/e_commerce_image/Buy.png",
+                scale: 4,
+              ),
+              const Positioned(right: 0, child: ECCartBanner()),
+            ],
+          ),
         ),
       ],
     );
