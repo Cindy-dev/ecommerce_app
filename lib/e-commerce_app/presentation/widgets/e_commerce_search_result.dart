@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_search_header.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
+import 'ec_search_header.dart';
 
 class ECSearchResult extends StatefulWidget {
   const ECSearchResult({Key? key}) : super(key: key);

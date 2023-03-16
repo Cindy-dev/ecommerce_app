@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_details_header.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import '../../util/e_commerce_colors.dart';
+import '../widgets/ec_details_header.dart';
 
 class ECDetailScreen extends StatelessWidget {
   const ECDetailScreen({Key? key}) : super(key: key);

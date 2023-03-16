@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_cart_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_detail_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_home_screen.dart';
+import 'e-commerce_app/presentation/views/e_commerce_home_screen.dart';
 
 void main() {
   runApp(const MyApp());

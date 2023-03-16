@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_cart_banner.dart';
-import '../../../util/e_commerce_colors.dart';
-import '../../../util/navigators.dart';
-import '../../views/e_commerce_cart_screen.dart';
+import '../../util/e_commerce_colors.dart';
+import '../../util/navigators.dart';
+import '../views/e_commerce_cart_screen.dart';
+import 'ec_cart_banner.dart';
 
 class EcommerceHomeScreenHeader extends StatelessWidget {
   const EcommerceHomeScreenHeader({Key? key}) : super(key: key);

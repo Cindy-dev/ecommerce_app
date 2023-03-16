@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_search_header.dart';
 import '../../util/e_commerce_colors.dart';
+import '../widgets/ec_search_header.dart';
 
 class ECSearchPage extends StatelessWidget {
   const ECSearchPage({Key? key}) : super(key: key);

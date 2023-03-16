@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/views/e_commerce_search_page.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ecommerce_category_widget.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/item_card.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
-import '../widgets/ec_home_widget/ecommerce_home_screen_header.dart';
+import '../widgets/ecommerce_category_widget.dart';
+import '../widgets/ecommerce_home_screen_header.dart';
+import '../widgets/item_card.dart';
+import 'e_commerce_search_page.dart';
 
 class ECommerceHomeScreen extends StatelessWidget {
   const ECommerceHomeScreen({Key? key}) : super(key: key);

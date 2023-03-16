@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../util/e_commerce_colors.dart';
-import '../../../util/navigators.dart';
+import '../../util/e_commerce_colors.dart';
+import '../../util/navigators.dart';
 import 'ec_cart_banner.dart';
 
 class ECCartHeader extends StatelessWidget {

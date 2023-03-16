@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/ui/widgets/ec_home_widget/ec_cart_header.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
+import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {
   const ECCartScreen({Key? key}) : super(key: key);
