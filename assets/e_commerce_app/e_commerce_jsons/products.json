@@ -87,10 +87,27 @@
     },
     {
       "id": 6,
-      "image": "assets/e_commerce_app/e_commerce_image/shirt.png",
-      "name": "T-shirt",
-      "description": "100% Cotton\nImported\nPull On closure\n6 Pack Black Crew T-Shirts\nStays tucked with a Layflat Collar\nWicks moisture\n6 Pack Black & Grey Crew T-Shirts\n",
-      "price": 79.99,
+      "image": "assets/e_commerce_app/e_commerce_image/mac.png",
+      "name": "Macbook Pro - 8/128GB - With touchbar",
+      "description": "Apple M1 Pro or M1 Max chip for a massive leap in CPU, GPU, and machine learning performance\nUp to 10-core CPU delivers up to 2x faster performance to fly through pro workflows quicker than ever\nUp to 32-core GPU with up to 4x faster performance for graphics-intensive apps and games\n16-core Neural Engine for up to 5x faster machine learning performance\nLonger battery life, up to 21 hours\nUp to 64GB of unified memory so everything you do is fast and fluid\nUp to 8TB of superfast SSD storage launches apps and opens files in an instant",
+      "price": 1979.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/apple.png",
+      "storeName": "Apple Store"
+    },
+    {
+      "id": 7,
+      "image": "assets/e_commerce_app/e_commerce_image/camera.png",
+      "name": "Fujifilm Camera XA5",
+      "description": "Offering the ultimate image quality, X-T5 features the class-leading, 40.2-megapixel X-Trans 5 HR CMOS sensor in a compact, lightweight body that maximizes functionality and portability. X-T5’s improved image processing algorithm delivers outstanding results, packed with detail right across the native ISO range, which now extends to ISO 125. The classic X Series design has been retained. Dials predominate, making key functions – including ISO, shutter speed and exposure compensation – quick and easy to set, even with the camera switched off. X-T5 offers a new, 1.84 million dot, three-way tilting LCD and powerful in-body image stabilization.\nX-T5 provides powerful image making performance to ensure it’s ready for action, no matter how fast your subject is moving. A top electronic shutter speed of 1/180,000 sec and maximum mechanical shutter speed of 1/8000 sec will stop any subject in its tracks, while a lag time of just 35 ms gives almost instantaneous response when the shutter release is pressed. Keep a finger down, and X-T5 will record images at up to 15fps with the mechanical shutter, or 20fps with the electronic shutter. With the NP-W235 battery, up to 680 frames can be recorded from a single charge, plus the mechanical shutter guarantees 500,000 actuations, delivering long-term accuracy and reliability.\nThanks to X-T5’s in-body image stabilization (IBIS) system, camera shake will be a thing of the past – even in low-light conditions. It works in five axes, combatting all types of camera movement, and provides up to seven stops of compensation. IBIS works with the camera’s subject detection autofocus, which uses deep-learning AI to expertly track animals, birds, cars, motorcycles, planes and trains. Tracking moving subjects is made easier by the detailed electronic viewfinder (EVF), which uses 3.69 million dots to provide a bright, vibrant display. The EVF offers 0.8x magnification for an easy-to-view image. The 100fps refresh rate, meanwhile, allows virtually blackout-free image making.\nFollowing in the footsteps of X-H2, find the stunning Pixel Shift Multi-Shot mode in X-T5, delivering detailed files like never before. The feature utilizes the camera’s IBIS system to precisely shift the sensor, automatically recording 20 separate frames with one press of the shutter release. Resulting files are combined using Pixel Shift Combiner software to quadruple the camera’s resolution and produce a detail-rich, 160-megapixel file. Perfect for commercial applications or digital archiving, it’s also ideal for any static subject where image quality is of primary importance.\nX-T5’s capabilities are enhanced by its powerful video functions, which complement the camera’s impressive stills performance. Movies can be recorded internally at up to 6.2K/30p in 4:2:2 10-bit color, plus there’s a 4K HQ mode which oversamples 6.2K footage for superior 4K output. Both F-Log and F-Log2 recording are possible, the latter providing expanded dynamic range of 13+ stops, plus 12-bit Apple ProRes RAW and Blackmagic RAW can be output via HDMI, to Atomos and Blackmagic devices accordingly.",
+      "price": 1699.99,
       "color": [
         "0xffF1D7C0",
         "0xffECECEC",
@@ -101,6 +118,41 @@
       "inCart": false,
       "storeImage": "assets/e_commerce_app/e_commerce_image/amazon.png",
       "storeName": "Amazon Store"
+    },
+
+    {
+      "id": 8,
+      "image": "assets/e_commerce_app/e_commerce_image/hoodie.png",
+      "name": "Hoodie",
+      "description": "100% Polyester\nImported\nPull On closure\nMachine Wash\nMachine Washable in cold; Tumble Dry Low , Do Not Iron.\nClassic heavyweight hoodie in pill-resistant jersey featuring fleece-lined drawstring hood.\nMedium-weight 9 oz fleece with brushed interior offers exceptional softness and warmth with no shedding.\nFeature: Drawstring hoodie with kangaroo pocket featuring ribbed waistband and cuffs / Regular fit / Long sleeve / Contrast color / Drawstring with metal tips.\nTRENDY FASHION: These pull-over hoodies are the perfect finishing touch to any sporty or casual look, perfect for hanging out with friends, running errands, casual dates, school & more.",
+      "price": 29.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/amazon.png",
+      "storeName": "Amazon Store"
+    },
+    {
+      "id": 9,
+      "image": "assets/e_commerce_app/e_commerce_image/max2.png",
+      "name": "Air pods max by Apple",
+      "description": "Active Noise Cancellation\nTransparency mode\nAdaptive EQ\nSpatial audio\nAvailable in five colors",
+      "price": 549,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/apple.png",
+      "storeName": "Apple Store"
     }
   ]
 }
