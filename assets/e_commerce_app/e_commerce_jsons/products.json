@@ -1,0 +1,106 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "image": "assets/e_commerce_app/e_commerce_image/television.png",
+      "name": "Monitor LG 22”inc 4K 120Fps",
+      "description": "48” UHD 4K (3840 x 2160) OLED Display - Meet the next-level of gaming thanks to an ultra-large 48” monitor, for a game-changing, immersive experience.\n1.5M : 1 Contrast Ratio & DCI-P3 99% (Typ.) with HDR 10 - With a 1,500,000:1 contrast ratio, gamers will experience games the way the creators intended with bold colors.\n0.1ms (GtG) Response time - Enjoy the game with smoother movement, and surreal visual fluidity, with 0.1ms (GtG) response time that reduces reverse ghosting, and helps objects render clearly.\nHDMI 2.1 and VRR - Enjoy smoother, vivid colors and high-resolution graphics thanks to HDMI 2.1, which provides 2.5x higher bandwidth than HDMI 2.0. With HDMI 2.1 and a supportable graphics card, you can experience up to 120Hz (O/C 138Hz) variable refresh rate (VRR). You can also transfer uncompressed 4K files at speeds up to 120Hz and uncompressed 8K files at speeds up to 30Hz.\nNVIDIA G-SYNC Compatible - Get In The Game Officially validated by NVIDIA as G-SYNC Compatible**. That translates to faster, smoother gaming that's been tested to reduce screen tearing and stutter. Never miss a frame of the action as you clinch your victories.\nAMD FreeSync Premium - AMD FreeSync Premium is built in. AMD FreeSync Premium equips serious gamers with a fluid, virtually tear-free gaming experience. With at least 120hz refresh rate at minimum FHD resolution and low latency gameplay, you'll never miss a frame of the action as you play at peak performance.\nDTS Headphone:X - DTS Headphone:X provides accurate spatialization and localization in games for 3D audio over headphones. Supports channel-based, scene based, and object-based audio.\nUltraGear Remote Control - With the UltraGear Remote Control, you can turn your monitor on or off, adjust sound, change the mode and more.\nAnti-Glare & Low Reflection - Stay focused on the game without worrying about missing enemy movements from light reflections.",
+      "price": 199.99,
+      "color": [
+        "0xffF5E3DF",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xff3E3D40"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/lg.png",
+      "storeName": "LG Store"
+    },
+    {
+      "id": 2,
+      "image": "assets/e_commerce_app/e_commerce_image/mug.png",
+      "name": "Aestechic Mug - white variant",
+      "description": "Size: 11 ounce White Ceramic coffee mug £¨Print on both sides£\nC-shaped handle, comfortable to hold,\nDurable ceramic material, safe and healthy for drinking\nCan be used for Hot & Cold beverages\n100% dishwasher, hand-wash and microwave proof\n",
+      "price": 39.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/amazon.png",
+      "storeName": "Amazon Store"
+    },
+    {
+      "id": 3,
+      "image": "assets/e_commerce_app/e_commerce_image/airpods3.png",
+      "name": "Airpods pro",
+      "description": "Active noise cancellation for immersive sound\nTransparency mode for hearing and connecting with the world around you\nThree sizes of soft, tapered silicone tips for a customizable fit\nSweat and water resistant\nAdaptive EQ automatically tunes music to the shape of your ear\nEasy setup for all your Apple devices\nQuick access to Siri by saying “Hey Siri”\nThe Wireless Charging Case delivers more than 24 hours of battery life",
+      "price": 499.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/apple.png",
+      "storeName": "Apple Store"
+    },
+    {
+      "id": 4,
+      "image": "assets/e_commerce_app/e_commerce_image/game.png",
+      "name": "Playstation 4 - SSD 128 GB",
+      "description": "Incredible games; Endless entertainment\nAll new lighter slimmer PS4\n128gb hard drive\nBlu-ray technology, delivers exceptional video quality\nRedefine your gaming expectations and immerse yourself in moments so intense your intuition takes over.",
+      "price": 199.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/amazon.png",
+      "storeName": "Amazon Store"
+    },
+    {
+      "id": 5,
+      "image": "assets/e_commerce_app/e_commerce_image/shirt.png",
+      "name": "T-shirt",
+      "description": "100% Cotton\nImported\nPull On closure\n6 Pack Black Crew T-Shirts\nStays tucked with a Layflat Collar\nWicks moisture\n6 Pack Black & Grey Crew T-Shirts\n",
+      "price": 79.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/amazon.png",
+      "storeName": "Amazon Store"
+    },
+    {
+      "id": 6,
+      "image": "assets/e_commerce_app/e_commerce_image/shirt.png",
+      "name": "T-shirt",
+      "description": "100% Cotton\nImported\nPull On closure\n6 Pack Black Crew T-Shirts\nStays tucked with a Layflat Collar\nWicks moisture\n6 Pack Black & Grey Crew T-Shirts\n",
+      "price": 79.99,
+      "color": [
+        "0xffF1D7C0",
+        "0xffECECEC",
+        "0xffE4F2DF",
+        "0xffD5E0ED",
+        "0xffA2592D"
+      ],
+      "inCart": false,
+      "storeImage": "assets/e_commerce_app/e_commerce_image/amazon.png",
+      "storeName": "Amazon Store"
+    }
+  ]
+}

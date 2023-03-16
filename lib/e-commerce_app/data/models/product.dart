@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
@@ -14,6 +13,7 @@ class Product extends Equatable {
     required this.storeImage,
     required this.storeName,
   });
+
   factory Product.fromJson(String source) =>
       Product.fromMap(json.decode(source) as Map<String, dynamic>);
 
@@ -24,7 +24,7 @@ class Product extends Equatable {
       name: map['name'] as String,
       description: map['description'] as String,
       price: map['price'] as num,
-      color: map['color'] as List<Color>,
+      color: map['color'] as List<String>,
       inCart: map['inCart'] as bool,
       storeImage: map['storeImage'] as String,
       storeName: map ['storeName'] as String,
@@ -35,18 +35,19 @@ class Product extends Equatable {
   final String name;
   final String description;
   final num price;
-  final List<Color> color;
+  final List<String> color;
   final bool inCart;
   final String storeImage;
   final String storeName;
 
+  //takes all the properties(which need to change) and their corresponding values and returns new object with your desired properties.
   Product copyWith({
     num? id,
     String? image,
     String? name,
     String? description,
     num? price,
-    List<Color>? color,
+    List<String>? color,
     bool? inCart,
     String? storeImage,
     String? storeName,
