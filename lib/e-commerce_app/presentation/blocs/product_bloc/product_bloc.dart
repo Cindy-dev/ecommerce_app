@@ -25,7 +25,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
 
       await Future<dynamic>.delayed(const Duration(seconds: 1));
       final data = (json.decode(jsonData) as Map)['products']  as List;
-print(data.runtimeType);
       final listOfProducts = data
           .map(
             (value) => Product.fromMap(value as Map<String, dynamic>),

@@ -15,6 +15,10 @@ class ECItemCard extends StatefulWidget {
 class _ECItemCardState extends State<ECItemCard> {
   @override
   Widget build(BuildContext context) {
+    final deviceH = MediaQuery.of(context).size.height;
+    final deviceW = MediaQuery.of(context).size.width;
+    final double itemHeight = (deviceH - kToolbarHeight - 100) / 2.8;
+    final double itemWidth = deviceW / 2.15;
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Builder(
@@ -28,78 +32,89 @@ class _ECItemCardState extends State<ECItemCard> {
                 ),
               );
             } else if (state is ProductStateLoaded) {
-              return Expanded(
-                child: SingleChildScrollView(
-                    child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  width: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: EcommerceColors.gray)),
-                  child: Column(
-                    children: [
-                      ...state.products.map(
-                        (product) => Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () =>
-                                  navigatePush(context, const ECDetailScreen()),
-                              child: Image.asset(
-                                product.image,
-                              ),
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 13, vertical: 13),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      product.name,
-                                      style: const TextStyle(
-                                          fontFamily: "Inter",
-                                          fontWeight: FontWeight.w400,
-                                          color: EcommerceColors.black,
-                                          fontSize: 12),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Text(
-                                      "\$${product.price}",
-                                      style: const TextStyle(
-                                          fontFamily: "Inter",
-                                          fontWeight: FontWeight.w600,
-                                          color: EcommerceColors.black,
-                                          fontSize: 14),
-                                    ),
-                                    const SizedBox(height: 11),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                          color: EcommerceColors.green,
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                          border: Border.all(
-                                              color: EcommerceColors.gray)),
-                                      child: const Text(
-                                        "Add to cart",
-                                        style: TextStyle(
-                                            fontFamily: "Inter",
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xffFFFFFF),
-                                            fontSize: 12),
-                                      ),
-                                    )
-                                  ],
-                                )),
-                          ],
+              return MediaQuery.removePadding(
+                removeTop: true,
+                context: context,
+                child: Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 50 / 2,
+                          crossAxisSpacing: 9,
+                          childAspectRatio: (itemWidth / itemHeight),
                         ),
-                      )
-                    ],
+                        itemCount: state.products.length,
+                        itemBuilder: (context, i) {
+                          final prod = state.products[i];
+                          return Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: EcommerceColors.gray)),
+                            child: Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () =>
+                                      navigatePush(context, const ECDetailScreen()),
+                                  child: Image.asset(
+                                    prod.image,
+                                  ),
+                                ),
+                                Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 13, vertical: 13),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          prod.name,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w400,
+                                              color: EcommerceColors.black,
+                                              fontSize: 12),
+                                        ),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Text(
+                                          "\$${prod.price}",
+                                          style: const TextStyle(
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w600,
+                                              color: EcommerceColors.black,
+                                              fontSize: 14),
+                                        ),
+                                        const SizedBox(height: 11),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                              color: EcommerceColors.green,
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
+                                              border: Border.all(
+                                                  color: EcommerceColors.gray)),
+                                          child: const Text(
+                                            "Add to cart",
+                                            style: TextStyle(
+                                                fontFamily: "Inter",
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xffFFFFFF),
+                                                fontSize: 12),
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                              ],
+                            ),
+                          );
+                        }),
                   ),
-                )),
+                ),
               );
             } else if (state is ProductStateError) {
               final errorMessage = state.errorMessage;
