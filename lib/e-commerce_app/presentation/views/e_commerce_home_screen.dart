@@ -23,15 +23,18 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
     context.read<ProductBloc>().add(FetchProductEvent());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
+    final deviceH = MediaQuery.of(context).size.height;
+    final deviceW = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const EcommerceHomeScreenHeader(),
           GestureDetector(
-            onTap: ()=> navigatePush(context, const ECSearchPage()),
+            onTap: () => navigatePush(context, const ECSearchPage()),
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.only(left: 12),
@@ -61,8 +64,8 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
           const SizedBox(
             height: 17,
           ),
-          Container(
-            height: MediaQuery.of(context).size.height / 5,
+          SizedBox(
+            height: deviceH / 5,
             child: ListView(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -118,7 +121,7 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
       ),
       bottomNavigationBar: Container(
         alignment: Alignment.center,
-        height: 102,
+        height: deviceH / 11,
         width: double.infinity,
         child: BottomNavigationBar(
           elevation: 0,
