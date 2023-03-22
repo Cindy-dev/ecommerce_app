@@ -35,6 +35,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ),
       );
     } catch (e) {
+      print(e.toString());
       emit(
         ProductStateError(
           errorMessage: e.toString(),

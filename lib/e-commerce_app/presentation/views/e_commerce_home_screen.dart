@@ -47,7 +47,8 @@ class ECommerceHomeScreen extends StatelessWidget {
           const SizedBox(
             height: 17,
           ),
-          Expanded(
+          Container(
+            height: MediaQuery.of(context).size.height / 5,
             child: ListView(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
