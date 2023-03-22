@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/ecommerce_category_widget.dart';
 import '../widgets/ecommerce_home_screen_header.dart';
 import '../widgets/item_card.dart';
 import 'e_commerce_search_page.dart';
 
-class ECommerceHomeScreen extends StatelessWidget {
+class ECommerceHomeScreen extends StatefulWidget {
   const ECommerceHomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ECommerceHomeScreen> createState() => _ECommerceHomeScreenState();
+}
+
+class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    //gives access to the bloc
+    context.read<ProductBloc>().add(FetchProductEvent());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

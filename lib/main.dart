@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
-            create: (_) => ProductBloc(), child: const ECommerceHomeScreen()));
+            create: (context) => ProductBloc(),
+            child: const ECommerceHomeScreen()));
   }
 }

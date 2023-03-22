@@ -8,7 +8,7 @@ class Product extends Equatable {
     required this.name,
     required this.description,
     required this.price,
-    required this.color,
+  //  required this.color,
     required this.inCart,
     required this.storeImage,
     required this.storeName,
@@ -24,7 +24,7 @@ class Product extends Equatable {
       name: map['name'] as String,
       description: map['description'] as String,
       price: map['price'] as num,
-      color: map['color'] as List<String>,
+     // color: map['color'] as List<String>,
       inCart: map['inCart'] as bool,
       storeImage: map['storeImage'] as String,
       storeName: map ['storeName'] as String,
@@ -35,7 +35,7 @@ class Product extends Equatable {
   final String name;
   final String description;
   final num price;
-  final List<String> color;
+  //final List<String> color;
   final bool inCart;
   final String storeImage;
   final String storeName;
@@ -47,7 +47,7 @@ class Product extends Equatable {
     String? name,
     String? description,
     num? price,
-    List<String>? color,
+    //List<String>? color,
     bool? inCart,
     String? storeImage,
     String? storeName,
@@ -58,7 +58,7 @@ class Product extends Equatable {
       name: name ?? this.name,
       description: description ?? this.description,
       price: price ?? this.price,
-      color: color ?? this.color,
+  //    color: color ?? this.color,
       inCart: inCart ?? this.inCart,
       storeImage: storeImage ?? this.storeImage,
       storeName: storeName ?? this.storeName,
@@ -72,7 +72,7 @@ class Product extends Equatable {
       'name': name,
       'description': description,
       'price': price,
-      'color': color,
+     // 'color': color,
       'inCart': inCart,
       'storeImage': storeImage,
       'storeName': storeName,
@@ -92,7 +92,7 @@ class Product extends Equatable {
       name,
       description,
       price,
-      color,
+     // color,
       inCart,
       storeImage,
       storeName,

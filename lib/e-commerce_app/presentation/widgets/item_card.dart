@@ -20,8 +20,12 @@ class _ECItemCardState extends State<ECItemCard> {
         return Builder(
           builder: (context) {
             if (state is ProductStateLoading) {
-              return CircularProgressIndicator(
-                backgroundColor: EcommerceColors.green,
+              return Container(
+                padding: const EdgeInsets.only(top: 150),
+                alignment: Alignment.center,
+                child: const CircularProgressIndicator(
+                  color: EcommerceColors.green,
+                ),
               );
             } else if (state is ProductStateLoaded) {
               return Expanded(
@@ -34,56 +38,62 @@ class _ECItemCardState extends State<ECItemCard> {
                       border: Border.all(color: EcommerceColors.gray)),
                   child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () =>
-                            navigatePush(context, const ECDetailScreen()),
-                        child: Image.asset(
-                          "assets/e_commerce_app/e_commerce_image/television.png",
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 13, vertical: 13),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      ...state.products.map(
+                        (product) => Column(
                           children: [
-                            const Text(
-                              "Monitor LG 22”inc 4K 120Fps",
-                              style: TextStyle(
-                                  fontFamily: "Inter",
-                                  fontWeight: FontWeight.w400,
-                                  color: EcommerceColors.black,
-                                  fontSize: 12),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            const Text(
-                              "\$199.99",
-                              style: TextStyle(
-                                  fontFamily: "Inter",
-                                  fontWeight: FontWeight.w600,
-                                  color: EcommerceColors.black,
-                                  fontSize: 14),
-                            ),
-                            const SizedBox(height: 11),
-                            Container(
-                              alignment: Alignment.center,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  color: EcommerceColors.green,
-                                  borderRadius: BorderRadius.circular(4),
-                                  border:
-                                      Border.all(color: EcommerceColors.gray)),
-                              child: const Text(
-                                "Add to cart",
-                                style: TextStyle(
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xffFFFFFF),
-                                    fontSize: 12),
+                            GestureDetector(
+                              onTap: () =>
+                                  navigatePush(context, const ECDetailScreen()),
+                              child: Image.asset(
+                                product.image,
                               ),
-                            )
+                            ),
+                            Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 13, vertical: 13),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      product.name,
+                                      style: const TextStyle(
+                                          fontFamily: "Inter",
+                                          fontWeight: FontWeight.w400,
+                                          color: EcommerceColors.black,
+                                          fontSize: 12),
+                                    ),
+                                    const SizedBox(
+                                      height: 4,
+                                    ),
+                                    Text(
+                                      "\$${product.price}",
+                                      style: const TextStyle(
+                                          fontFamily: "Inter",
+                                          fontWeight: FontWeight.w600,
+                                          color: EcommerceColors.black,
+                                          fontSize: 14),
+                                    ),
+                                    const SizedBox(height: 11),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                          color: EcommerceColors.green,
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                          border: Border.all(
+                                              color: EcommerceColors.gray)),
+                                      child: const Text(
+                                        "Add to cart",
+                                        style: TextStyle(
+                                            fontFamily: "Inter",
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0xffFFFFFF),
+                                            fontSize: 12),
+                                      ),
+                                    )
+                                  ],
+                                )),
                           ],
                         ),
                       )
@@ -93,6 +103,7 @@ class _ECItemCardState extends State<ECItemCard> {
               );
             } else if (state is ProductStateError) {
               final errorMessage = state.errorMessage;
+              print(errorMessage);
               return Center(
                 child: Text(
                   errorMessage,

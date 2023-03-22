@@ -19,11 +19,13 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(ProductStateLoading());
     try {
       //retrieving our stored json product data
-      final jsonData =
-          await rootBundle.loadString("assets/e_commerce_jsons/products.json");
+      final jsonData = await rootBundle
+          .loadString('assets/e_commerce_app/e_commerce_jsons/products.json');
+
 
       await Future<dynamic>.delayed(const Duration(seconds: 1));
-      final data = (json.decode(jsonData) as Map)['product'] as List;
+      final data = (json.decode(jsonData) as Map)['products']  as List;
+print(data.runtimeType);
       final listOfProducts = data
           .map(
             (value) => Product.fromMap(value as Map<String, dynamic>),
@@ -31,7 +33,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           .toList();
       emit(
         ProductStateLoaded(
-          product: listOfProducts,
+          products: listOfProducts,
         ),
       );
     } catch (e) {

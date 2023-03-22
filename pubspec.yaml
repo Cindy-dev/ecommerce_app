@@ -32,6 +32,7 @@ flutter:
 
   assets:
      - assets/e_commerce_app/e_commerce_image/
+     - assets/e_commerce_app/e_commerce_jsons/
 
   fonts:
      - family: Inter

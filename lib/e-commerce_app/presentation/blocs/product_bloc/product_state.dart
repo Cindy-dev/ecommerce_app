@@ -11,9 +11,9 @@ class ProductStateLoading extends ProductState {}
 
 @immutable
 class ProductStateLoaded extends ProductState {
-  final List<Product> product;
+  final List<Product> products;
   ProductStateLoaded({
-    required this.product,
+    required this.products,
   });
 }
 
