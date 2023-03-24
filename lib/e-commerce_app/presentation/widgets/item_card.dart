@@ -17,8 +17,6 @@ class _ECItemCardState extends State<ECItemCard> {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
-    final double itemHeight = (deviceH - kToolbarHeight - 100) / 2.8;
-    final double itemWidth = deviceW / 2.15;
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Builder(
@@ -57,14 +55,18 @@ class _ECItemCardState extends State<ECItemCard> {
                                     Border.all(color: EcommerceColors.gray)),
                             child: Column(
                               children: [
-                                Container(
-                                    height: deviceH / 7,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.fitWidth,
-                                          image: AssetImage(prod.image)),
-                                    )),
+                                GestureDetector(
+                                  onTap: () => navigatePushIos(
+                                      context, ECDetailScreen(product: prod,)),
+                                  child: Container(
+                                      height: deviceH / 7,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.fitWidth,
+                                            image: AssetImage(prod.image)),
+                                      )),
+                                ),
                                 Expanded(
                                   child: Padding(
                                       padding: EdgeInsets.symmetric(

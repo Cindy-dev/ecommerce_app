@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import '../../util/e_commerce_colors.dart';
 import '../widgets/ec_details_header.dart';
 
 class ECDetailScreen extends StatelessWidget {
-  const ECDetailScreen({Key? key}) : super(key: key);
+  final Product product;
+  const ECDetailScreen({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,44 +18,49 @@ class ECDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ECDetailsHeader(),
-            SizedBox(
+            Container(
+              margin: const EdgeInsets.only(top: 10, bottom: 5),
               height: deviceH / 2.5,
               child: ListView(
-                //physics: AlwaysScrollableScrollPhysics(),
+                  //physics: AlwaysScrollableScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: [
                     Container(
                         width: deviceW,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           image: DecorationImage(
+                              fit: BoxFit.fitHeight,
                               image: AssetImage(
-                            "assets/e_commerce_app/e_commerce_image/imgslider.png",
-                          )),
+                                product.image,
+                              )),
                         )),
                     Container(
                         width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
+                              fit: BoxFit.fitHeight,
                               image: AssetImage(
-                            "assets/e_commerce_app/e_commerce_image/max1.png",
-                          )),
+                                "assets/e_commerce_app/e_commerce_image/max1.png",
+                              )),
                         )),
                     Container(
                         width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
+                              fit: BoxFit.fitHeight,
                               image: AssetImage(
-                            "assets/e_commerce_app/e_commerce_image/max2.png",
-                          )),
+                                "assets/e_commerce_app/e_commerce_image/max2.png",
+                              )),
                         )),
                     Container(
                         width: deviceW,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
+                              fit: BoxFit.fitHeight,
                               image: AssetImage(
-                            "assets/e_commerce_app/e_commerce_image/max3.png",
-                          )),
+                                "assets/e_commerce_app/e_commerce_image/max3.png",
+                              )),
                         )),
                   ]),
             ),
@@ -70,9 +77,10 @@ class ECDetailScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Air pods max by Apple",
-                              style: TextStyle(
+                            Text(
+                              product.name,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontFamily: "Inter",
                                 fontWeight: FontWeight.w500,
@@ -82,19 +90,19 @@ class ECDetailScreen extends StatelessWidget {
                               height: 6,
                             ),
                             Row(
-                              children: const [
+                              children: [
                                 Text(
-                                  "\$ 1999,99",
-                                  style: TextStyle(
+                                  "\$${product.price}",
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontFamily: "Inter",
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
-                                Text(
+                                const Text(
                                   "( 219 people buy this )",
                                   style: TextStyle(
                                     fontSize: 14,
@@ -139,22 +147,35 @@ class ECDetailScreen extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      Row(children: [
-                        Container(
-                          height: 41,
-                          width: 61,
-                          margin: const EdgeInsets.only(top: 9, bottom: 12),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.orange),
-                        ),
-                      ]),
+                      SizedBox(
+                        height: deviceH / 12,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: product.color?.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                height: 41,
+                                width: deviceW / 4,
+                                margin: const EdgeInsets.only(
+                                    top: 9, bottom: 12, right: 5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Color(
+                                        int.parse(product.color![index]))),
+                              );
+                            }),
+                      ),
                       const Divider(),
                       Row(
                         children: [
-                          Image.asset(
-                            "assets/e_commerce_app/e_commerce_image/apple.png",
-                            scale: 4,
+                          SizedBox(
+                            height: deviceH/15,
+                            child: Image.asset(
+                            product.storeImage,
+                              fit: BoxFit.fitHeight,
+                              scale: 4,
+                            ),
                           ),
                           const SizedBox(width: 12),
                           Column(
