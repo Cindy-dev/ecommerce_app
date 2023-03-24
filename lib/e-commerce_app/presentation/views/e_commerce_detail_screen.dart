@@ -158,7 +158,7 @@ class ECDetailScreen extends StatelessWidget {
                                 height: 41,
                                 width: deviceW / 4,
                                 margin: const EdgeInsets.only(
-                                    top: 9, bottom: 12, right: 5),
+                                    top: 9, bottom: 10, right: 5),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                     color: Color(
@@ -180,16 +180,16 @@ class ECDetailScreen extends StatelessWidget {
                           const SizedBox(width: 12),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
-                                "Apple Store",
-                                style: TextStyle(
+                                product.storeName,
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontFamily: "Inter",
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "online 12 mins ago",
                                 style: TextStyle(
                                   fontSize: 12,
@@ -225,18 +225,19 @@ class ECDetailScreen extends StatelessWidget {
                       const Text(
                         "Description of product",
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 20,
                           fontFamily: "Inter",
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                       const SizedBox(
                         height: 9,
                       ),
-                      const Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet arcu id tincidunt tellus arcu rhoncus, turpis nisl sed. Neque viverra ipsum orci, morbi semper. Nulla bibendum purus tempor semper purus. Ut curabitur platea sed blandit. Amet non at proin justo nulla et. A, blandit morbi suspendisse vel malesuada purus massa mi. Faucibus neque a mi hendrerit.Audio Technologyv \n Apple-designed dynamic driver \nActive Noise Cancellation\nTransparency mode\nAdaptive EQ\nSpatial audio with dynamic head tracking1\nSensors\nOptical sensor (each ear cup)\nPosition sensor (each ear cup)\nCase-detect sensor (each ear cup)\nAccelerometer (each ear cup)\nGyroscope (left ear cup)Microphones\nNine microphones total:Eight microphones for Active Noise Cancellation\nThree microphones for voice pickup (two shared with Active Noise Cancellation and one additional microphone)",
-                        style: TextStyle(
-                          fontSize: 12,
+                       Text(
+                        product.description,
+                        textAlign: TextAlign.justify,
+                        style: const TextStyle(
+                          fontSize: 15,
                           fontFamily: "Inter",
                           fontWeight: FontWeight.w400,
                         ),

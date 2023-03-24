@@ -32,7 +32,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                   ),
                 ),
                 Text(
-                  "Salatiga City, Central Java",
+                  "Lagos Nigeria",
                   style: TextStyle(
                     fontSize: 12,
                     fontFamily: "Inter",
