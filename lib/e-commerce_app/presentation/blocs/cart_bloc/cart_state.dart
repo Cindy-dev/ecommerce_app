@@ -1,5 +1,12 @@
 part of 'cart_bloc.dart';
 
+abstract class CartState extends Equatable {
+  const CartState();
+
+  @override
+  List<Object?> get props => [];
+}
+
 class CartInitial extends CartState {}
 
 @immutable
@@ -14,7 +21,7 @@ class CartItemAdded extends CartState {
   final Product product;
 
   @override
-  List<Object?> get props => [shoe];
+  List<Object?> get props => [product];
 }
 
 @immutable
@@ -26,5 +33,5 @@ class CartItemRemoved extends CartState {
   final Product product;
 
   @override
-  List<Object?> get props => [shoe];
+  List<Object?> get props => [product];
 }

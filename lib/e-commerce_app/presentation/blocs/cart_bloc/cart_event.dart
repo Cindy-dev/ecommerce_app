@@ -1,6 +1,26 @@
 part of 'cart_bloc.dart';
 
-@immutable
-abstract class CartEvent{}
+abstract class CartEvent extends Equatable {
+  const CartEvent();
 
-class FetchCartEvent extends CartEvent{}
+  @override
+  List<Object> get props => [];
+}
+
+class FetchCartEvent extends CartEvent {}
+
+class AddItemToCartEvent extends CartEvent {
+  const AddItemToCartEvent({
+    required this.product,
+  });
+  final Product product;
+}
+
+class RemoveItemFromCartEvent extends CartEvent {
+  const RemoveItemFromCartEvent({
+    required this.product,
+  });
+  final Product product;
+}
+
+class ResetCartBlocEvent extends CartEvent {}
