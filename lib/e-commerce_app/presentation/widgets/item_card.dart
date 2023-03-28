@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/product_bloc/product_bloc.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_cart_add_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
@@ -57,7 +58,10 @@ class _ECItemCardState extends State<ECItemCard> {
                               children: [
                                 GestureDetector(
                                   onTap: () => navigatePushIos(
-                                      context, ECDetailScreen(product: prod,)),
+                                      context,
+                                      ECDetailScreen(
+                                        product: prod,
+                                      )),
                                   child: Container(
                                       height: deviceH / 7,
                                       width: double.infinity,
@@ -99,28 +103,12 @@ class _ECItemCardState extends State<ECItemCard> {
                                           SizedBox(height: deviceH / 170),
                                           const Spacer(),
                                           FittedBox(
-                                            fit: BoxFit.cover,
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              width: deviceW / 2,
-                                              height: deviceH / 15,
-                                              decoration: BoxDecoration(
-                                                  color: EcommerceColors.green,
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  border: Border.all(
-                                                      color: EcommerceColors
-                                                          .gray)),
-                                              child: const Text(
-                                                "Add to cart",
-                                                style: TextStyle(
-                                                    fontFamily: "Inter",
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Color(0xffFFFFFF),
-                                                    fontSize: 20),
-                                              ),
-                                            ),
-                                          ),
+                                              fit: BoxFit.cover,
+                                              child: ECCartAddButton(
+                                                fontSize: 20,
+                                                width: deviceW / 2,
+                                                height: deviceH / 15,
+                                              )),
                                           const Spacer(),
                                         ],
                                       )),

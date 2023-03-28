@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import '../../util/e_commerce_colors.dart';
+import '../widgets/ec_cart_add_button.dart';
 import '../widgets/ec_details_header.dart';
 
 class ECDetailScreen extends StatelessWidget {
@@ -254,16 +255,16 @@ class ECDetailScreen extends StatelessWidget {
               const EdgeInsets.only(top: 14, bottom: 15, left: 21, right: 21),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              ECButton(
-                  buttonColor: EcommerceColors.green,
-                  buttonText: "Add to Cart",
-                  textColor: EcommerceColors.white,
-                  borderColor: EcommerceColors.green),
-              SizedBox(
+            children:  [
+              ECCartAddButton(
+                height: 45,
+                width: deviceH / 5.4,
+                fontSize: 12,
+              ),
+              const SizedBox(
                 width: 15,
               ),
-              ECButton(
+              const ECButton(
                   buttonColor: EcommerceColors.white,
                   buttonText: "Buy Now",
                   textColor: EcommerceColors.black,
