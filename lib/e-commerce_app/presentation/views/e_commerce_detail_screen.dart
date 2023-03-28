@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import '../../util/e_commerce_colors.dart';
+import '../blocs/cart_bloc/cart_bloc.dart';
+import '../providers/cart_provider.dart';
 import '../widgets/ec_cart_add_button.dart';
 import '../widgets/ec_details_header.dart';
 
 class ECDetailScreen extends StatelessWidget {
+  final CartBloc blocapp;
+
   final Product product;
-  const ECDetailScreen({Key? key, required this.product}) : super(key: key);
+  const ECDetailScreen(
+      {Key? key,
+      required this.product,
+      required this.blocapp,})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
+    //return Consumer<CartProvider>(builder: (context, cartProvider, child) {
     return Scaffold(
       body: Column(
           mainAxisSize: MainAxisSize.min,
@@ -81,15 +91,17 @@ class ECDetailScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Hero(
-                              tag: product.name,
-                              child: Text(
-                                product.name,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: "Inter",
-                                  fontWeight: FontWeight.w500,
+                            Material(
+                              child: Hero(
+                                tag: product.name,
+                                child: Text(
+                                  product.name,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: "Inter",
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
@@ -98,15 +110,12 @@ class ECDetailScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Hero(
-                                  tag: "\$${product.price}",
-                                  child: Text(
-                                    "\$${product.price}",
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      fontFamily: "Inter",
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                Text(
+                                  "\$${product.price}",
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: "Inter",
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
                                 const SizedBox(
@@ -180,9 +189,9 @@ class ECDetailScreen extends StatelessWidget {
                       Row(
                         children: [
                           SizedBox(
-                            height: deviceH/15,
+                            height: deviceH / 15,
                             child: Image.asset(
-                            product.storeImage,
+                              product.storeImage,
                               fit: BoxFit.fitHeight,
                               scale: 4,
                             ),
@@ -243,7 +252,7 @@ class ECDetailScreen extends StatelessWidget {
                       const SizedBox(
                         height: 9,
                       ),
-                       Text(
+                      Text(
                         product.description,
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
@@ -264,11 +273,13 @@ class ECDetailScreen extends StatelessWidget {
               const EdgeInsets.only(top: 14, bottom: 15, left: 21, right: 21),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:  [
+            children: [
               ECCartAddButton(
                 height: 45,
                 width: deviceH / 5.4,
-                fontSize: 12, product: product,
+                fontSize: 12,
+                product: product,
+                cartBloc: blocapp,
               ),
               const SizedBox(
                 width: 15,
@@ -283,5 +294,6 @@ class ECDetailScreen extends StatelessWidget {
         ),
       ],
     );
+    //});
   }
 }

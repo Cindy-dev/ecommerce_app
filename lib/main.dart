@@ -16,19 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:
-        ChangeNotifierProvider.value(
-         // create: (_) => CartProvider(),
-          value: CartProvider(),
-          child: MultiBlocProvider(
+        home:MultiProvider(
             providers: [
+              ChangeNotifierProvider(create: (_) => CartProvider()),
               BlocProvider(create: (context) => ProductBloc()),
               BlocProvider(create: (context) => CartBloc()),
             ],
             child: const ECommerceHomeScreen(),
           ),
-        )
-
     );
 
   }

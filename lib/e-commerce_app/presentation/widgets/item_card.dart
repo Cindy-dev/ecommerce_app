@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/cart_bloc/cart_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_cart_add_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
-import '../blocs/cart_bloc/cart_bloc.dart';
+import '../providers/cart_provider.dart';
 import '../views/e_commerce_detail_screen.dart';
 
 class ECItemCard extends StatefulWidget {
@@ -19,6 +21,7 @@ class _ECItemCardState extends State<ECItemCard> {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
+    final myProvider = Provider.of<CartBloc>(context);
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Builder(
@@ -58,11 +61,18 @@ class _ECItemCardState extends State<ECItemCard> {
                             child: Column(
                               children: [
                                 GestureDetector(
-                                  onTap: () => navigatePushIos(
+                                  onTap: () {
+                                    Navigator.push(
                                       context,
-                                      ECDetailScreen(
-                                        product: prod,
-                                      )),
+                                      MaterialPageRoute(
+                                        builder: (context) => ECDetailScreen(
+                                          product: prod,
+                                          blocapp: myProvider,
+
+                                        ),
+                                      ),
+                                    );
+                                  },
                                   child: Hero(
                                     transitionOnUserGestures: true,
                                     tag: prod.image,
@@ -116,6 +126,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                           FittedBox(
                                               fit: BoxFit.cover,
                                               child: ECCartAddButton(
+                                                cartBloc: myProvider,
                                                 product: prod,
                                                 fontSize: 20,
                                                 width: deviceW / 2,
