@@ -27,15 +27,18 @@ class ECDetailScreen extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Container(
-                        width: deviceW,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.fitHeight,
-                              image: AssetImage(
-                                product.image,
-                              )),
-                        )),
+                    Hero(
+                      tag: product.image,
+                      child: Container(
+                          width: deviceW,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage(
+                                  product.image,
+                                )),
+                          )),
+                    ),
                     Container(
                         width: deviceW,
                         decoration: const BoxDecoration(
@@ -78,13 +81,16 @@ class ECDetailScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              product.name,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: "Inter",
-                                fontWeight: FontWeight.w500,
+                            Hero(
+                              tag: product.name,
+                              child: Text(
+                                product.name,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Inter",
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -92,12 +98,15 @@ class ECDetailScreen extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Text(
-                                  "\$${product.price}",
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w500,
+                                Hero(
+                                  tag: "\$${product.price}",
+                                  child: Text(
+                                    "\$${product.price}",
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: "Inter",
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(
@@ -259,7 +268,7 @@ class ECDetailScreen extends StatelessWidget {
               ECCartAddButton(
                 height: 45,
                 width: deviceH / 5.4,
-                fontSize: 12,
+                fontSize: 12, product: product,
               ),
               const SizedBox(
                 width: 15,

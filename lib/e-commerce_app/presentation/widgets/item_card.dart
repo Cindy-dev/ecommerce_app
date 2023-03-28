@@ -4,6 +4,7 @@ import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_cart_add_b
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
+import '../blocs/cart_bloc/cart_bloc.dart';
 import '../views/e_commerce_detail_screen.dart';
 
 class ECItemCard extends StatefulWidget {
@@ -62,14 +63,18 @@ class _ECItemCardState extends State<ECItemCard> {
                                       ECDetailScreen(
                                         product: prod,
                                       )),
-                                  child: Container(
-                                      height: deviceH / 7,
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.fitWidth,
-                                            image: AssetImage(prod.image)),
-                                      )),
+                                  child: Hero(
+                                    transitionOnUserGestures: true,
+                                    tag: prod.image,
+                                    child: Container(
+                                        height: deviceH / 7,
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.fitWidth,
+                                              image: AssetImage(prod.image)),
+                                        )),
+                                  ),
                                 ),
                                 Expanded(
                                   child: Padding(
@@ -80,14 +85,20 @@ class _ECItemCardState extends State<ECItemCard> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            prod.name,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                                fontFamily: "Inter",
-                                                fontWeight: FontWeight.w400,
-                                                color: EcommerceColors.black,
-                                                fontSize: 15),
+                                          Hero(
+                                            tag: prod.name,
+                                            child: Material(
+                                              child: Text(
+                                                prod.name,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontFamily: "Inter",
+                                                    fontWeight: FontWeight.w400,
+                                                    color:
+                                                        EcommerceColors.black,
+                                                    fontSize: 15),
+                                              ),
+                                            ), //wrapped the text in a material widget to prevent text zstyle glitches during transition.
                                           ),
                                           const SizedBox(
                                             height: 4,
@@ -105,6 +116,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                           FittedBox(
                                               fit: BoxFit.cover,
                                               child: ECCartAddButton(
+                                                product: prod,
                                                 fontSize: 20,
                                                 width: deviceW / 2,
                                                 height: deviceH / 15,
