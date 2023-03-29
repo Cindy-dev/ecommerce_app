@@ -50,7 +50,7 @@ class ECSearchHeader extends StatelessWidget {
           width: 11,
         ),
         GestureDetector(
-          onTap: () => navigatePushIos(context, const ECCartScreen()),
+         // onTap: () => navigatePushIos(context, const ECCartScreen()),
           child: Stack(
             children: [
               Image.asset(

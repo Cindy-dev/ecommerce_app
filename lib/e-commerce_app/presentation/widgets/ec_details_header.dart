@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import '../../util/e_commerce_colors.dart';
 import '../views/e_commerce_cart_screen.dart';
 import 'ec_cart_banner.dart';
 
 class ECDetailsHeader extends StatelessWidget {
-  const ECDetailsHeader({Key? key}) : super(key: key);
+  final Product product;
+  const ECDetailsHeader({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,11 @@ class ECDetailsHeader extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => navigatePushIos(context, const ECCartScreen()),
+            onTap: () => navigatePushIos(
+                context,
+                ECCartScreen(
+                  product: product,
+                )),
             child: Stack(
               children: [
                 Image.asset(

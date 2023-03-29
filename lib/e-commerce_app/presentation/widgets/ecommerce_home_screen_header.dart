@@ -5,6 +5,7 @@ import '../views/e_commerce_cart_screen.dart';
 import 'ec_cart_banner.dart';
 
 class EcommerceHomeScreenHeader extends StatelessWidget {
+
   const EcommerceHomeScreenHeader({Key? key}) : super(key: key);
 
   @override
@@ -41,7 +42,7 @@ class EcommerceHomeScreenHeader extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () => navigatePushIos(context, const ECCartScreen()),
+                    //onTap: () => navigatePushIos(context, const ECCartScreen(product: product,)),
                     child: Stack(
                       children: [
                         Image.asset(

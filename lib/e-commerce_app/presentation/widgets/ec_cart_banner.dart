@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/cart_bloc/cart_bloc.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 
 class ECCartBanner extends StatelessWidget {
@@ -6,6 +8,7 @@ class ECCartBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   //final cart = Provider.of<CartBloc>(context);
     return Container(
       height: 11.5,
       width: 11.5,

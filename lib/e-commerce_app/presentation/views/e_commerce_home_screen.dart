@@ -28,11 +28,12 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const EcommerceHomeScreenHeader(),
+         const EcommerceHomeScreenHeader(),
           GestureDetector(
             onTap: () => navigatePush(context, const ECSearchPage()),
             child: Container(

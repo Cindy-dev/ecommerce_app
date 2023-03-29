@@ -4,7 +4,6 @@ import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import '../../util/e_commerce_colors.dart';
 import '../blocs/cart_bloc/cart_bloc.dart';
-import '../providers/cart_provider.dart';
 import '../widgets/ec_cart_add_button.dart';
 import '../widgets/ec_details_header.dart';
 
@@ -12,11 +11,11 @@ class ECDetailScreen extends StatelessWidget {
   final CartBloc blocapp;
 
   final Product product;
-  const ECDetailScreen(
-      {Key? key,
-      required this.product,
-      required this.blocapp,})
-      : super(key: key);
+  const ECDetailScreen({
+    Key? key,
+    required this.product,
+    required this.blocapp,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,9 @@ class ECDetailScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ECDetailsHeader(),
+            ECDetailsHeader(
+              product: product,
+            ),
             Container(
               margin: const EdgeInsets.only(top: 10, bottom: 5),
               height: deviceH / 2.5,
