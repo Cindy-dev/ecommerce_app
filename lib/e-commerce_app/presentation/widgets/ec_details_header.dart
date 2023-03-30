@@ -43,12 +43,7 @@ class ECDetailsHeader extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => navigatePushIos(
-                context,
-                ECCartScreen(
-                  product: product,
-                  cartBloc: cartBloc,
-                )),
+            onTap: () => navigatePushIos(context, const ECCartScreen()),
             child: Stack(
               children: [
                 Image.asset(

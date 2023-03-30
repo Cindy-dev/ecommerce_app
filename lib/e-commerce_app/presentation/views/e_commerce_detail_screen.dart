@@ -10,12 +10,11 @@ import '../widgets/ec_details_header.dart';
 class ECDetailScreen extends StatelessWidget {
   final CartBloc cartBloc;
 
-
   final Product product;
   const ECDetailScreen({
     Key? key,
-    required this.product, required this.cartBloc,
-
+    required this.product,
+    required this.cartBloc,
   }) : super(key: key);
 
   @override
@@ -29,7 +28,8 @@ class ECDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ECDetailsHeader(
-              product: product, cartBloc: cartBloc,
+              product: product,
+              cartBloc: cartBloc,
             ),
             Container(
               margin: const EdgeInsets.only(top: 10, bottom: 5),
@@ -93,9 +93,9 @@ class ECDetailScreen extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Material(
-                              child: Hero(
-                                tag: product.name,
+                            Hero(
+                              tag: product.name,
+                              child: Material(
                                 child: Text(
                                   product.name,
                                   overflow: TextOverflow.ellipsis,

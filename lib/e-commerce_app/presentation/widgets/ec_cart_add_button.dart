@@ -22,10 +22,11 @@ class ECCartAddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartBloc = Provider.of<CartBloc>(context);
+
     return GestureDetector(
       onTap: () {
         cartBloc.add(AddItemToCartEvent(product: product));
-        print("object");
       },
       child: Container(
         alignment: Alignment.center,

@@ -1,85 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import '../blocs/cart_bloc/cart_bloc.dart';
-import '../cubits/cart_item_cubit.dart';
 import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {
-  final Product product;
-  final CartBloc cartBloc;
-
-  const ECCartScreen({Key? key, required this.product, required this.cartBloc})
-      : super(key: key);
+  const ECCartScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ECCartScreen> createState() => _ECCartScreenState();
 }
 
 class _ECCartScreenState extends State<ECCartScreen> {
-  // late CartItemCubit _cartItemCubit;
-
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   _cartItemCubit = CartItemCubit()..incrementCartItem();
-  // }
-
-  //final List<Product> _items = [];
-
   @override
   Widget build(BuildContext context) {
-    //final cartBloc = Provider.of<CartBloc>(context);
-    final cartItems = widget.cartBloc.cartItems;
-    return
-        // BlocProvider.value(
-        //   value: _cartItemCubit,
-        //   child:
-        Scaffold(
-            body: Column(children: [
-              const ECCartHeader(),
-              const Divider(),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Delivery to",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "Lagos Nigeria",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+    final cartBloc = Provider.of<CartBloc>(context);
+    final cartItems = cartBloc.cartItems;
+    return Scaffold(
+        body: Column(children: [
+          const ECCartHeader(),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Delivery to",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontFamily: "Inter",
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              const Divider(),
-              cartItems.isEmpty
-                  ? Expanded(
-                      child: const Center(child: Text("Your Cart is Empty")),
-                    )
-                  : ListView.builder(
+                Text(
+                  "Lagos Nigeria",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontFamily: "Inter",
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(),
+          cartItems.isEmpty
+              ? const Expanded(
+                  child: Center(child: Text("Your Cart is Empty")),
+                )
+              : MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: cartItems.length,
                       itemBuilder: (context, i) {
-                        return MediaQuery.removePadding(
-                          context: context,
-                          removeTop: true,
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
                           child: Row(
                             children: [
                               Checkbox(
@@ -93,7 +74,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(4),
                                     image: DecorationImage(
-                                        image: AssetImage(widget.product.image),
+                                        image: AssetImage(cartItems[i].image),
                                         fit: BoxFit.fitHeight)),
                               ),
                               const SizedBox(
@@ -103,7 +84,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.product.name,
+                                    cartItems[i].name,
                                     style: const TextStyle(
                                       fontSize: 14,
                                       fontFamily: "Inter",
@@ -130,7 +111,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        "\$${widget.product.price}",
+                                        "\$${cartItems[i].price}",
                                         style: const TextStyle(
                                           fontSize: 14,
                                           fontFamily: "Inter",
@@ -170,8 +151,9 @@ class _ECCartScreenState extends State<ECCartScreen> {
                           ),
                         );
                       }),
-            ]),
-            persistentFooterButtons: [
+                )
+        ]),
+        persistentFooterButtons: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -218,7 +200,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
             ),
           )
         ]
-            //)
-            );
+        //)
+        );
   }
 }

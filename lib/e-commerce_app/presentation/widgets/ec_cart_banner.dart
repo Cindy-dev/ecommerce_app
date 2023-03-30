@@ -8,21 +8,22 @@ class ECCartBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   //final cart = Provider.of<CartBloc>(context);
+    final cart = Provider.of<CartBloc>(context);
+    final length = cart.cartItems.length.toString();
     return Container(
-      height: 11.5,
-      width: 11.5,
+      height: 15.5,
+      width: 15.5,
       alignment: Alignment.center,
       decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: EcommerceColors.red
+          shape: BoxShape.circle, color: EcommerceColors.red),
+      child: Text(
+        length,
+        style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 10,
+            color: EcommerceColors.white,
+            fontFamily: "Inter"),
       ),
-      child: const Text("1", style: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 7,
-        color: EcommerceColors.white,
-        fontFamily: "Inter"
-      ),),
     );
   }
 }
