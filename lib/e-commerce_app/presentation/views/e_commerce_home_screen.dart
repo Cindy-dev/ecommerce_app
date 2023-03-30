@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/cart_bloc/cart_bloc.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/product_bloc/product_bloc.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/image_marque.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,17 +70,7 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
           ),
           SizedBox(
             height: deviceH / 5,
-            child: ListView(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  Image.asset(
-                      "assets/e_commerce_app/e_commerce_image/banner1.png"),
-                  Image.asset(
-                      "assets/e_commerce_app/e_commerce_image/banner2.png"),
-                  Image.asset(
-                      "assets/e_commerce_app/e_commerce_image/banner3.png")
-                ]),
+            child: const ImageMarquee(),
           ),
           const EcommerceCategoryWidget(),
           Padding(

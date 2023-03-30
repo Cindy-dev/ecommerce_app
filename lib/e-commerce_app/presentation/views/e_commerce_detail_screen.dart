@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import '../../util/e_commerce_colors.dart';
@@ -21,7 +20,6 @@ class ECDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
-    //return Consumer<CartProvider>(builder: (context, cartProvider, child) {
     return Scaffold(
       body: Column(
           mainAxisSize: MainAxisSize.min,
@@ -35,7 +33,6 @@ class ECDetailScreen extends StatelessWidget {
               margin: const EdgeInsets.only(top: 10, bottom: 5),
               height: deviceH / 2.5,
               child: ListView(
-                  //physics: AlwaysScrollableScrollPhysics(),
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: [
