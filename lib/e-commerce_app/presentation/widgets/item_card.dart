@@ -6,11 +6,11 @@ import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_cart_add_b
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
-import '../providers/cart_provider.dart';
 import '../views/e_commerce_detail_screen.dart';
 
 class ECItemCard extends StatefulWidget {
-  const ECItemCard({Key? key}) : super(key: key);
+  final CartBloc cartBloc;
+  const ECItemCard({Key? key, required this.cartBloc}) : super(key: key);
 
   @override
   State<ECItemCard> createState() => _ECItemCardState();
@@ -21,7 +21,7 @@ class _ECItemCardState extends State<ECItemCard> {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
-    final myProvider = Provider.of<CartBloc>(context);
+    // final myProvider = Provider.of<CartBloc>(context);
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Builder(
@@ -67,7 +67,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                       MaterialPageRoute(
                                         builder: (context) => ECDetailScreen(
                                           product: prod,
-                                          blocapp: myProvider,
+                                          cartBloc: widget.cartBloc,
 
                                         ),
                                       ),
@@ -126,7 +126,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                           FittedBox(
                                               fit: BoxFit.cover,
                                               child: ECCartAddButton(
-                                                cartBloc: myProvider,
+                                                cartBloc: widget.cartBloc,
                                                 product: prod,
                                                 fontSize: 20,
                                                 width: deviceW / 2,

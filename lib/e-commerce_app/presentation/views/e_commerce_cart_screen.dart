@@ -3,34 +3,43 @@ import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import '../blocs/cart_bloc/cart_bloc.dart';
 import '../cubits/cart_item_cubit.dart';
 import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {
   final Product product;
+  final CartBloc cartBloc;
 
-  const ECCartScreen({Key? key, required this.product}) : super(key: key);
+  const ECCartScreen({Key? key, required this.product, required this.cartBloc})
+      : super(key: key);
 
   @override
   State<ECCartScreen> createState() => _ECCartScreenState();
 }
 
 class _ECCartScreenState extends State<ECCartScreen> {
-  late CartItemCubit _cartItemCubit;
+  // late CartItemCubit _cartItemCubit;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _cartItemCubit = CartItemCubit()..incrementCartItem();
-  }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _cartItemCubit = CartItemCubit()..incrementCartItem();
+  // }
 
-  final List<Product> _items = [];
+  //final List<Product> _items = [];
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-        value: _cartItemCubit,
-        child: Scaffold(
+    //final cartBloc = Provider.of<CartBloc>(context);
+    final cartItems = widget.cartBloc.cartItems;
+    return
+        // BlocProvider.value(
+        //   value: _cartItemCubit,
+        //   child:
+        Scaffold(
             body: Column(children: [
               const ECCartHeader(),
               const Divider(),
@@ -60,13 +69,13 @@ class _ECCartScreenState extends State<ECCartScreen> {
                 ),
               ),
               const Divider(),
-              _items.isEmpty
+              cartItems.isEmpty
                   ? Expanded(
                       child: const Center(child: Text("Your Cart is Empty")),
                     )
                   : ListView.builder(
                       shrinkWrap: true,
-                      itemCount: _items.length,
+                      itemCount: cartItems.length,
                       itemBuilder: (context, i) {
                         return MediaQuery.removePadding(
                           context: context,
@@ -163,51 +172,53 @@ class _ECCartScreenState extends State<ECCartScreen> {
                       }),
             ]),
             persistentFooterButtons: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Totals",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Inter",
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Text(
-                          "\$ 1999,99",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontFamily: "Inter",
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 45,
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(top: 18),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: EcommerceColors.green),
-                      child: const Text(
-                        "Continue for payments",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: "Inter",
-                          color: EcommerceColors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      "Totals",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w400,
                       ),
-                    )
+                    ),
+                    Text(
+                      "\$ 1999,99",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: "Inter",
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ],
                 ),
-              )
-            ]));
+                Container(
+                  height: 45,
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(top: 18),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: EcommerceColors.green),
+                  child: const Text(
+                    "Continue for payments",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: "Inter",
+                      color: EcommerceColors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
+        ]
+            //)
+            );
   }
 }

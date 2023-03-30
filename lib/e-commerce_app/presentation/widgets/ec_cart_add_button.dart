@@ -26,9 +26,6 @@ class ECCartAddButton extends StatelessWidget {
       onTap: () {
         cartBloc.add(AddItemToCartEvent(product: product));
         print("object");
-        // context.read<CartBloc>().add(
-        //     AddItemToCartEvent(product: product)
-        // );
       },
       child: Container(
         alignment: Alignment.center,
