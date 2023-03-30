@@ -25,13 +25,13 @@ class _ECCartScreenState extends State<ECCartScreen> {
     _cartItemCubit = CartItemCubit()..incrementCartItem();
   }
 
+  final List<Product> _items = [];
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
         value: _cartItemCubit,
         child: Scaffold(
-          body: Column(
-            children: [
+            body: Column(children: [
               const ECCartHeader(),
               const Divider(),
               Padding(
@@ -60,149 +60,154 @@ class _ECCartScreenState extends State<ECCartScreen> {
                 ),
               ),
               const Divider(),
-              MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: ListView(
-                  shrinkWrap: true,
+              _items.isEmpty
+                  ? Expanded(
+                      child: const Center(child: Text("Your Cart is Empty")),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _items.length,
+                      itemBuilder: (context, i) {
+                        return MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                value: true,
+                                onChanged: (bool? newValue) {},
+                                activeColor: EcommerceColors.green,
+                              ),
+                              Container(
+                                height: 76,
+                                width: 82,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    image: DecorationImage(
+                                        image: AssetImage(widget.product.image),
+                                        fit: BoxFit.fitHeight)),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.product.name,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontFamily: "Inter",
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  const Text(
+                                    "Variant: Grey",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: "Inter",
+                                      color: EcommerceColors.gray,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "\$${widget.product.price}",
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Inter",
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                9,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: const [
+                                          ECCartButton(cartIcon: Icons.remove),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(
+                                            "1",
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          ECCartButton(cartIcon: Icons.add),
+                                          ECCartButton(
+                                              cartIcon: Icons.delete_outline),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      }),
+            ]),
+            persistentFooterButtons: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
                   children: [
                     Row(
-                      children: [
-                        Checkbox(
-                          value: true,
-                          onChanged: (bool? newValue) {},
-                          activeColor: EcommerceColors.green,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Totals",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                        Container(
-                          height: 76,
-                          width: 82,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              image: DecorationImage(
-                                  image: AssetImage(widget.product.image),
-                                  fit: BoxFit.fitHeight)),
+                        Text(
+                          "\$ 1999,99",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              widget.product.name,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontFamily: "Inter",
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            const Text(
-                              "Variant: Grey",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontFamily: "Inter",
-                                color: EcommerceColors.gray,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "\$${widget.product.price}",
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width / 9,
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: const [
-                                    ECCartButton(cartIcon: Icons.remove),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Text(
-                                      "1",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: "Inter",
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    ECCartButton(cartIcon: Icons.add),
-                                    ECCartButton(
-                                        cartIcon: Icons.delete_outline),
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
-                        )
                       ],
                     ),
-                  ],
-                ),
-              )
-            ],
-          ),
-          persistentFooterButtons: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "Totals",
+                    Container(
+                      height: 45,
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(top: 18),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: EcommerceColors.green),
+                      child: const Text(
+                        "Continue for payments",
                         style: TextStyle(
                           fontSize: 14,
                           fontFamily: "Inter",
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        "\$ 1999,99",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: "Inter",
+                          color: EcommerceColors.white,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                    ],
-                  ),
-                  Container(
-                    height: 45,
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.only(top: 18),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: EcommerceColors.green),
-                    child: const Text(
-                      "Continue for payments",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: "Inter",
-                        color: EcommerceColors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+                    )
+                  ],
+                ),
+              )
+            ]));
   }
 }
