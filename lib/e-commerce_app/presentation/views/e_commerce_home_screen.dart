@@ -21,7 +21,6 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
   final CartBloc myBloc = CartBloc();
   @override
   void initState() {
-    // TODO: implement initState
     //gives access to the bloc
     context.read<ProductBloc>().add(FetchProductEvent());
     super.initState();
@@ -36,7 +35,7 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const EcommerceHomeScreenHeader(),
+          const EcommerceHomeScreenHeader(),
           GestureDetector(
             onTap: () => navigatePush(context, const ECSearchPage()),
             child: Container(
@@ -110,7 +109,9 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
           const SizedBox(
             height: 13,
           ),
-         ECItemCard(cartBloc: myBloc,)
+          ECItemCard(
+            cartBloc: myBloc,
+          )
         ],
       ),
       bottomNavigationBar: Container(

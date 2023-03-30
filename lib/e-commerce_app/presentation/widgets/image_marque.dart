@@ -42,7 +42,7 @@ class _ImageMarqueeState extends State<ImageMarquee> {
       _pageController.animateToPage(
         _currentPage,
         duration: const Duration(milliseconds: 500),
-        curve: Curves.ease,
+        curve: Curves.easeOutSine,
       );
     });
   }
@@ -61,9 +61,8 @@ class _ImageMarqueeState extends State<ImageMarquee> {
         controller: _pageController,
         itemCount: imageUrls.length,
         itemBuilder: (BuildContext context, int index) {
-          return  Image.asset(
-              imageUrls[index],
-
+          return Image.asset(
+            imageUrls[index],
           );
         },
       ),

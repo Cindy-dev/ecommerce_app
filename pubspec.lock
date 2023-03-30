@@ -216,14 +216,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
-  transformer_page_view:
-    dependency: "direct main"
-    description:
-      name: transformer_page_view
-      sha256: "2210531bc4148831061c575070173f32693415be8bbbf5bd2159a38f2adff61c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.6"
   vector_math:
     dependency: transitive
     description:
