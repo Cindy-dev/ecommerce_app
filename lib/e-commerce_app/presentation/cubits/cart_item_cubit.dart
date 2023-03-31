@@ -1,6 +1,5 @@
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'cart_item_state.dart';
 
 class CartItemCubit extends Cubit<CartItemState> {
@@ -16,22 +15,9 @@ class CartItemCubit extends Cubit<CartItemState> {
     );
   }
 
-  //calculating the amount based on quantity
-  int totalAmount() {
-    var total = 0;
-    double calculateTotal = 0;
-    for (Product product in cartItems) {
-      calculateTotal += product.price * _cartItemCount;
-      total = calculateTotal.toInt();
-      print(product.price);
-      print(_cartItemCount);
-    }
-    print(total);
-    return total;
-  }
-
   void incrementCartItem() {
     _updateCartItem(_cartItemCount + 1);
+    print(_cartItemCount);
   }
 
   void decrementCartItem() {
