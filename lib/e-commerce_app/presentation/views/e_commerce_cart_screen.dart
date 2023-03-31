@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/cubits/cart_item_cubit.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
   @override
   Widget build(BuildContext context) {
     final cartBloc = Provider.of<CartBloc>(context);
+    final cartCubit = Provider.of<CartItemCubit>(context);
     final cartItems = cartBloc.cartItems;
     return Scaffold(
         body: Column(children: [
@@ -160,8 +162,8 @@ class _ECCartScreenState extends State<ECCartScreen> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
+                  children:  [
+                    const Text(
                       "Totals",
                       style: TextStyle(
                         fontSize: 14,
@@ -170,9 +172,9 @@ class _ECCartScreenState extends State<ECCartScreen> {
                       ),
                     ),
                     Text(
-                      "\$ 1999,99",
-                      style: TextStyle(
-                        fontSize: 14,
+                      '\$${cartBloc.totalAmount().toString()}',
+                      style: const TextStyle(
+                        fontSize: 16,
                         fontFamily: "Inter",
                         fontWeight: FontWeight.w500,
                       ),

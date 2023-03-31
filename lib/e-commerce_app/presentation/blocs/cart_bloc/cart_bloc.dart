@@ -24,6 +24,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     emit(CartItemAdded(product: event.product));
   }
 
+
+  //calculating the amount based on quantity
+  int totalAmount() {
+    var total = 0;
+    double calculateTotal = 0;
+    for (Product product in cartItems) {
+      calculateTotal += product.price;
+      total = calculateTotal.toInt();
+    }
+    return total;
+  }
+
   void _removeItemFromCart(
       RemoveItemFromCartEvent event, Emitter<CartState> emit) {
     emit(CartLoading());

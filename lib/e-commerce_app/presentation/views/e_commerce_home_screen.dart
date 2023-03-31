@@ -68,7 +68,7 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
             height: 17,
           ),
           SizedBox(
-            height: deviceH / 5,
+            height: deviceH / 4,
             child: const ImageMarquee(),
           ),
           const EcommerceCategoryWidget(),
