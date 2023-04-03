@@ -21,7 +21,7 @@ class CartItemCubit extends Cubit<CartItemState> {
   }
 
   void decrementCartItem() {
-    if (_cartItemCount < 0 || _cartItemCount == 0) return;
+    if (_cartItemCount < 0 || _cartItemCount == 0)return;
     _updateCartItem(_cartItemCount - 1);
   }
 }
