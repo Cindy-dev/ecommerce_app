@@ -1,4 +1,5 @@
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/cart_bloc/cart_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cart_item_state.dart';
 
@@ -17,11 +18,11 @@ class CartItemCubit extends Cubit<CartItemState> {
 
   void incrementCartItem() {
     _updateCartItem(_cartItemCount + 1);
-    print(_cartItemCount);
   }
 
   void decrementCartItem() {
-    if (_cartItemCount < 0 || _cartItemCount == 0)return;
+    if (_cartItemCount < 0 || _cartItemCount == 0) return;
     _updateCartItem(_cartItemCount - 1);
   }
+
 }
