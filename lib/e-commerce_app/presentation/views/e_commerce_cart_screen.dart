@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../data/models/product.dart';
 import '../blocs/cart_bloc/cart_bloc.dart';
 import '../cubits/cart_item_state.dart';
+import '../providers/cart_provider.dart';
 import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {
@@ -19,6 +20,8 @@ class ECCartScreen extends StatefulWidget {
 }
 
 class _ECCartScreenState extends State<ECCartScreen> {
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  final List<Product> _items = [];
   late CartItemCubit _cartItemCubit;
 
   @override
@@ -47,23 +50,29 @@ class _ECCartScreenState extends State<ECCartScreen> {
     // );
   }
 
+  void _addItem(Product product) {
+    final index = _items.length;
+    _items.add(product);
+     _listKey.currentState!.insertItem(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     final cartBloc = Provider.of<CartBloc>(context);
     final cartItems = cartBloc.cartItems;
 
     return Scaffold(
-        body: BlocListener<CartItemCubit, CartItemState>(
-          listener: (_, state) {
-            if (state is CartItemUpdated &&
-                state.cartItemCount == 0 &&
-                _removeItem != null) {
-             // _removeItem!();
-              return;
-            }
-          },
-          child: BlocProvider.value(
-            value: _cartItemCubit,
+        body: BlocProvider.value(
+          value: _cartItemCubit,
+          child: BlocListener<CartItemCubit, CartItemState>(
+            listener: (_, state) {
+              if (state is CartItemUpdated &&
+                  state.cartItemCount == 0 &&
+                  _removeItem != null) {
+                // _removeItem!();
+                return;
+              }
+            },
             child: Column(children: [
               const ECCartHeader(),
               const Divider(),
@@ -93,6 +102,157 @@ class _ECCartScreenState extends State<ECCartScreen> {
                 ),
               ),
               const Divider(),
+              BlocListener<CartBloc, CartState>(
+                  // Listen to changes in the [CartBloc] state
+                  listener: (context, state) {
+                    if (state is CartItemAdded) {
+                      // If a new item has been added to the cart
+                      _addItem(state
+                          .product); // Add the new item to the [_items] list
+                      context.read<CartProvider>().updateCartItems(
+                            _items,
+                          ); // Update the cart items in the [CartProvider]
+                      context.read<CartBloc>().add(
+                          ResetCartBlocEvent()); // Reset the [CartBloc] state
+                    } else if (state is CartItemRemoved) {
+                      // If an item has been removed from the cart
+                      context.read<CartProvider>().updateCartItems(
+                            _items,
+                          ); // Update the cart items in the [CartProvider]
+                      context.read<CartBloc>().add(
+                          ResetCartBlocEvent()); // Reset the [CartBloc] state
+                    } else if (state is CartInitial) {}
+                  },
+                  child: AnimatedList(
+                    itemBuilder: (context, i, animation) {
+                      return Expanded(
+                        child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: true,
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: _items.length,
+                              itemBuilder: (context, i) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 20),
+                                  child: Row(
+                                    children: [
+                                      Checkbox(
+                                        value: true,
+                                        onChanged: (bool? newValue) {},
+                                        activeColor: EcommerceColors.green,
+                                      ),
+                                      Container(
+                                        height: 76,
+                                        width: 82,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                                4),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    _items[i].image),
+                                                fit: BoxFit.fitHeight)),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            _items[i].name,
+                                            style: const TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: "Inter",
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 4,
+                                          ),
+                                          const Text(
+                                            "Variant: Grey",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontFamily: "Inter",
+                                              color: EcommerceColors.gray,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "\$${_items[i].price}",
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontFamily: "Inter",
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery
+                                                    .of(context)
+                                                    .size
+                                                    .width /
+                                                    9,
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  ECCartButton(
+                                                      onTap: () {
+                                                        _cartItemCubit
+                                                            .decrementCartItem();
+                                                      },
+                                                      cartIcon: Icons.remove),
+                                                  const SizedBox(
+                                                    width: 8,
+                                                  ),
+                                                  BlocBuilder<CartItemCubit,
+                                                      CartItemState>(
+                                                    builder: (context, state) {
+                                                      return Text(
+                                                        state is CartItemUpdated
+                                                            ? state
+                                                            .cartItemCount
+                                                            .toString()
+                                                            : '',
+                                                        style: const TextStyle(
+                                                          fontWeight:
+                                                          FontWeight.bold,
+                                                          fontSize: 14,
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                  ECCartButton(
+                                                      onTap: () {
+                                                        _cartItemCubit
+                                                            .incrementCartItem();
+                                                      },
+                                                      cartIcon: Icons.add),
+                                                  const ECCartButton(
+                                                      cartIcon:
+                                                      Icons.delete_outline),
+                                                ],
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                );
+                              }),
+                        ),
+                      );
+                    } )),
               cartItems.isEmpty
                   ? const Expanded(
                       child: Center(child: Text("Your Cart is Empty")),
