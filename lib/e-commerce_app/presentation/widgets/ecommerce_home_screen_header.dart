@@ -43,8 +43,7 @@ class EcommerceHomeScreenHeader extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () => navigatePushIos(context, const CartWidget()),
-                    //ECCartScreen()),
+                    onTap: () => navigatePushIos(context, const ECCartScreen()),
                     child: Stack(
                       children: [
                         Image.asset(
