@@ -3,10 +3,12 @@ import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/cart_bloc/cart_
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cart_item_state.dart';
 
+
 class CartItemCubit extends Cubit<CartItemState> {
   CartItemCubit() : super(CartItemInitial());
   int _cartItemCount = 0;
   final List<Product> cartItems = [];
+  List<Product> get prod => cartItems;
 
   void _updateCartItem(int newCount) {
     emit(CartItemLoading());

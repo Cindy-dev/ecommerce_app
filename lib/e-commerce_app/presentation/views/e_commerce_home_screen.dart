@@ -30,7 +30,6 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

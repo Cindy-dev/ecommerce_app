@@ -25,6 +25,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
 
   @override
   void initState() {
+
     // Initialize the CartItemCubit to increment cart item count
     _cartItemCubit = CartItemCubit()..incrementCartItem();
     // TODO: implement initState

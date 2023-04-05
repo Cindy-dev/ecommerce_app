@@ -11,7 +11,7 @@ void main() {
   bootstrap(() => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => CartProvider()),
-          
+
           BlocProvider(create: (context) => ProductBloc()),
           BlocProvider(create: (context) => CartBloc()),
         ],
