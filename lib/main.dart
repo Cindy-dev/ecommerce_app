@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/bootstrap.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/cubits/cart_item_cubit.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/product_bloc/product_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,7 @@ void main() {
   bootstrap(() => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => CartProvider()),
-
+          BlocProvider(create: (context) => CartItemCubit()),
           BlocProvider(create: (context) => ProductBloc()),
           BlocProvider(create: (context) => CartBloc()),
         ],
