@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 import '../../../data/models/product.dart';
 part 'cart_event.dart';
 part 'cart_state.dart';
@@ -20,6 +21,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       return;
     }
     emit(CartLoading());
+
+    print(event.product);
     cartItems.add(event.product);
     emit(CartItemAdded(product: event.product));
   }

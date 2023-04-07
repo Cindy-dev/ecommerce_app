@@ -4,10 +4,8 @@ import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import '../../data/models/product.dart';
 import '../blocs/cart_bloc/cart_bloc.dart';
 import '../cubits/cart_item_state.dart';
-import '../providers/cart_provider.dart';
 import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {
@@ -20,35 +18,7 @@ class ECCartScreen extends StatefulWidget {
 }
 
 class _ECCartScreenState extends State<ECCartScreen> {
-  final List<Product> _items = [];
-  late CartItemCubit _cartItemCubit;
 
-  @override
-  void initState() {
-
-    // Initialize the CartItemCubit to increment cart item count
-    _cartItemCubit = CartItemCubit()..incrementCartItem();
-    // TODO: implement initState
-    super.initState();
-  }
-
-  void _removeItem(Product product) {
-    // final index =
-    // _items.indexOf(shoe);
-    // _items.removeAt(index);
-    // context.read<CartBloc>().add(
-    //       RemoveItemFromCartEvent(
-    //         shoe: shoe,
-    //       ),
-    //     ); // Remove the item from the cart in the [CartBloc]
-    // _listKey.currentState!.removeItem(
-    //   // Remove the [CartItemWidget] from the [AnimatedList]
-    //   index,
-    //   (context, animation) {
-    //     return CartItemWidget(shoe, animation);
-    //   },
-    // );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,178 +26,175 @@ class _ECCartScreenState extends State<ECCartScreen> {
     final cartItems = cartBloc.cartItems;
 
     return Scaffold(
-        body: BlocProvider.value(
-          value: _cartItemCubit,
-          child: BlocListener<CartItemCubit, CartItemState>(
-            listener: (_, state) {
-              if (state is CartItemUpdated &&
-                  state.cartItemCount == 0 &&
-                  _removeItem != null) {
-                // _removeItem!();
-                return;
-              }
-            },
-            child: Column(children: [
-              const ECCartHeader(),
-              const Divider(),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Delivery to",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "Lagos Nigeria",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: "Inter",
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+        body:
+            // BlocProvider.value(
+            //   value: _items,
+            //   child: BlocListener<CartBloc, CartState>(
+            //     listener: (_, state) {
+            // if (state is CartItemUpdated &&
+            //     state.cartItemCount == 0 &&
+            //     _removeItem != null) {
+            //   // _removeItem!();
+            //   return;
+            // }
+            //  },
+            //child:
+            Column(children: [
+          const ECCartHeader(),
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Delivery to",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontFamily: "Inter",
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              const Divider(),
-              cartItems.isEmpty
-                  ? const Expanded(
-                      child: Center(child: Text("Your Cart is Empty")),
-                    )
-                  : Expanded(
-                      child: MediaQuery.removePadding(
-                        context: context,
-                        removeTop: true,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: cartItems.length,
-                            itemBuilder: (context, i) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 20),
-                                child: Row(
+                Text(
+                  "Lagos Nigeria",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontFamily: "Inter",
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(),
+          cartItems.isEmpty
+              ? const Expanded(
+                  child: Center(child: Text("Your Cart is Empty")),
+                )
+              : Expanded(
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: cartItems.length,
+                        itemBuilder: (context, i) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Row(
+                              children: [
+                                Checkbox(
+                                  value: true,
+                                  onChanged: (bool? newValue) {},
+                                  activeColor: EcommerceColors.green,
+                                ),
+                                Container(
+                                  height: 76,
+                                  width: 82,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(4),
+                                      image: DecorationImage(
+                                          image: AssetImage(cartItems[i].image),
+                                          fit: BoxFit.fitHeight)),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Checkbox(
-                                      value: true,
-                                      onChanged: (bool? newValue) {},
-                                      activeColor: EcommerceColors.green,
-                                    ),
-                                    Container(
-                                      height: 76,
-                                      width: 82,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  cartItems[i].image),
-                                              fit: BoxFit.fitHeight)),
+                                    Text(
+                                      cartItems[i].name,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontFamily: "Inter",
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                     const SizedBox(
-                                      width: 10,
+                                      height: 4,
                                     ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                    const Text(
+                                      "Variant: Grey",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: "Inter",
+                                        color: EcommerceColors.gray,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          cartItems[i].name,
+                                          "\$${cartItems[i].price}",
                                           style: const TextStyle(
                                             fontSize: 14,
                                             fontFamily: "Inter",
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        const SizedBox(
-                                          height: 4,
-                                        ),
-                                        const Text(
-                                          "Variant: Grey",
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: "Inter",
-                                            color: EcommerceColors.gray,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 15,
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              9,
                                         ),
                                         Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                          mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            Text(
-                                              "\$${cartItems[i].price}",
-                                              style: const TextStyle(
-                                                fontSize: 14,
-                                                fontFamily: "Inter",
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                            ECCartButton(
+                                                onTap: () {
+                                                  CartItemCubit()
+                                                      .decrementCartItem();
+                                                },
+                                                cartIcon: Icons.remove),
+                                            const SizedBox(
+                                              width: 8,
                                             ),
-                                            SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  9,
+                                            BlocBuilder<CartItemCubit,
+                                                CartItemState>(
+                                              builder: (context, state) {
+                                                return Text(
+                                                  cartItems[i]
+                                                      .quantity
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14,
+                                                  ),
+                                                );
+                                              },
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                ECCartButton(
-                                                    onTap: () {
-                                                      _cartItemCubit
-                                                          .decrementCartItem();
-                                                    },
-                                                    cartIcon: Icons.remove),
-                                                const SizedBox(
-                                                  width: 8,
-                                                ),
-                                                BlocBuilder<CartItemCubit,
-                                                    CartItemState>(
-                                                  builder: (context, state) {
-                                                    return Text(
-                                                      state is CartItemUpdated
-                                                          ? state.cartItemCount
-                                                              .toString()
-                                                          : '',
-                                                      style: const TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 14,
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
-                                                ECCartButton(
-                                                    onTap: () {
-                                                      _cartItemCubit
-                                                          .incrementCartItem();
-                                                    },
-                                                    cartIcon: Icons.add),
-                                                const ECCartButton(
-                                                    cartIcon:
-                                                        Icons.delete_outline),
-                                              ],
-                                            )
+                                            ECCartButton(
+                                                onTap: () {
+
+                                                  CartItemCubit()
+                                                      .incrementCartItem(
+                                                          cartItems[i]);
+                                                },
+                                                cartIcon: Icons.add),
+                                            const ECCartButton(
+                                                cartIcon: Icons.delete_outline),
                                           ],
                                         )
                                       ],
                                     )
                                   ],
-                                ),
-                              );
-                            }),
-                      ),
-                    )
-            ]),
-          ),
-        ),
+                                )
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
+                )
+        ]),
+        //  ),
+        // ),
         persistentFooterButtons: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),

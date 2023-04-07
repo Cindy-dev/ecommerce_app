@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
-  const Product({
+   Product({
     required this.id,
     required this.image,
     required this.name,
@@ -12,6 +12,7 @@ class Product extends Equatable {
     required this.inCart,
     required this.storeImage,
     required this.storeName,
+    this.quantity = 0,
   });
 
   factory Product.fromJson(String source) =>
@@ -28,6 +29,7 @@ class Product extends Equatable {
       inCart: map['inCart'] as bool,
       storeImage: map['storeImage'] as String,
       storeName: map['storeName'] as String,
+      quantity: 0,
     );
   }
   final num id;
@@ -39,6 +41,7 @@ class Product extends Equatable {
   final bool inCart;
   final String storeImage;
   final String storeName;
+  int quantity = 0;
 
   //takes all the properties(which need to change) and their corresponding values and returns new object with your desired properties.
   Product copyWith({
@@ -51,6 +54,7 @@ class Product extends Equatable {
     bool? inCart,
     String? storeImage,
     String? storeName,
+    int? quantity = 0,
   }) {
     return Product(
       id: id ?? this.id,
@@ -62,6 +66,7 @@ class Product extends Equatable {
       inCart: inCart ?? this.inCart,
       storeImage: storeImage ?? this.storeImage,
       storeName: storeName ?? this.storeName,
+      quantity: quantity ?? 0,
     );
   }
 
@@ -76,6 +81,7 @@ class Product extends Equatable {
       'inCart': inCart,
       'storeImage': storeImage,
       'storeName': storeName,
+      'quantity': quantity,
     };
   }
 
@@ -96,6 +102,7 @@ class Product extends Equatable {
       inCart,
       storeImage,
       storeName,
+      quantity
     ];
   }
 }
