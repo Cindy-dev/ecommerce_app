@@ -9,6 +9,11 @@ class AppBlocObserver extends BlocObserver {
     super.onChange(bloc, change);
     log('onChange(${bloc.runtimeType}, $change)');
   }
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    print('on Transition ${bloc.runtimeType} $transition');
+  }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {

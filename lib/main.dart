@@ -9,24 +9,23 @@ import 'e-commerce_app/presentation/providers/cart_provider.dart';
 import 'e-commerce_app/presentation/views/e_commerce_home_screen.dart';
 
 void main() {
-  bootstrap(() => MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => CartProvider()),
-          BlocProvider(create: (context) => CartItemCubit()),
-          BlocProvider(create: (context) => ProductBloc()),
-          BlocProvider(create: (context) => CartBloc()),
-        ],
-        child: const MyApp(),
-      ));
+  bootstrap(() => const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ECommerceHomeScreen(),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => CartProvider()),
+          BlocProvider(create: (context) => CartItemCubit()),
+          BlocProvider(create: (context) => ProductBloc()),
+          BlocProvider(create: (context) => CartBloc()),
+        ],
+        child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: ECommerceHomeScreen(),
+        ));
   }
 }

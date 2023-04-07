@@ -21,6 +21,7 @@ class _ECItemCardState extends State<ECItemCard> {
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
+
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Builder(
@@ -66,7 +67,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                       MaterialPageRoute(
                                         builder: (context) => ECDetailScreen(
                                           product: prod,
-                                          cartBloc: widget.cartBloc,
+                                          //cartBloc: widget.cartBloc,
                                         ),
                                       ),
                                     );
@@ -124,7 +125,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                           FittedBox(
                                               fit: BoxFit.cover,
                                               child: ECCartAddButton(
-                                                cartBloc: widget.cartBloc,
+                                                //cartBloc: widget.cartBloc,
                                                 product: prod,
                                                 fontSize: 20,
                                                 width: deviceW / 2,
