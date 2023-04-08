@@ -16,7 +16,6 @@ class ECItemCard extends StatefulWidget {
 }
 
 class _ECItemCardState extends State<ECItemCard> {
-  final cartItemCubit = CartItemCubit();
   @override
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;

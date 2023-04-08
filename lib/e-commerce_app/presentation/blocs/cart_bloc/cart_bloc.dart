@@ -7,6 +7,7 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
+  final Logger logger = Logger();
   CartBloc() : super(CartInitial()) {
     on<AddItemToCartEvent>(_addItemToCart);
     on<RemoveItemFromCartEvent>(_removeItemFromCart);
@@ -15,25 +16,33 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     });
   }
   final List<Product> cartItems = [];
+  List<Product> get cartModels => cartItems;
 
   void _addItemToCart(AddItemToCartEvent event, Emitter<CartState> emit) {
     if (cartItems.contains(event.product)) {
       return;
     }
     emit(CartLoading());
-
-    print(event.product);
     cartItems.add(event.product);
     emit(CartItemAdded(product: event.product));
   }
 
+
+  void incrementCartItem(Product cart) {
+    Product cartModel =
+        cartModels.firstWhere((element) => element.id == cart.id);
+    //in a list of cartItems lets add the id found as the index and increase the quantity
+    cartModels[cartModels.indexOf(cartModel)].quantity++;
+    logger.wtf(cartModels[cartModels.indexOf(cartModel)].quantity);
+    emit(CartItemAdded(product: cart));
+  }
 
   //calculating the amount based on quantity
   int totalAmount() {
     var total = 0;
     double calculateTotal = 0;
     for (Product product in cartItems) {
-      calculateTotal += product.price;
+      calculateTotal += product.price * product.quantity;
       total = calculateTotal.toInt();
     }
     return total;

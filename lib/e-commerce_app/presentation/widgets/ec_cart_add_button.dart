@@ -24,16 +24,10 @@ class ECCartAddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logger = Logger();
     return BlocListener<CartBloc, CartState>(
       bloc: CartBloc(),
       listener: (context, state) {
         // do stuff here based on Bloc's state
-        if(state is CartItemAdded) {
-          navigatePush(context, ECDetailScreen(product: product));
-          print("Item has been added to cart please");
-          logger.wtf("Item has been added to cart please");
-        }
       },
       child: GestureDetector(
         onTap: () {

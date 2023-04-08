@@ -13,7 +13,7 @@ class CartItemLoading extends CartItemState {}
 
 class CartItemUpdated extends CartItemState {
   const CartItemUpdated({
-   this.cartItemCount = 0,
+    this.cartItemCount = 0,
   });
 
   final int cartItemCount;

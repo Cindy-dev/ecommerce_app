@@ -9,7 +9,8 @@ import 'e-commerce_app/presentation/providers/cart_provider.dart';
 import 'e-commerce_app/presentation/views/e_commerce_home_screen.dart';
 
 void main() {
-  bootstrap(() => const MyApp());
+  runApp(const MyApp());
+ // bootstrap(() => const MyApp());
 }
 
 class MyApp extends StatelessWidget {

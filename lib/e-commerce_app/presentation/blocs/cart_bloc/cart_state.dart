@@ -35,3 +35,4 @@ class CartItemRemoved extends CartState {
   @override
   List<Object?> get props => [product];
 }
+

@@ -8,13 +8,10 @@ import '../widgets/ec_cart_add_button.dart';
 import '../widgets/ec_details_header.dart';
 
 class ECDetailScreen extends StatelessWidget {
- // final CartBloc cartBloc;
-
   final Product product;
   const ECDetailScreen({
     Key? key,
     required this.product,
-   // required this.cartBloc,
   }) : super(key: key);
 
   @override
@@ -24,7 +21,7 @@ class ECDetailScreen extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<CartBloc, CartState>(
         bloc: CartBloc(),
-        builder: (context, state){
+        builder: (context, state) {
           return Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +136,7 @@ class ECDetailScreen extends StatelessWidget {
                             CircleAvatar(
                               radius: 30,
                               backgroundColor:
-                              EcommerceColors.gray.withOpacity(0.7),
+                                  EcommerceColors.gray.withOpacity(0.7),
                               child: const Icon(
                                 Icons.favorite_border_outlined,
                                 size: 30,
@@ -227,11 +224,12 @@ class ECDetailScreen extends StatelessWidget {
                                 alignment: Alignment.center,
                                 width: MediaQuery.of(context).size.width / 4,
                                 margin: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width / 5.5),
+                                    left: MediaQuery.of(context).size.width /
+                                        5.5),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(4),
-                                    border:
-                                    Border.all(color: EcommerceColors.gray)),
+                                    border: Border.all(
+                                        color: EcommerceColors.gray)),
                                 child: const Text(
                                   "Follow",
                                   style: TextStyle(
@@ -271,7 +269,6 @@ class ECDetailScreen extends StatelessWidget {
                 ),
               ]);
         },
-
       ),
       persistentFooterButtons: [
         Padding(
@@ -285,7 +282,7 @@ class ECDetailScreen extends StatelessWidget {
                 width: deviceH / 5.4,
                 fontSize: 12,
                 product: product,
-               // cartBloc: CartBloc(),
+                // cartBloc: CartBloc(),
               ),
               const SizedBox(
                 width: 15,
