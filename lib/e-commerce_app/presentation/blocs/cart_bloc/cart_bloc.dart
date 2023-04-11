@@ -6,35 +6,30 @@ import '../../../data/models/product.dart';
 part 'cart_event.dart';
 part 'cart_state.dart';
 
-class CartBloc extends Bloc<CartEvent, CartState> {
+class CartBloc extends Cubit<CartState> {
   final Logger logger = Logger();
-  CartBloc() : super(CartInitial()) {
-    on<AddItemToCartEvent>(_addItemToCart);
-    on<RemoveItemFromCartEvent>(_removeItemFromCart);
-    on<ResetCartBlocEvent>((event, emit) {
-      emit(CartInitial());
-    });
-  }
+  CartBloc() : super(CartInitial());
+
   final List<Product> cartItems = [];
   List<Product> get cartModels => cartItems;
 
-  void _addItemToCart(AddItemToCartEvent event, Emitter<CartState> emit) {
-    if (cartItems.contains(event.product)) {
+  void addItemToCart(Product product) {
+    if (cartItems.contains(product)) {
       return;
     }
-    emit(CartLoading());
-    cartItems.add(event.product);
-    emit(CartItemAdded(product: event.product));
+    cartItems.add(product);
+    emit(CartItemAdded(product: product));
   }
 
-
   void incrementCartItem(Product cart) {
-    Product cartModel =
-        cartModels.firstWhere((element) => element.id == cart.id);
-    //in a list of cartItems lets add the id found as the index and increase the quantity
-    cartModels[cartModels.indexOf(cartModel)].quantity++;
-    logger.wtf(cartModels[cartModels.indexOf(cartModel)].quantity);
-    emit(CartItemAdded(product: cart));
+   cart.increment();
+
+    emit(CartItemUpdated(product: cart));
+  }
+
+  void decrementCartItem(Product cart) {
+    cart.decrement();
+    emit(CartItemUpdated(product: cart));
   }
 
   //calculating the amount based on quantity
@@ -48,11 +43,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     return total;
   }
 
-  void _removeItemFromCart(
-      RemoveItemFromCartEvent event, Emitter<CartState> emit) {
-    emit(CartLoading());
-    cartItems.remove(event.product);
-    emit(CartItemRemoved(product: event.product));
+  void removeItemFromCart(Product product) {
+    cartItems.remove(product);
+    emit(CartItemRemoved(product: product));
 
     return;
   }

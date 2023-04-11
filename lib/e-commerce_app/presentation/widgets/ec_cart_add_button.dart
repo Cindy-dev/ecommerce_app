@@ -31,7 +31,7 @@ class ECCartAddButton extends StatelessWidget {
       },
       child: GestureDetector(
         onTap: () {
-          context.read<CartBloc>().add(AddItemToCartEvent(product: product));
+          context.read<CartBloc>().addItemToCart(product);
         },
         child: Container(
           alignment: Alignment.center,

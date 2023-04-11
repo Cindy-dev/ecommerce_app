@@ -13,9 +13,9 @@ final CartBloc cartBloc = CartBloc();
 
   void _updateCartItem() {
     emit(CartItemLoading());
-    emit(
-      CartItemUpdated(),
-    );
+   // emit(
+      //CartItemUpdated(),
+   // );
   }
 
   void addItemToCart(Product product) {

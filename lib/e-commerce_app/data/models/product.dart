@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
-   Product({
+  Product({
     required this.id,
     required this.image,
     required this.name,
@@ -94,15 +94,18 @@ class Product extends Equatable {
   List<Object> get props {
     return [
       id,
-      image,
+      //image,
       name,
-      description,
-      price,
-      color!,
-      inCart,
-      storeImage,
-      storeName,
+      // description,
+      // price,
+      // color!,
+      // inCart,
+      // storeImage,
+      // storeName,
       quantity
     ];
   }
+
+  void increment() => quantity += 1;
+  void decrement() => quantity -= 1;
 }

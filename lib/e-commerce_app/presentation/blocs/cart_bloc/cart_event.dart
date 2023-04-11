@@ -16,6 +16,8 @@ class AddItemToCartEvent extends CartEvent {
   final Product product;
 }
 
+
+
 class RemoveItemFromCartEvent extends CartEvent {
   const RemoveItemFromCartEvent({
     required this.product,
