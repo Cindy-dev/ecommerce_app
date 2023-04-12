@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/cart_bloc/cart_bloc.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/blocs/product_bloc/product_bloc.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/cubits/cart_item_cubit.dart';
 import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_cart_add_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
 import '../views/e_commerce_detail_screen.dart';
 
 class ECItemCard extends StatefulWidget {
-  final CartBloc cartBloc;
-  const ECItemCard({Key? key, required this.cartBloc}) : super(key: key);
+  const ECItemCard({Key? key}) : super(key: key);
 
   @override
   State<ECItemCard> createState() => _ECItemCardState();

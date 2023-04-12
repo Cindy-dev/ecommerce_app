@@ -12,7 +12,7 @@ class Product extends Equatable {
     required this.inCart,
     required this.storeImage,
     required this.storeName,
-    this.quantity = 0,
+    this.quantity = 1,
   });
 
   factory Product.fromJson(String source) =>
@@ -29,7 +29,7 @@ class Product extends Equatable {
       inCart: map['inCart'] as bool,
       storeImage: map['storeImage'] as String,
       storeName: map['storeName'] as String,
-      quantity: 0,
+      quantity: 1,
     );
   }
   final num id;
@@ -41,7 +41,7 @@ class Product extends Equatable {
   final bool inCart;
   final String storeImage;
   final String storeName;
-  int quantity = 0;
+  int quantity = 1;
 
   //takes all the properties(which need to change) and their corresponding values and returns new object with your desired properties.
   Product copyWith({
@@ -54,7 +54,7 @@ class Product extends Equatable {
     bool? inCart,
     String? storeImage,
     String? storeName,
-    int? quantity = 0,
+    int? quantity = 1,
   }) {
     return Product(
       id: id ?? this.id,
@@ -66,7 +66,7 @@ class Product extends Equatable {
       inCart: inCart ?? this.inCart,
       storeImage: storeImage ?? this.storeImage,
       storeName: storeName ?? this.storeName,
-      quantity: quantity ?? 0,
+      quantity: quantity ?? 1,
     );
   }
 

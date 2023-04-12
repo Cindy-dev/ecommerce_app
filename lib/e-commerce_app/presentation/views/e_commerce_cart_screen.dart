@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/cubits/cart_item_cubit.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_cart_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:provider/provider.dart';
-import '../blocs/cart_bloc/cart_bloc.dart';
-import '../cubits/cart_item_state.dart';
+import '../cubits/cart_cubit/cart_bloc.dart';
 import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {
@@ -22,9 +19,6 @@ class _ECCartScreenState extends State<ECCartScreen> {
   final Logger logger = Logger();
   @override
   Widget build(BuildContext context) {
-    final deviceH = MediaQuery.of(context).size.height;
-    final deviceW = MediaQuery.of(context).size.width;
-
     return Scaffold(
         body: Column(children: [
           const ECCartHeader(),
@@ -54,10 +48,10 @@ class _ECCartScreenState extends State<ECCartScreen> {
             ),
           ),
           const Divider(),
-          BlocConsumer<CartBloc, CartState>(
+          BlocConsumer<CartCubit, CartState>(
               listener: (_, state) {},
               builder: (context, state) {
-                final bloc = context.read<CartBloc>();
+                final bloc = context.read<CartCubit>();
                 final cartItems = bloc.cartItems;
                 if (cartItems.isEmpty) {
                   const Expanded(
@@ -200,7 +194,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                       ),
                     ),
                     Text(
-                      '\$${context.watch<CartBloc>().totalAmount().toString()}',
+                      '\$${context.watch<CartCubit>().totalAmount().toString()}',
                       style: const TextStyle(
                         fontSize: 16,
                         fontFamily: "Inter",

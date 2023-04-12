@@ -3,7 +3,7 @@ import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
-import '../blocs/cart_bloc/cart_bloc.dart';
+import '../cubits/cart_cubit/cart_bloc.dart';
 import '../widgets/ec_cart_add_button.dart';
 import '../widgets/ec_details_header.dart';
 
@@ -19,17 +19,14 @@ class ECDetailScreen extends StatelessWidget {
     final deviceH = MediaQuery.of(context).size.height;
     final deviceW = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: BlocBuilder<CartBloc, CartState>(
-        bloc: CartBloc(),
+      body: BlocBuilder<CartCubit, CartState>(
+        bloc: CartCubit(),
         builder: (context, state) {
           return Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ECDetailsHeader(
-                  product: product,
-                  cartBloc: CartBloc(),
-                ),
+                const ECDetailsHeader(),
                 Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 5),
                   height: deviceH / 2.5,

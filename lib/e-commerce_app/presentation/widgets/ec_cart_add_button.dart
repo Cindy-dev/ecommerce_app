@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/views/e_commerce_detail_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/providers/cart_provider.dart';
 import '../../data/models/product.dart';
 import '../../util/e_commerce_colors.dart';
-import '../blocs/cart_bloc/cart_bloc.dart';
+import '../cubits/cart_cubit/cart_bloc.dart';
 
 class ECCartAddButton extends StatelessWidget {
   final double width;
@@ -24,14 +19,14 @@ class ECCartAddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CartBloc, CartState>(
-      bloc: CartBloc(),
+    return BlocListener<CartCubit, CartState>(
+      bloc: CartCubit(),
       listener: (context, state) {
         // do stuff here based on Bloc's state
       },
       child: GestureDetector(
         onTap: () {
-          context.read<CartBloc>().addItemToCart(product);
+          context.read<CartCubit>().addItemToCart(product);
         },
         child: Container(
           alignment: Alignment.center,

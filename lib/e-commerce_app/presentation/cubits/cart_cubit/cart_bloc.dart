@@ -1,14 +1,12 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import '../../../data/models/product.dart';
-part 'cart_event.dart';
 part 'cart_state.dart';
 
-class CartBloc extends Cubit<CartState> {
+class CartCubit extends Cubit<CartState> {
   final Logger logger = Logger();
-  CartBloc() : super(CartInitial());
+  CartCubit() : super(CartInitial());
 
   final List<Product> cartItems = [];
   List<Product> get cartModels => cartItems;
@@ -22,7 +20,7 @@ class CartBloc extends Cubit<CartState> {
   }
 
   void incrementCartItem(Product cart) {
-   cart.increment();
+    cart.increment();
 
     emit(CartItemUpdated(product: cart));
   }
