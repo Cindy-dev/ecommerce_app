@@ -13,6 +13,7 @@ class Product extends Equatable {
     required this.storeImage,
     required this.storeName,
     this.quantity = 1,
+    this.selectedColor = "",
   });
 
   factory Product.fromJson(String source) =>
@@ -20,17 +21,17 @@ class Product extends Equatable {
 
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
-      id: map['id'] as num,
-      image: map['image'] as String,
-      name: map['name'] as String,
-      description: map['description'] as String,
-      price: map['price'] as num,
-      color: map['color'] as List<dynamic>,
-      inCart: map['inCart'] as bool,
-      storeImage: map['storeImage'] as String,
-      storeName: map['storeName'] as String,
-      quantity: 1,
-    );
+        id: map['id'] as num,
+        image: map['image'] as String,
+        name: map['name'] as String,
+        description: map['description'] as String,
+        price: map['price'] as num,
+        color: map['color'] as List<dynamic>,
+        inCart: map['inCart'] as bool,
+        storeImage: map['storeImage'] as String,
+        storeName: map['storeName'] as String,
+        quantity: 1,
+        selectedColor: "");
   }
   final num id;
   final String image;
@@ -42,6 +43,7 @@ class Product extends Equatable {
   final String storeImage;
   final String storeName;
   int quantity = 1;
+  String selectedColor = "";
 
   //takes all the properties(which need to change) and their corresponding values and returns new object with your desired properties.
   Product copyWith({
@@ -55,19 +57,20 @@ class Product extends Equatable {
     String? storeImage,
     String? storeName,
     int? quantity = 1,
+    String? selectedColor = "",
   }) {
     return Product(
-      id: id ?? this.id,
-      image: image ?? this.image,
-      name: name ?? this.name,
-      description: description ?? this.description,
-      price: price ?? this.price,
-      color: color ?? this.color,
-      inCart: inCart ?? this.inCart,
-      storeImage: storeImage ?? this.storeImage,
-      storeName: storeName ?? this.storeName,
-      quantity: quantity ?? 1,
-    );
+        id: id ?? this.id,
+        image: image ?? this.image,
+        name: name ?? this.name,
+        description: description ?? this.description,
+        price: price ?? this.price,
+        color: color ?? this.color,
+        inCart: inCart ?? this.inCart,
+        storeImage: storeImage ?? this.storeImage,
+        storeName: storeName ?? this.storeName,
+        quantity: quantity ?? 1,
+        selectedColor: selectedColor ?? "");
   }
 
   Map<String, dynamic> toMap() {
@@ -82,6 +85,7 @@ class Product extends Equatable {
       'storeImage': storeImage,
       'storeName': storeName,
       'quantity': quantity,
+      "selectedColor": selectedColor
     };
   }
 
@@ -102,7 +106,8 @@ class Product extends Equatable {
       // inCart,
       // storeImage,
       // storeName,
-      quantity
+      quantity,
+      selectedColor,
     ];
   }
 

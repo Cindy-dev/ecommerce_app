@@ -11,11 +11,13 @@ class CartCubit extends Cubit<CartState> {
   final List<Product> cartItems = [];
   List<Product> get cartModels => cartItems;
 
-  void addItemToCart(Product product) {
+  void addItemToCart(Product product, String addColor) {
     if (cartItems.contains(product)) {
+      print("object");
       return;
     }
     cartItems.add(product);
+    product.selectedColor = addColor;
     emit(CartItemAdded(product: product));
   }
 
@@ -26,7 +28,12 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void decrementCartItem(Product cart) {
-    cart.decrement();
+    if(cart.quantity == 1){
+      cartItems.remove(cart);
+    }else{
+      cart.decrement();
+    }
+
     emit(CartItemUpdated(product: cart));
   }
 

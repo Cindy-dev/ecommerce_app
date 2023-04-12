@@ -1,4 +1,4 @@
-part of 'cart_bloc.dart';
+part of 'cart_cubit.dart';
 
 abstract class CartState  {
   const CartState();
