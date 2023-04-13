@@ -33,6 +33,7 @@ class _ECCartWidgetState extends State<ECCartWidget> {
                   itemCount: cartItems.length,
                   itemBuilder: (context, i) {
                     final cart = cartItems[i];
+                    final List<dynamic>? items = cart.color;
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Row(
@@ -79,13 +80,29 @@ class _ECCartWidgetState extends State<ECCartWidget> {
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
-                                  CircleAvatar(
-                                    radius: 10,
-                                    backgroundColor: cart.selectedColor ==
-                                        ""
-                                        ? Color(int.parse(cart.color![0]))
-                                        : Color(int.parse(
-                                        cart.selectedColor)),
+                                  PopupMenuButton(
+                                    itemBuilder: (context) {
+                                      return items!.map((e) {
+                                        return PopupMenuItem(
+                                            value: e,
+                                            child: CircleAvatar(
+                                                radius: 10,
+                                                backgroundColor:
+                                                    Color(int.parse(e))));
+                                      }).toList();
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 10,
+                                      backgroundColor: cart.selectedColor == ""
+                                          ? Color(int.parse(cart.color![0]))
+                                          : Color(
+                                              int.parse(cart.selectedColor)),
+                                    ),
+                                    onSelected: (e) {
+                                      setState(() {
+                                        cart.selectedColor = e.toString();
+                                      });
+                                    },
                                   )
                                 ],
                               ),
@@ -94,7 +111,7 @@ class _ECCartWidgetState extends State<ECCartWidget> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "\$${cart.price}",
@@ -105,10 +122,8 @@ class _ECCartWidgetState extends State<ECCartWidget> {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: MediaQuery.of(context)
-                                        .size
-                                        .width /
-                                        9,
+                                    width:
+                                        MediaQuery.of(context).size.width / 9,
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
