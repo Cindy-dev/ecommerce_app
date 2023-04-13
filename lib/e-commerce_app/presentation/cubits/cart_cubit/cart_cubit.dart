@@ -12,14 +12,36 @@ class CartCubit extends Cubit<CartState> {
   List<Product> get cartModels => cartItems;
 
   void addItemToCart(Product product, String addColor) {
-    if (cartItems.contains(product)) {
-      print("object");
-      return;
+    ///checking if an existing item was found. If cartItemIndex is equal to -1, it means
+    ///that no matching item was found, so we should add a new item to the cart.
+    ///If cartItemIndex is not equal to -1, it means that an existing item was found, so
+    ///we should update the quantity of that item instead of adding a new item.
+
+    ///The reason we're checking for -1 is because the indexWhere method returns -1 if no matching item
+    ///is found. If a matching item is found, the method returns the index of the matching item.
+
+    final cartItemIndex = cartItems.indexWhere(
+          (item) => item.id == product.id && item.selectedColor == addColor,
+    );
+
+    if (cartItemIndex != -1) {
+      final existingCartItem = cartItems[cartItemIndex];
+      emit(CartItemAdded(product: existingCartItem));
+    } else {
+      ///the copyWith method is used to create a copy of the Product object with the selectedColor
+      ///and quantity properties set to the values passed in as arguments.
+      final newCartItem = product.copyWith(
+        selectedColor: addColor,
+        quantity: 1,
+      );
+      ///The copy is then added to the cartItems list.
+      ///This ensures that each item in the cart is a unique object with its own properties.
+      cartItems.add(newCartItem);
+      emit(CartItemAdded(product: newCartItem));
     }
-    cartItems.add(product);
-    product.selectedColor = addColor;
-    emit(CartItemAdded(product: product));
   }
+
+
 
   void incrementCartItem(Product cart) {
     cart.increment();
