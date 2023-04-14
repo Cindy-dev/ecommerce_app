@@ -21,16 +21,27 @@ class ECCartAddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dataBloc = BlocProvider.of<CartCubit>(context);
     return BlocListener<CartCubit, CartState>(
-      bloc: CartCubit(),
+      bloc: dataBloc,
       listener: (context, state) {
+          if (state is CartItemAdded) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                elevation: 0,
+                duration: Duration(milliseconds: 300),
+
+                content: Text("Product Added"),
+              ),
+            );
+            ScaffoldMessengerState.removeCurrentSnackBar;
+          }
+
         // do stuff here based on Bloc's state
       },
       child: GestureDetector(
         onTap: () {
-          print(color.toString());
           context.read<CartCubit>().addItemToCart(product, color);
-          print(color.toString());
         },
         child: Container(
           alignment: Alignment.center,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
+import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_detail_widget.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../util/e_commerce_colors.dart';
 import '../cubits/cart_cubit/cart_cubit.dart';
 import '../widgets/ec_cart_add_button.dart';
-import '../widgets/ec_details_header.dart';
 
 class ECDetailScreen extends StatefulWidget {
   final Product product;
@@ -32,91 +32,7 @@ class _ECDetailScreenState extends State<ECDetailScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ECDetailsHeader(),
-                Container(
-                    margin: const EdgeInsets.only(top: 10, bottom: 5),
-                    height: deviceH / 2.5,
-                    child: Hero(
-                      tag: widget.product.image,
-                      child: Container(
-                          width: deviceW,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage(
-                                  widget.product.image,
-                                )),
-                          )),
-                    )),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Hero(
-                                  tag: widget.product.name,
-                                  child: Material(
-                                    child: Text(
-                                      widget.product.name,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: "Inter",
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "\$${widget.product.price}",
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: "Inter",
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    const Text(
-                                      "( 219 people buy this )",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontFamily: "Inter",
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor:
-                                  EcommerceColors.gray.withOpacity(0.7),
-                              child: const Icon(
-                                Icons.favorite_border_outlined,
-                                size: 30,
-                                color: EcommerceColors.grayText,
-                              ),
-                            )
-                          ],
-                        ),
-                      ]),
-                ),
+                ECDetailWidget(product: widget.product),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Padding(
@@ -133,7 +49,7 @@ class _ECDetailScreenState extends State<ECDetailScreen> {
                               fontSize: 14,
                               color: EcommerceColors.grayText,
                               fontFamily: "Inter",
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                           SizedBox(
@@ -150,97 +66,49 @@ class _ECDetailScreenState extends State<ECDetailScreen> {
                                             widget.product.color![index];
                                       });
                                     },
-                                    child: Container(
-                                      height: 41,
-                                      width: deviceW / 4,
-                                      margin: const EdgeInsets.only(
-                                          top: 9, bottom: 10, right: 5),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          color: Color(int.parse(
-                                              widget.product.color![index]))),
-                                    ),
+                                    child: selectedColor ==
+                                            widget.product.color![index]
+                                        ? Stack(
+                                            fit: StackFit.passthrough,
+                                            children: [
+                                              Container(
+                                                height: 41,
+                                                width: deviceW / 4,
+                                                margin: const EdgeInsets.only(
+                                                    top: 9,
+                                                    bottom: 10,
+                                                    right: 5),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    color: Color(int.parse(
+                                                        widget.product
+                                                            .color![index]))),
+                                              ),
+                                              const Positioned(
+                                                  top: 20,
+                                                  left: 20,
+                                                  right: 20,
+                                                  bottom: 20,
+                                                  child: Icon(Icons.check))
+                                            ],
+                                          )
+                                        : Container(
+                                            height: 41,
+                                            width: deviceW / 4,
+                                            margin: const EdgeInsets.only(
+                                                top: 9, bottom: 10, right: 5),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: Color(int.parse(widget
+                                                    .product.color![index]))),
+                                          ),
                                   );
                                 }),
                           ),
-                          const Divider(),
-                          Row(
-                            children: [
-                              SizedBox(
-                                height: deviceH / 15,
-                                child: Image.asset(
-                                  widget.product.storeImage,
-                                  fit: BoxFit.fitHeight,
-                                  scale: 4,
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.product.storeName,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: "Inter",
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  const Text(
-                                    "online 12 mins ago",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Inter",
-                                      color: EcommerceColors.grayText,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 37,
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width / 4,
-                                margin: EdgeInsets.only(
-                                    left: MediaQuery.of(context).size.width /
-                                        5.5),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4),
-                                    border: Border.all(
-                                        color: EcommerceColors.gray)),
-                                child: const Text(
-                                  "Follow",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: "Inter",
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          const Divider(),
-                          const Text(
-                            "Description of product",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 9,
-                          ),
-                          Text(
-                            widget.product.description,
-                            textAlign: TextAlign.justify,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontFamily: "Inter",
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                          ECDetailWidget2(product: widget.product),
                         ],
                       ),
                     ),
@@ -262,7 +130,6 @@ class _ECDetailScreenState extends State<ECDetailScreen> {
                 width: deviceH / 5.4,
                 fontSize: 12,
                 product: widget.product,
-                // cartBloc: CartBloc(),
               ),
               const SizedBox(
                 width: 15,

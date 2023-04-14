@@ -122,7 +122,6 @@ class _ECItemCardState extends State<ECItemCard> {
                                               fit: BoxFit.cover,
                                               child: ECCartAddButton(
                                                 color: "",
-                                                //cartBloc: widget.cartBloc,
                                                 product: prod,
                                                 fontSize: 20,
                                                 width: deviceW / 2,

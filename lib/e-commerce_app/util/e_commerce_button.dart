@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'e_commerce_colors.dart';
 
 class ECButton extends StatelessWidget {
   final Color buttonColor;
