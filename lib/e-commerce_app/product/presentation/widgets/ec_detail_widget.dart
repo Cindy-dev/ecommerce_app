@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
-import '../../util/e_commerce_colors.dart';
+import '../../../util/e_commerce_colors.dart';
 import 'ec_details_header.dart';
 
 class ECDetailWidget extends StatelessWidget {

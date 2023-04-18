@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:flutter_app_ui/e-commerce_app/cart/presentation/cubits/cart_cubit.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 
 class ECCartBanner extends StatelessWidget {

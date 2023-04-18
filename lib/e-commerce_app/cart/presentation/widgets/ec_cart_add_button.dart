@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/product.dart';
-import '../../util/e_commerce_colors.dart';
-import '../cubits/cart_cubit/cart_cubit.dart';
+import '../../../data/models/product.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../cubits/cart_cubit.dart';
 
 class ECCartAddButton extends StatelessWidget {
   final double width;
@@ -28,16 +28,13 @@ class ECCartAddButton extends StatelessWidget {
           if (state is CartItemAdded) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                elevation: 0,
-                duration: Duration(milliseconds: 300),
+                backgroundColor: EcommerceColors.green,
+                duration: Duration(milliseconds: 10),
 
                 content: Text("Product Added"),
               ),
             );
-            ScaffoldMessengerState.removeCurrentSnackBar;
           }
-
-        // do stuff here based on Bloc's state
       },
       child: GestureDetector(
         onTap: () {

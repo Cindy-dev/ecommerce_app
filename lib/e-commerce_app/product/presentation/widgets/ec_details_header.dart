@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
-import '../../util/e_commerce_colors.dart';
-import '../views/e_commerce_cart_screen.dart';
-import 'ec_cart_banner.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../../../cart/presentation/views/e_commerce_cart_screen.dart';
+import '../../../cart/presentation/widgets/ec_cart_banner.dart';
 
 class ECDetailsHeader extends StatelessWidget {
   const ECDetailsHeader(

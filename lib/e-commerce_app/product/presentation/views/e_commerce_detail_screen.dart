@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_detail_widget.dart';
+import 'package:flutter_app_ui/e-commerce_app/product/presentation/widgets/ec_detail_widget.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../util/e_commerce_colors.dart';
-import '../cubits/cart_cubit/cart_cubit.dart';
-import '../widgets/ec_cart_add_button.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../../../cart/presentation/cubits/cart_cubit.dart';
+import '../../../cart/presentation/widgets/ec_cart_add_button.dart';
 
 class ECDetailScreen extends StatefulWidget {
   final Product product;

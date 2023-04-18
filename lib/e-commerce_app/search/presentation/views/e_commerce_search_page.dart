@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../util/e_commerce_colors.dart';
+import '../../../util/e_commerce_colors.dart';
 import '../widgets/ec_search_header.dart';
 
 class ECSearchPage extends StatelessWidget {

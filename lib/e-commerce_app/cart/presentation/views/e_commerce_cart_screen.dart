@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/presentation/widgets/ec_cart_widget.dart';
+import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/ec_cart_widget.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import '../cubits/cart_cubit/cart_cubit.dart';
+import '../cubits/cart_cubit.dart';
 import '../widgets/ec_cart_header.dart';
 
 class ECCartScreen extends StatefulWidget {

@@ -8,7 +8,7 @@ class ImageMarquee extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ImageMarqueeState createState() => _ImageMarqueeState();
+  State<ImageMarquee> createState() => _ImageMarqueeState();
 }
 
 class _ImageMarqueeState extends State<ImageMarquee> {

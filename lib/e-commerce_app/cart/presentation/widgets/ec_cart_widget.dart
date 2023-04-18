@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../util/e_commerce_cart_button.dart';
-import '../../util/e_commerce_colors.dart';
-import '../cubits/cart_cubit/cart_cubit.dart';
+import '../../../util/e_commerce_cart_button.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../cubits/cart_cubit.dart';
 
 class ECCartWidget extends StatefulWidget {
   const ECCartWidget({Key? key}) : super(key: key);
