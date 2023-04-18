@@ -16,7 +16,7 @@ class _ECSearchResultState extends State<ECSearchResult> {
     return Padding(
         padding: EdgeInsets.only(top: height / 16, left: 20, right: 20),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const ECSearchHeader(),
+        //  const ECSearchHeader(),
           const SizedBox(height: 14),
           const Divider(
             color: EcommerceColors.gray,

@@ -23,6 +23,7 @@ void showSearchBar(BuildContext context, TextEditingController search,
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                         controller: search,
+
                         onChanged: (value) {
                           //creating a method to rebuild the ui once the typed name is found
                           foundProduct = productList
