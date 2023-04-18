@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/product/presentation/blocs/product_bloc.dart';
 import 'package:flutter_app_ui/e-commerce_app/product/presentation/widgets/image_marque.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../data/models/product.dart';
+import '../../../search/presentation/widgets/search_widget.dart';
 import '../widgets/ecommerce_category_widget.dart';
 import '../widgets/ecommerce_home_screen_header.dart';
 import '../widgets/item_card.dart';
@@ -33,7 +36,14 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
         children: [
           const EcommerceHomeScreenHeader(),
           GestureDetector(
-            onTap: () => navigatePush(context, const ECSearchPage()),
+            onTap:
+                //   () {
+                // setState(() {
+                //   showSearchBar(context, _search, foundTransaction);
+                //   _search.clear();
+                // });
+                //},
+                () => navigatePush(context, const ECSearchPage()),
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.only(left: 12),

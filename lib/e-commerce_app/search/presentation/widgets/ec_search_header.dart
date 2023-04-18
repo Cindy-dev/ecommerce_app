@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
-
 import '../../../cart/presentation/views/e_commerce_cart_screen.dart';
 import '../../../cart/presentation/widgets/ec_cart_banner.dart';
+import '../../../data/models/product.dart';
+import '../../../util/dummy_data.dart';
 
-class ECSearchHeader extends StatelessWidget {
+class ECSearchHeader extends StatefulWidget {
   const ECSearchHeader({Key? key}) : super(key: key);
 
+  @override
+  State<ECSearchHeader> createState() => _ECSearchHeaderState();
+}
+
+class _ECSearchHeaderState extends State<ECSearchHeader> {
+  final TextEditingController _search = TextEditingController();
+  List<Product> foundTransaction = DummyData.productList;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,6 +34,15 @@ class ECSearchHeader extends StatelessWidget {
         Flexible(
           flex: 3,
           child: TextFormField(
+          controller: _search,
+    onChanged: (value) {
+    //creating a method to rebuild the ui once the typed name is found
+    foundProduct = productList
+        .where((transaction) => transaction.name
+        .toLowerCase()
+        .contains(value))
+        .toList();
+    }
               style: const TextStyle(
                 fontFamily: "Inter",
                 fontWeight: FontWeight.w400,

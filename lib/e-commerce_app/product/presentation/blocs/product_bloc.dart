@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/product.dart';
 part 'product_event.dart';
@@ -30,6 +31,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             (value) => Product.fromMap(value as Map<String, dynamic>),
           )
           .toList();
+      DummyData.productList = listOfProducts;
+      print(DummyData.productList);
       emit(
         ProductStateLoaded(
           products: listOfProducts,
