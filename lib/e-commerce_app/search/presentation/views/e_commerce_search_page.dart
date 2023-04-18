@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/search/presentation/widgets/e_commerce_search_result.dart';
 import '../../../cart/presentation/views/e_commerce_cart_screen.dart';
 import '../../../cart/presentation/widgets/ec_cart_banner.dart';
 import '../../../data/models/product.dart';
@@ -15,6 +16,7 @@ class ECSearchPage extends StatefulWidget {
 }
 
 class _ECSearchPageState extends State<ECSearchPage> {
+  late String? searchWord;
   final TextEditingController _search = TextEditingController();
   List<Product> productList = DummyData.productList;
   List<Product> foundProduct = [];
@@ -31,7 +33,7 @@ class _ECSearchPageState extends State<ECSearchPage> {
             onChanged: (value) {
               //creating a method to rebuild the ui once the typed name is found
               foundProduct = productList
-                  .where((transaction) => transaction.name
+                  .where((product) => product.name
                       .toLowerCase()
                       .contains(value.toLowerCase()))
                   .toList();
@@ -58,17 +60,20 @@ class _ECSearchPageState extends State<ECSearchPage> {
                             itemCount: foundProduct.length,
                             itemBuilder: (context, i) {
                               final product = foundProduct[i];
-                              //alt + enter for quick assist
-                              return Card(
-                                child: ListTile(
-                                  title: Text(product.name),
-                                  onTap: () {
-                                    product;
-                                    Navigator.pushNamed(context, '/display',
-                                        arguments: product.name);
-                                  },
-                                ),
+                              return ECSearchResult(
+                                searchWord: foundProduct[i].name,
                               );
+
+                              //   Card(
+                              //   child: ListTile(
+                              //     title: Text(product.name),
+                              //     onTap: () {
+                              //       product;
+                              //       Navigator.pushNamed(context, '/display',
+                              //           arguments: product.name);
+                              //     },
+                              //   ),
+                              // );
                             })
                         //if not found we throw a text to show it doesnt exist
                         : const Center(
