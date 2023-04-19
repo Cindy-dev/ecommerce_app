@@ -1,11 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/ec_receipt_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/checkout_textfield.dart';
+import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import '../widgets/ec_checkout_summary.dart';
 
 class ECCheckoutScreen extends StatefulWidget {
-  const ECCheckoutScreen({Key? key}) : super(key: key);
+  final Product prod;
+  const ECCheckoutScreen({Key? key, required this.prod}) : super(key: key);
 
   @override
   State<ECCheckoutScreen> createState() => _ECCheckoutScreenState();
@@ -20,8 +24,6 @@ class _ECCheckoutScreenState extends State<ECCheckoutScreen> {
   final TextEditingController _phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
         body: SafeArea(
           child: Column(
@@ -100,7 +102,7 @@ class _ECCheckoutScreenState extends State<ECCheckoutScreen> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GestureDetector(
-                onTap: () => navigatePush(context, const ECCheckoutScreen()),
+                onTap: () => navigatePush(context, const ECReceiptScreen()),
                 child: Container(
                   height: 45,
                   alignment: Alignment.center,

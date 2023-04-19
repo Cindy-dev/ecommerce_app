@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/ec_checkout_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/ec_cart_widget.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -79,7 +80,13 @@ class _ECCartScreenState extends State<ECCartScreen> {
                   ],
                 ),
                 GestureDetector(
-                  onTap: () => navigatePush(context, const ECCheckoutScreen()),
+                  onTap: context.watch<CartCubit>().totalAmount() == 0
+                      ? () {}
+                      : () => navigatePush(
+                          context,
+                          ECCheckoutScreen(
+                            prod: DummyData.product!,
+                          )),
                   child: Container(
                     height: 45,
                     alignment: Alignment.center,
@@ -101,8 +108,6 @@ class _ECCartScreenState extends State<ECCartScreen> {
               ],
             ),
           )
-        ]
-
-        );
+        ]);
   }
 }

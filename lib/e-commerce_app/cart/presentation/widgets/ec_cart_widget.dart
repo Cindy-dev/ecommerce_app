@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../util/e_commerce_cart_button.dart';
 import '../../../util/e_commerce_colors.dart';
+import '../../../util/navigators.dart';
 import '../cubits/cart_cubit.dart';
+import '../views/ec_checkout_screen.dart';
 
 class ECCartWidget extends StatefulWidget {
   const ECCartWidget({Key? key}) : super(key: key);
@@ -34,129 +37,136 @@ class _ECCartWidgetState extends State<ECCartWidget> {
                   itemBuilder: (context, i) {
                     final cart = cartItems[i];
                     final List<dynamic>? items = cart.color;
+                    DummyData.product = cart;
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20),
-                      child: Row(
+                      child: Column(
                         children: [
-                          Checkbox(
-                            value: true,
-                            onChanged: (bool? newValue) {},
-                            activeColor: EcommerceColors.green,
-                          ),
-                          Container(
-                            height: 76,
-                            width: 82,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4),
-                                image: DecorationImage(
-                                    image: AssetImage(cart.image),
-                                    fit: BoxFit.fitHeight)),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
                             children: [
-                              Text(
-                                cart.name,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontFamily: "Inter",
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              Checkbox(
+                                value: true,
+                                onChanged: (bool? newValue) {},
+                                activeColor: EcommerceColors.green,
+                              ),
+                              Container(
+                                height: 76,
+                                width: 82,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    image: DecorationImage(
+                                        image: AssetImage(cart.image),
+                                        fit: BoxFit.fitHeight)),
                               ),
                               const SizedBox(
-                                height: 4,
+                                width: 10,
                               ),
-                              Row(
-                                children: [
-                                  const Text(
-                                    "Variant:",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: "Inter",
-                                      color: EcommerceColors.gray,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  PopupMenuButton(
-                                    itemBuilder: (context) {
-                                      return items!.map((e) {
-                                        return PopupMenuItem(
-                                            value: e,
-                                            child: CircleAvatar(
-                                                radius: 10,
-                                                backgroundColor:
-                                                    Color(int.parse(e))));
-                                      }).toList();
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 10,
-                                      backgroundColor: cart.selectedColor == ""
-                                          ? Color(int.parse(cart.color![0]))
-                                          : Color(
-                                              int.parse(cart.selectedColor)),
-                                    ),
-                                    onSelected: (e) {
-                                      setState(() {
-                                        cart.selectedColor = e.toString();
-                                      });
-                                    },
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "\$${cart.price}",
+                                    cart.name,
                                     style: const TextStyle(
                                       fontSize: 14,
                                       fontFamily: "Inter",
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width / 9,
+                                  const SizedBox(
+                                    height: 4,
                                   ),
                                   Row(
-                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      ECCartButton(
-                                          onTap: () {
-                                            bloc.decrementCartItem(cart);
-                                          },
-                                          cartIcon: Icons.remove),
-                                      const SizedBox(
-                                        width: 8,
+                                      const Text(
+                                        "Variant:",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: "Inter",
+                                          color: EcommerceColors.gray,
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                       ),
-                                      Text(cart.quantity.toString(),
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                          )),
-                                      ECCartButton(
-                                          onTap: () {
-                                            bloc.incrementCartItem(cart);
-                                          },
-                                          cartIcon: Icons.add),
-                                      ECCartButton(
-                                          onTap: () {
-                                            bloc.removeItemFromCart(cart);
-                                          },
-                                          cartIcon: Icons.delete_outline),
+                                      PopupMenuButton(
+                                        itemBuilder: (context) {
+                                          return items!.map((e) {
+                                            return PopupMenuItem(
+                                                value: e,
+                                                child: CircleAvatar(
+                                                    radius: 10,
+                                                    backgroundColor:
+                                                        Color(int.parse(e))));
+                                          }).toList();
+                                        },
+                                        child: CircleAvatar(
+                                          radius: 10,
+                                          backgroundColor: cart.selectedColor ==
+                                                  ""
+                                              ? Color(int.parse(cart.color![0]))
+                                              : Color(int.parse(
+                                                  cart.selectedColor)),
+                                        ),
+                                        onSelected: (e) {
+                                          setState(() {
+                                            cart.selectedColor = e.toString();
+                                          });
+                                        },
+                                      )
                                     ],
-                                  )
+                                  ),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "\$${cart.price}",
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Inter",
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                9,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          ECCartButton(
+                                              onTap: () {
+                                                bloc.decrementCartItem(cart);
+                                              },
+                                              cartIcon: Icons.remove),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(cart.quantity.toString(),
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14,
+                                              )),
+                                          ECCartButton(
+                                              onTap: () {
+                                                bloc.incrementCartItem(cart);
+                                              },
+                                              cartIcon: Icons.add),
+                                          ECCartButton(
+                                              onTap: () {
+                                                bloc.removeItemFromCart(cart);
+                                              },
+                                              cartIcon: Icons.delete_outline),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ],
                               )
                             ],
-                          )
+                          ),
                         ],
                       ),
                     );
