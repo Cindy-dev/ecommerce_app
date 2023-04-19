@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/ec_checkout_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/ec_cart_widget.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import '../cubits/cart_cubit.dart';
@@ -76,20 +78,23 @@ class _ECCartScreenState extends State<ECCartScreen> {
                     ),
                   ],
                 ),
-                Container(
-                  height: 45,
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.only(top: 18),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      color: EcommerceColors.green),
-                  child: const Text(
-                    "Continue for payments",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontFamily: "Inter",
-                      color: EcommerceColors.white,
-                      fontWeight: FontWeight.w500,
+                GestureDetector(
+                  onTap: () => navigatePush(context, const ECCheckoutScreen()),
+                  child: Container(
+                    height: 45,
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.only(top: 18),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: EcommerceColors.green),
+                    child: const Text(
+                      "CHECK OUT",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: "Inter",
+                        color: EcommerceColors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 )
@@ -97,7 +102,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
             ),
           )
         ]
-        //)
+
         );
   }
 }
