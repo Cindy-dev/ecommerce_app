@@ -16,6 +16,12 @@ A simple Flutter ecommerce app to view products and make orders.
 - [x] Search for product
 - [x] order History
 
+## 🔌 Plugins
+
+| Name                                                      | Usage                                               |
+| -------------------------------------------------------   | --------------------------------------------------- |
+| [**Flutter bloc**](https://pub.dev/packages/flutter_bloc) | State Management                                    |
+
 
 <p align="center">
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\home.png" width="400">
@@ -28,5 +34,5 @@ A simple Flutter ecommerce app to view products and make orders.
 
 ## 🤓 Author(s)
 **Cindy dev**
-[Twitter Follow] https://twitter.com/cindyDev
+[Twitter Follow] https://twitter.com/cindyDev_
 
