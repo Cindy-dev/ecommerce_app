@@ -18,9 +18,10 @@ A simple Flutter ecommerce app to view products and make orders.
 
 ## 🔌 Plugins
 
-| Name                                                      | Usage                                               |
-| -------------------------------------------------------   | --------------------------------------------------- |
-| [**Flutter bloc**](https://pub.dev/packages/flutter_bloc) | State Management                                    |
+| Name                                                          | Usage                                               |
+| -------------------------------------------------------       | --------------------------------------------------- |
+| [**Flutter bloc**](https://pub.dev/packages/flutter_bloc)     | State Management             
+| [supabase_flutter](https://pub.dev/packages/supabase_flutter) | Database
 
 
 <p align="center">
@@ -34,5 +35,5 @@ A simple Flutter ecommerce app to view products and make orders.
 
 ## 🤓 Author(s)
 **Cindy dev**
-[Twitter Follow] https://twitter.com/cindyDev_
+[Twitter Follow] (https://twitter.com/cindyDev_)
 
