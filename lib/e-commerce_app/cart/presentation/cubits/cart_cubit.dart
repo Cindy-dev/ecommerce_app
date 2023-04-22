@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import '../../../data/models/product.dart';
@@ -10,8 +11,7 @@ class CartCubit extends Cubit<CartState> {
 
   final List<Product> cartItems = [];
   List<Product> get cartModels => cartItems;
-
-  void addItemToCart(Product product, String addColor) {
+  void addItemToCart(Product product, String addColor, BuildContext context) {
     ///checking if an existing item was found. If cartItemIndex is equal to -1, it means
     ///that no matching item was found, so we should add a new item to the cart.
     ///If cartItemIndex is not equal to -1, it means that an existing item was found, so
@@ -21,11 +21,18 @@ class CartCubit extends Cubit<CartState> {
     ///is found. If a matching item is found, the method returns the index of the matching item.
 
     final cartItemIndex = cartItems.indexWhere(
-          (item) => item.id == product.id && item.selectedColor == addColor,
+      (item) => item.id == product.id && item.selectedColor == addColor,
     );
 
     if (cartItemIndex != -1) {
       final existingCartItem = cartItems[cartItemIndex];
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: EcommerceColors.green,
+          content: Text('Quantity updated for ${existingCartItem.name}.'),
+          duration: const Duration(seconds: 1),
+        ),
+      );
       emit(CartItemAdded(product: existingCartItem));
     } else {
       ///the copyWith method is used to create a copy of the Product object with the selectedColor
@@ -34,25 +41,32 @@ class CartCubit extends Cubit<CartState> {
         selectedColor: addColor,
         quantity: 1,
       );
+
       ///The copy is then added to the cartItems list.
       ///This ensures that each item in the cart is a unique object with its own properties.
       cartItems.add(newCartItem);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: EcommerceColors.green,
+          content: Text('${newCartItem.name} added to cart.'),
+          duration: const Duration(seconds: 1),
+        ),
+      );
       emit(CartItemAdded(product: newCartItem));
     }
   }
 
-
-
+  //-- Incremet item function --//
   void incrementCartItem(Product cart) {
     cart.increment();
-
     emit(CartItemUpdated(product: cart));
   }
 
+  //-- decrement item function --//
   void decrementCartItem(Product cart) {
-    if(cart.quantity == 1){
+    if (cart.quantity == 1) {
       cartItems.remove(cart);
-    }else{
+    } else {
       cart.decrement();
     }
 
@@ -70,6 +84,7 @@ class CartCubit extends Cubit<CartState> {
     return total;
   }
 
+  //-- removing an item function --//
   void removeItemFromCart(Product product) {
     cartItems.remove(product);
     emit(CartItemRemoved(product: product));

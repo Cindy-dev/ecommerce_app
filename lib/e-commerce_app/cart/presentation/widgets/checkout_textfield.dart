@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../util/e_commerce_colors.dart';
 
 class CheckoutTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
-  const CheckoutTextField({Key? key, required this.label, required this.controller}) : super(key: key);
+  const CheckoutTextField(
+      {Key? key, required this.label, required this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+
       controller: controller,
       cursorColor: EcommerceColors.grayText,
       decoration: InputDecoration(

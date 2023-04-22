@@ -6,6 +6,14 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
+<p align="center">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\home.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\detail.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\cart.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\search.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\empty.png" width="400">
+  </p>
+
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)

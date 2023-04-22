@@ -3,9 +3,7 @@ import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../util/e_commerce_cart_button.dart';
 import '../../../util/e_commerce_colors.dart';
-import '../../../util/navigators.dart';
 import '../cubits/cart_cubit.dart';
-import '../views/ec_checkout_screen.dart';
 
 class ECCartWidget extends StatefulWidget {
   const ECCartWidget({Key? key}) : super(key: key);

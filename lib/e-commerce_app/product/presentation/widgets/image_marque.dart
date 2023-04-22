@@ -28,27 +28,29 @@ class _ImageMarqueeState extends State<ImageMarquee> {
 
   @override
   void dispose() {
-    _stopTimer();
+    _pageController.dispose();
+
     super.dispose();
   }
 
   void _startTimer() {
-    Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      if (_currentPage < imageUrls.length - 1) {
-        _currentPage++;
-      } else {
-        _currentPage = 0;
-      }
-      _pageController.animateToPage(
-        _currentPage,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeOutSine,
-      );
-    });
-  }
-
-  void _stopTimer() {
-    _pageController.dispose();
+    Timer.periodic(
+      const Duration(seconds: 5),
+      (timer) {
+        if (_pageController.positions.isNotEmpty) {
+          if (_currentPage < imageUrls.length - 1) {
+            _currentPage++;
+          } else {
+            _currentPage = 0;
+          }
+          _pageController.animateToPage(
+            _currentPage,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        }
+      },
+    );
   }
 
   @override
@@ -57,7 +59,6 @@ class _ImageMarqueeState extends State<ImageMarquee> {
       context: context,
       removeLeft: true,
       child: PageView.builder(
-        pageSnapping: false,
         controller: _pageController,
         itemCount: imageUrls.length,
         itemBuilder: (BuildContext context, int index) {

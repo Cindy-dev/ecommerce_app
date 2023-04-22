@@ -5,10 +5,10 @@ import '../../../util/dummy_data.dart';
 
 void showSearchBar(BuildContext context, TextEditingController search,
     List<Product> foundProduct) {
-  List<Product> productList =  DummyData.productList;
+  List<Product> productList = DummyData.productList;
   showModalBottomSheet(
       context: context,
-      builder: (context) => Container(
+      builder: (context) => SizedBox(
             height: MediaQuery.of(context).size.height / 2,
             width: double.infinity,
             child: Column(
@@ -23,7 +23,6 @@ void showSearchBar(BuildContext context, TextEditingController search,
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                         controller: search,
-
                         onChanged: (value) {
                           //creating a method to rebuild the ui once the typed name is found
                           foundProduct = productList

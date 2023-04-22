@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/ec_receipt_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/checkout_textfield.dart';
@@ -102,7 +101,16 @@ class _ECCheckoutScreenState extends State<ECCheckoutScreen> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GestureDetector(
-                onTap: () => navigatePush(context, const ECReceiptScreen()),
+                onTap: () => navigatePush(
+                    context,
+                    ECReceiptScreen(
+                      contact: _emailController.text,
+                      lastname: _lastnameController.text,
+                      firstname: _firstnameController.text,
+                      address: _addressController.text,
+                      city: _cityController.text,
+                      phone: _phoneController.text,
+                    )),
                 child: Container(
                   height: 45,
                   alignment: Alignment.center,

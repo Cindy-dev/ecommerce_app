@@ -23,23 +23,20 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       final jsonData = await rootBundle
           .loadString('assets/e_commerce_app/e_commerce_jsons/products.json');
 
-
       await Future<dynamic>.delayed(const Duration(seconds: 1));
-      final data = (json.decode(jsonData) as Map)['products']  as List;
+      final data = (json.decode(jsonData) as Map)['products'] as List;
       final listOfProducts = data
           .map(
             (value) => Product.fromMap(value as Map<String, dynamic>),
           )
           .toList();
       DummyData.productList = listOfProducts;
-      print(DummyData.productList);
       emit(
         ProductStateLoaded(
           products: listOfProducts,
         ),
       );
     } catch (e) {
-      print(e.toString());
       emit(
         ProductStateError(
           errorMessage: e.toString(),

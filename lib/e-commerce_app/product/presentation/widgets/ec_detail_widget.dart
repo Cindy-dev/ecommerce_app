@@ -112,58 +112,60 @@ class ECDetailWidget2 extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Divider(),
-        Row(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 15,
-              child: Image.asset(
-                product.storeImage,
-                fit: BoxFit.fitHeight,
-                scale: 4,
-              ),
-            ),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.storeName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Inter",
-                    fontWeight: FontWeight.w500,
-                  ),
+        FittedBox(
+          child: Row(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 15,
+                child: Image.asset(
+                  product.storeImage,
+                  fit: BoxFit.fitHeight,
+                  scale: 4,
                 ),
-                const Text(
-                  "online 12 mins ago",
+              ),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.storeName,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const Text(
+                    "online 12 mins ago",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: "Inter",
+                      color: EcommerceColors.grayText,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 37,
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width / 4,
+                margin: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width / 5.5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(color: EcommerceColors.gray)),
+                child: const Text(
+                  "Follow",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 14,
                     fontFamily: "Inter",
-                    color: EcommerceColors.grayText,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-              ],
-            ),
-            Container(
-              height: 37,
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width / 4,
-              margin: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width / 5.5),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: EcommerceColors.gray)),
-              child: const Text(
-                "Follow",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontFamily: "Inter",
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
         const Divider(),
         const Text(

@@ -4,7 +4,7 @@ import '../../../data/models/product.dart';
 import '../../../util/e_commerce_colors.dart';
 import '../cubits/cart_cubit.dart';
 
-class ECCartAddButton extends StatelessWidget {
+class ECCartAddButton extends StatefulWidget {
   final double width;
   final double height;
   final double fontSize;
@@ -20,30 +20,35 @@ class ECCartAddButton extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final dataBloc = BlocProvider.of<CartCubit>(context);
-    return BlocListener<CartCubit, CartState>(
-      bloc: dataBloc,
-      listener: (context, state) {
-          if (state is CartItemAdded) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                backgroundColor: EcommerceColors.green,
-                duration: Duration(milliseconds: 10),
+  State<ECCartAddButton> createState() => _ECCartAddButtonState();
+}
 
-                content: Text("Product Added"),
-              ),
-            );
-          }
+class _ECCartAddButtonState extends State<ECCartAddButton> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<CartCubit, CartState>(
+      bloc: CartCubit(),
+      listener: (_, state) {
+        // if (state is CartItemAdded) {
+        //   ScaffoldMessenger.of(context).showSnackBar(
+        //     const SnackBar(
+        //       backgroundColor: EcommerceColors.green,
+        //       duration: Duration(milliseconds: 10),
+        //       content: Text("Product Added"),
+        //     ),
+        //   );
+        // }
       },
       child: GestureDetector(
         onTap: () {
-          context.read<CartCubit>().addItemToCart(product, color);
+          context
+              .read<CartCubit>()
+              .addItemToCart(widget.product, widget.color, context);
         },
         child: Container(
           alignment: Alignment.center,
-          width: width,
-          height: height,
+          width: widget.width,
+          height: widget.height,
           decoration: BoxDecoration(
               color: EcommerceColors.green,
               borderRadius: BorderRadius.circular(4),
@@ -54,7 +59,7 @@ class ECCartAddButton extends StatelessWidget {
                 fontFamily: "Inter",
                 fontWeight: FontWeight.w400,
                 color: const Color(0xffFFFFFF),
-                fontSize: fontSize),
+                fontSize: widget.fontSize),
           ),
         ),
       ),
