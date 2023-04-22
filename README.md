@@ -1,10 +1,21 @@
 # flutter_app_ui
+This Folder will contain several flutter app with only ui implemented or full logic depending
 
-A new Flutter project.
+#APP 1
+First app is : 
+A simple Flutter ecommerce app to view products and make orders.
 
-## Getting Started
+## ✨ Features
 
-This project is a starting point for a Flutter application.
+- [x] View available product.
+- [x] Add a specific product to cart.
+- [x] Favorites(Feature coming).
+- [x] Increment and decrement cart item quantity.
+- [x] Dark Mode(Feature Coming)
+- [x] Checkout 
+- [x] Search for product
+- [x] order History
+
 
 <p align="center">
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\home.png" width="400">
@@ -14,11 +25,8 @@ This project is a starting point for a Flutter application.
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\empty.png" width="400">
   </p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🤓 Author(s)
+**Cindy dev**
+[Twitter Follow] <a href = "https://twitter.com/cindyDev">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
