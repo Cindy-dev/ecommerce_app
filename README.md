@@ -35,5 +35,5 @@ A simple Flutter ecommerce app to view products and make orders.
 
 ## 🤓 Author(s)
 **Cindy dev**
-[Twitter Follow] (https://twitter.com/cindyDev_)
+[Twitter Follow] <a href= "https://twitter.com/cindyDev_"> Click to follow <a/>
 

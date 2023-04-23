@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/account_page.dart';
+import 'package:flutter_app_ui/e-commerce_app/account/presentation/views/account_page.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/e_commerce_cart_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/e_commerce_history_screen.dart';
 import 'package:flutter_app_ui/e-commerce_app/favorite_page.dart';
@@ -7,8 +7,6 @@ import 'package:flutter_app_ui/e-commerce_app/product/presentation/blocs/product
 import 'package:flutter_app_ui/e-commerce_app/product/presentation/widgets/ec_homescreen_widget.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../util/dummy_data.dart';
 
 class ECommerceHomeScreen extends StatefulWidget {
   const ECommerceHomeScreen({Key? key}) : super(key: key);
@@ -30,7 +28,7 @@ class _ECommerceHomeScreenState extends State<ECommerceHomeScreen> {
     const ECommerceHomeScreenWidget(),
     const FavoritePage(),
     const ECHistoryScreen(),
-    const AccountPage(),
+    const AdminAuth()
   ];
   void _onItemTapped(int index) {
     setState(() {
