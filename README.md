@@ -9,7 +9,7 @@ A simple Flutter ecommerce app to view products and make orders.
 
 - [x] View available product.
 - [x] Add a specific product to cart.
-- [x] Favorites(Feature coming).
+- [x] Add a product to wishlist.
 - [x] Increment and decrement cart item quantity.
 - [x] Dark Mode(Feature Coming)
 - [x] Checkout 
@@ -30,6 +30,9 @@ A simple Flutter ecommerce app to view products and make orders.
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\cart.png" width="400">
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\search.png" width="400">
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\empty.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\delivery.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\wish.png" width="400">
+  <img src="assets\e_commerce_app\e_commerce_image\screenshot\wishAdd.png" width="400">
   </p>
 
 
