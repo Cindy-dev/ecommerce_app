@@ -75,7 +75,7 @@ class ECHistoryScreen extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          HistoryRow(tag:"last name: ", content:  DummyData.address!),
+                          HistoryRow(tag:"Name: ", content:  DummyData.name!),
                         ],
                       ),
                     ),

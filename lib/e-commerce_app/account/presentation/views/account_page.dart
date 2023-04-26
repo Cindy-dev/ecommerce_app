@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/account/presentation/widgets/text_form.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
@@ -14,16 +15,30 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   final nameController = TextEditingController();
   final descController = TextEditingController();
+  final storeNameController = TextEditingController();
   final imageController = TextEditingController();
   final storeImageController = TextEditingController();
   final priceController = TextEditingController();
   final colorsController = TextEditingController();
+  late List<bool> isChecked;
+  List<String> selectedColors = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isChecked = List<bool>.filled(DummyData.productColors.length, false);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: EcommerceColors.green,
+        title: const Text(
+          'Create Product',
+          style: TextStyle(
+              fontFamily: "Inter", color: EcommerceColors.white, fontSize: 20),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -48,7 +63,7 @@ class _AccountPageState extends State<AccountPage> {
                     hintText: "Product Image",
                     fontSize: 16),
                 ECTextField(
-                    controller: descController,
+                    controller: storeNameController,
                     hintText: "Store Name",
                     fontSize: 16),
                 ECTextField(
@@ -60,17 +75,73 @@ class _AccountPageState extends State<AccountPage> {
                     hintText: "Product Colors",
                     fontSize: 16),
 
-                const ECButton(
-                  buttonColor: EcommerceColors.green,
-                  buttonText: 'Save Product',
-                  textColor: EcommerceColors.white,
-                  borderColor: EcommerceColors.green,
+                const Text(
+                  "Scroll to select product colors",
+                  style: TextStyle(
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  height: MediaQuery.of(context).size.height / 5,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: DummyData.productColors.length,
+                      itemBuilder: (context, i) {
+                        final colors = DummyData.productColors[i];
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Checkbox(
+                                  activeColor: EcommerceColors.green,
+                                  value: isChecked[i],
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked[i] = value!;
+                                    });
+
+                                    /// this logic adds or remove new product colors in a list based on user interaction with the checkbox
+                                    if (isChecked[i] == true) {
+                                      selectedColors.add(colors);
+                                    } else {
+                                      selectedColors.remove(colors);
+                                    }
+                                  }),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              CircleAvatar(
+                                backgroundColor: Color(int.parse(colors)),
+                              )
+                            ],
+                          ),
+                        );
+                      }),
                 ),
               ],
             ),
           ),
         ),
       ),
+      persistentFooterButtons: [
+        Container(
+          alignment: Alignment.center,
+          height: 50,
+          decoration: BoxDecoration(
+              color: EcommerceColors.green,
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(color: EcommerceColors.green)),
+          child: const Text(
+            'Save Product',
+            style: TextStyle(
+                fontFamily: "Inter",
+                color: EcommerceColors.white,
+                fontSize: 17),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -120,12 +191,12 @@ class _AdminAuthState extends State<AdminAuth> {
                       return null;
                     },
                   ),
-                  const ECButton(
-                    buttonColor: EcommerceColors.green,
-                    buttonText: 'Save Product',
-                    textColor: EcommerceColors.white,
-                    borderColor: EcommerceColors.green,
-                  ),
+                  // const ECButton(
+                  //   buttonColor: EcommerceColors.green,
+                  //   buttonText: 'Save Product',
+                  //   textColor: EcommerceColors.white,
+                  //   borderColor: EcommerceColors.green,
+                  // ),
                   ElevatedButton(
                       onPressed: () {
                         if (!formKey.currentState!.validate()) {
@@ -148,7 +219,7 @@ class _AdminAuthState extends State<AdminAuth> {
                           }
                         }
                       },
-                      child: const Text('Login'))
+                      child: const Text('Login')),
                 ],
               ),
             ),

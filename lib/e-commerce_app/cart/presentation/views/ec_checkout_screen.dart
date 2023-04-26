@@ -4,7 +4,7 @@ import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/checkout
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
-import '../widgets/ec_checkout_summary.dart';
+import 'package:nigerian_states_and_lga/nigerian_states_and_lga.dart';
 
 class ECCheckoutScreen extends StatefulWidget {
   final Product prod;
@@ -15,15 +15,16 @@ class ECCheckoutScreen extends StatefulWidget {
 }
 
 class _ECCheckoutScreenState extends State<ECCheckoutScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _firstnameController = TextEditingController();
-  final TextEditingController _lastnameController = TextEditingController();
+  String stateValue = NigerianStatesAndLGA.allStates[0];
+  String lgaValue = 'Select your LGA';
+  List<String> statesLga = [];
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,63 +35,163 @@ class _ECCheckoutScreenState extends State<ECCheckoutScreen> {
                     padding: EdgeInsets.all(8.0),
                     child: Icon(Icons.arrow_back_ios),
                   )),
-              const ECCheckoutSummary(),
+              const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "DELIVERY DETAILS",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: "Inter",
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          "Contact",
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          "State",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontFamily: "Inter",
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const SizedBox(height: 15),
-                        CheckoutTextField(
-                          label: "Email or mobile phone number",
-                          controller: _emailController,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
                         ),
-                        const SizedBox(height: 25),
-                        const Text(
-                          "Shipping Address",
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: EcommerceColors.gray)),
+                        child: DropdownButton<String>(
+                            underline: Container(),
+                            key: const ValueKey('States'),
+                            value: stateValue,
+                            isExpanded: true,
+                            hint: const Text('Select a Nigerian state'),
+                            items: NigerianStatesAndLGA.allStates
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: "Inter",
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (val) {
+                              lgaValue = 'Select a Local Government Area';
+                              statesLga.clear();
+                              statesLga.add(lgaValue);
+                              statesLga.addAll(
+                                  NigerianStatesAndLGA.getStateLGAs(val!));
+                              setState(() {
+                                stateValue = val;
+                              });
+                            }),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          "L.G.A",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontFamily: "Inter",
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const SizedBox(height: 15),
-                        CheckoutTextField(
-                          label: "First name (optional)",
-                          controller: _firstnameController,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 10,
                         ),
-                        const SizedBox(height: 15),
-                        CheckoutTextField(
-                          label: "Last name",
-                          controller: _lastnameController,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: EcommerceColors.gray)),
+                        child: DropdownButton<String>(
+                            underline: Container(),
+                            key: const ValueKey('Local governments'),
+                            value: lgaValue,
+                            isExpanded: true,
+                            hint: const Text('Select a Lga'),
+                            items: statesLga
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (val) {
+                              setState(() {
+                                lgaValue = val!;
+                              });
+                            }),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          "Street Address",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                        const SizedBox(height: 15),
-                        CheckoutTextField(
-                          label: "Address",
-                          controller: _addressController,
+                      ),
+                      CheckoutTextField(
+                        label: "Street Address",
+                        controller: _addressController,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          "Name",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                        const SizedBox(height: 15),
-                        CheckoutTextField(
-                          label: "City",
-                          controller: _cityController,
+                      ),
+                      CheckoutTextField(
+                        label: "Name",
+                        controller: _nameController,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+                        alignment: Alignment.centerLeft,
+                        child: const Text(
+                          "Phone Number",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                        const SizedBox(height: 15),
-                        CheckoutTextField(
-                          label: "Phone",
-                          controller: _phoneController,
-                        ),
-                      ],
-                    ),
+                      ),
+                      CheckoutTextField(
+                        label: "Phone Number",
+                        controller: _phoneController,
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -104,12 +205,11 @@ class _ECCheckoutScreenState extends State<ECCheckoutScreen> {
                 onTap: () => navigatePush(
                     context,
                     ECReceiptScreen(
-                      contact: _emailController.text,
-                      lastname: _lastnameController.text,
-                      firstname: _firstnameController.text,
+                      lga: lgaValue,
+                      name: _nameController.text,
                       address: _addressController.text,
-                      city: _cityController.text,
                       phone: _phoneController.text,
+                      state: stateValue,
                     )),
                 child: Container(
                   height: 45,

@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
+import 'package:flutter_app_ui/e-commerce_app/favorite/presentation/cubits/fave_cubit.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../util/e_commerce_colors.dart';
 import 'ec_details_header.dart';
 
-class ECDetailWidget extends StatelessWidget {
+class ECDetailWidget extends StatefulWidget {
   final Product product;
   const ECDetailWidget({Key? key, required this.product}) : super(key: key);
 
+  @override
+  State<ECDetailWidget> createState() => _ECDetailWidgetState();
+}
+
+class _ECDetailWidgetState extends State<ECDetailWidget> {
   @override
   Widget build(BuildContext context) {
     final deviceH = MediaQuery.of(context).size.height;
@@ -18,14 +26,14 @@ class ECDetailWidget extends StatelessWidget {
             margin: const EdgeInsets.only(top: 10, bottom: 5),
             height: deviceH / 2.5,
             child: Hero(
-              tag: product.image,
+              tag: widget.product.image,
               child: Container(
                   width: deviceW,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.fitHeight,
                         image: AssetImage(
-                          product.image,
+                          widget.product.image,
                         )),
                   )),
             )),
@@ -42,10 +50,10 @@ class ECDetailWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Hero(
-                      tag: product.name,
+                      tag: widget.product.name,
                       child: Material(
                         child: Text(
-                          product.name,
+                          widget.product.name,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             fontSize: 16,
@@ -61,7 +69,7 @@ class ECDetailWidget extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "\$${product.price}",
+                          "\$${widget.product.price}",
                           style: const TextStyle(
                             fontSize: 18,
                             fontFamily: "Inter",
@@ -83,15 +91,33 @@ class ECDetailWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: EcommerceColors.gray.withOpacity(0.7),
-                  child: const Icon(
-                    Icons.favorite_border_outlined,
-                    size: 30,
-                    color: EcommerceColors.grayText,
-                  ),
-                )
+
+                BlocBuilder(
+                  bloc: FaveCubit(),
+                  builder: (BuildContext context, state) {
+                  return  GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        context.read<FaveCubit>().toggleFavoriteItem(widget.product);
+                      },
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: EcommerceColors.gray.withOpacity(0.7),
+                        child: Icon(
+                          Icons.favorite_border_outlined,
+                          size: 30,
+                          color: context
+                              .watch<FaveCubit>()
+                              .faveItems
+                              .any((item) => item.id == widget.product.id)
+                              ? EcommerceColors.red
+                              : EcommerceColors.grayText,
+                        ),
+                      ),
+                    );
+                  },
+
+                ),
               ],
             ),
           ]),
