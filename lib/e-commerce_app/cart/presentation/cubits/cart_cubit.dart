@@ -56,7 +56,7 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  //-- Incremet item function --//
+  //-- Increment item function --//
   void incrementCartItem(Product cart) {
     cart.increment();
     emit(CartItemUpdated(product: cart));

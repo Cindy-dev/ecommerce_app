@@ -9,8 +9,14 @@ class FaveLoading extends FaveState {}
 
 @immutable
 class FaveAdded extends FaveState {
-  // final Product product;
-  final List<Product> products;
+  final Product product;
 
-  FaveAdded({required this.products});
+  FaveAdded({required this.product});
+}
+
+@immutable
+class FaveRemoved extends FaveState {
+  final Product product;
+
+  FaveRemoved({required this.product});
 }

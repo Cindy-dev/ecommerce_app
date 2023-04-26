@@ -9,7 +9,7 @@ class DummyData {
   static String? lga;
   static String? phone;
   static String?  name;
-  static String? email;
+  static String? faveColor;
   static String? firstname;
   static String? lastname;
   static String? address;

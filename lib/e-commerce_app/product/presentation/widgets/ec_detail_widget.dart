@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
+import 'package:flutter_app_ui/e-commerce_app/favorite/presentation/cubits/fave_cubit.dart';
+import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../util/e_commerce_colors.dart';
 import 'ec_details_header.dart';
 
@@ -83,15 +86,29 @@ class ECDetailWidget extends StatelessWidget {
                     )
                   ],
                 ),
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: EcommerceColors.gray.withOpacity(0.7),
-                  child: const Icon(
-                    Icons.favorite_border_outlined,
-                    size: 30,
-                    color: EcommerceColors.grayText,
+                GestureDetector(
+                  onTap: () {
+                    context.read<FaveCubit>().addFavoriteItem(product);
+                  },
+                  onDoubleTap: () {
+                    // Double tap
+                    context.read<FaveCubit>().toggleFavoriteItem(product);
+                  },
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundColor: EcommerceColors.gray.withOpacity(0.7),
+                    child: Icon(
+                      Icons.favorite_border_outlined,
+                      size: 30,
+                      color: context
+                              .watch<FaveCubit>()
+                              .faveItems
+                              .any((item) => item.id == product.id)
+                          ? EcommerceColors.red
+                          : EcommerceColors.grayText,
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ]),

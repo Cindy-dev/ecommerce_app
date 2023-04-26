@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_ui/e-commerce_app/favorite/presentation/cubits/fave_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_app_ui/e-commerce_app/bootstrap.dart';
@@ -10,7 +11,7 @@ import 'e-commerce_app/product/presentation/views/e_commerce_home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
- await Supabase.initialize(
+  await Supabase.initialize(
     url: '${dotenv.env['Project_URL']}',
     anonKey: '${dotenv.env['api_key']}',
   );
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => ProductBloc()),
+          BlocProvider(create: (context) => FaveCubit()),
           BlocProvider(create: (context) => CartCubit()),
         ],
         child: const MaterialApp(
