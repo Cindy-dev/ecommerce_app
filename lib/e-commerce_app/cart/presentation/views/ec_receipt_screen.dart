@@ -9,20 +9,20 @@ import '../../../util/e_commerce_colors.dart';
 import '../../../util/navigators.dart';
 
 class ECReceiptScreen extends StatelessWidget {
-  final String contact;
-  final String? firstname;
-  final String lastname;
+  final String state;
+  final String? name;
+  final String? lga;
+  final String? phone;
+  final String? streetAddress;
   final String address;
-  final String city;
-  final String phone;
   const ECReceiptScreen({
     Key? key,
-    required this.contact,
-    this.firstname,
-    required this.lastname,
     required this.address,
-    required this.city,
     required this.phone,
+    required this.state,
+    this.name,
+    this.lga,
+    this.streetAddress,
   }) : super(key: key);
 
   @override
@@ -157,11 +157,11 @@ class ECReceiptScreen extends StatelessWidget {
             );
             //This creates a new list object that contains all the elements of context.read<CartCubit>().cartItems, and assigns it to DummyData.orderHistory
             DummyData.orderHistory = [...context.read<CartCubit>().cartItems];
-            DummyData.email = contact;
-            DummyData.firstname = firstname;
-            DummyData.lastname = lastname;
-            DummyData.address = address;
-            DummyData.city = city;
+            // DummyData.email = contact;
+            // DummyData.firstname = firstname;
+            // DummyData.lastname = lastname;
+            // DummyData.address = address;
+            // DummyData.city = city;
             DummyData.phone = phone;
             //clearing the cart after successful payment
             context.read<CartCubit>().cartItems.clear();

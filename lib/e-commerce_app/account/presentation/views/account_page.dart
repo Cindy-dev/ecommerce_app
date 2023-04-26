@@ -15,6 +15,7 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   final nameController = TextEditingController();
   final descController = TextEditingController();
+  final storeNameController = TextEditingController();
   final imageController = TextEditingController();
   final storeImageController = TextEditingController();
   final priceController = TextEditingController();
@@ -36,9 +37,7 @@ class _AccountPageState extends State<AccountPage> {
         title: const Text(
           'Create Product',
           style: TextStyle(
-              fontFamily: "Inter",
-              color: EcommerceColors.white,
-              fontSize: 20),
+              fontFamily: "Inter", color: EcommerceColors.white, fontSize: 20),
         ),
       ),
       body: SafeArea(
@@ -64,7 +63,7 @@ class _AccountPageState extends State<AccountPage> {
                     hintText: "Product Image",
                     fontSize: 16),
                 ECTextField(
-                    controller: descController,
+                    controller: storeNameController,
                     hintText: "Store Name",
                     fontSize: 16),
                 ECTextField(
@@ -75,6 +74,7 @@ class _AccountPageState extends State<AccountPage> {
                     controller: colorsController,
                     hintText: "Product Colors",
                     fontSize: 16),
+
                 const Text(
                   "Scroll to select product colors",
                   style: TextStyle(
@@ -95,6 +95,7 @@ class _AccountPageState extends State<AccountPage> {
                           child: Row(
                             children: [
                               Checkbox(
+                                  activeColor: EcommerceColors.green,
                                   value: isChecked[i],
                                   onChanged: (bool? value) {
                                     setState(() {

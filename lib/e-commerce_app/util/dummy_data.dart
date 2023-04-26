@@ -4,12 +4,16 @@ class DummyData {
   static List<Product> productList = [];
   static Product? product;
   static List<Product> orderHistory = [];
+  static String? streetAddress;
+  static String? state;
+  static String? lga;
+  static String? phone;
+  static String?  name;
   static String? email;
   static String? firstname;
   static String? lastname;
   static String? address;
   static String? city;
-  static String? phone;
   static List<String> productColors = [
     "0xffF5E3DF",
     "0xffECECEC",
