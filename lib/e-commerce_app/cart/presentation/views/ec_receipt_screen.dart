@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/cubits/cart_cubit.dart';
-import 'package:flutter_app_ui/e-commerce_app/product/presentation/views/e_commerce_home_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../product/presentation/views/e_commerce_home_screen.dart';
+import '../../../util/dummy_data.dart';
 import '../../../util/e_commerce_colors.dart';
 import '../../../util/navigators.dart';
+import '../cubits/cart_cubit.dart';
 
 class ECReceiptScreen extends StatelessWidget {
   final String state;

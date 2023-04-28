@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
+import '../../../util/e_commerce_colors.dart';
 
 class ECTextField extends StatefulWidget {
   final TextEditingController controller;

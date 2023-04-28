@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/ec_cart_add_button.dart';
-import 'package:flutter_app_ui/e-commerce_app/favorite/presentation/cubits/fave_cubit.dart';
-import 'package:flutter_app_ui/e-commerce_app/product/presentation/views/e_commerce_detail_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../cart/presentation/widgets/ec_cart_add_button.dart';
+import '../../../product/presentation/views/e_commerce_detail_screen.dart';
 import '../../../util/e_commerce_colors.dart';
 import '../../../util/navigators.dart';
+import '../cubits/fave_cubit.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({Key? key}) : super(key: key);

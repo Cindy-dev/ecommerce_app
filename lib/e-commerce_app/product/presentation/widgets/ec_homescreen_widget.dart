@@ -1,14 +1,13 @@
+import 'package:ecommerce_app/e-commerce_app/util/navigators.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/e_commerce_cart_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/product/presentation/blocs/product_bloc.dart';
-import 'package:flutter_app_ui/e-commerce_app/product/presentation/widgets/image_marque.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../blocs/product_bloc.dart';
 import '../widgets/ecommerce_category_widget.dart';
 import '../widgets/ecommerce_home_screen_header.dart';
 import '../widgets/item_card.dart';
 import '../../../search/presentation/views/e_commerce_search_page.dart';
+import 'image_marque.dart';
 
 class ECommerceHomeScreenWidget extends StatefulWidget {
   const ECommerceHomeScreenWidget({Key? key}) : super(key: key);

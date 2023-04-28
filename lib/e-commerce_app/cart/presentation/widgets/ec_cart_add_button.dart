@@ -28,17 +28,7 @@ class _ECCartAddButtonState extends State<ECCartAddButton> {
   Widget build(BuildContext context) {
     return BlocListener<CartCubit, CartState>(
       bloc: CartCubit(),
-      listener: (_, state) {
-        // if (state is CartItemAdded) {
-        //   ScaffoldMessenger.of(context).showSnackBar(
-        //     const SnackBar(
-        //       backgroundColor: EcommerceColors.green,
-        //       duration: Duration(milliseconds: 10),
-        //       content: Text("Product Added"),
-        //     ),
-        //   );
-        // }
-      },
+      listener: (_, state) {},
       child: GestureDetector(
         onTap: () {
           context

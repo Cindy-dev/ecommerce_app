@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/history_row.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
+import '../../../util/dummy_data.dart';
 import '../../../util/e_commerce_colors.dart';
+import '../widgets/history_row.dart';
 
 class ECHistoryScreen extends StatelessWidget {
   const ECHistoryScreen({Key? key}) : super(key: key);
@@ -71,11 +71,12 @@ class ECHistoryScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          HistoryRow(tag:"Address:", content:  DummyData.address!),
+                          HistoryRow(
+                              tag: "Address:", content: DummyData.address!),
                           const SizedBox(
                             height: 5,
                           ),
-                          HistoryRow(tag:"Name: ", content:  DummyData.name!),
+                          HistoryRow(tag: "Name: ", content: DummyData.name!),
                         ],
                       ),
                     ),

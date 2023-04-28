@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
-import 'package:flutter_app_ui/e-commerce_app/favorite/presentation/cubits/fave_cubit.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../data/models/product.dart';
+import '../../../favorite/presentation/cubits/fave_cubit.dart';
 import '../../../util/e_commerce_colors.dart';
 import 'ec_details_header.dart';
 
@@ -91,14 +90,15 @@ class _ECDetailWidgetState extends State<ECDetailWidget> {
                     )
                   ],
                 ),
-
                 BlocBuilder(
                   bloc: FaveCubit(),
                   builder: (BuildContext context, state) {
-                  return  GestureDetector(
+                    return GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
-                        context.read<FaveCubit>().toggleFavoriteItem(widget.product);
+                        context
+                            .read<FaveCubit>()
+                            .toggleFavoriteItem(widget.product);
                       },
                       child: CircleAvatar(
                         radius: 30,
@@ -107,16 +107,15 @@ class _ECDetailWidgetState extends State<ECDetailWidget> {
                           Icons.favorite_border_outlined,
                           size: 30,
                           color: context
-                              .watch<FaveCubit>()
-                              .faveItems
-                              .any((item) => item.id == widget.product.id)
+                                  .watch<FaveCubit>()
+                                  .faveItems
+                                  .any((item) => item.id == widget.product.id)
                               ? EcommerceColors.red
                               : EcommerceColors.grayText,
                         ),
                       ),
                     );
                   },
-
                 ),
               ],
             ),

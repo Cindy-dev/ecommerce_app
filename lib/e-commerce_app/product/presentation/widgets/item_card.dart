@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/product/presentation/blocs/product_bloc.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/ec_cart_add_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../cart/presentation/widgets/ec_cart_add_button.dart';
 import '../../../util/e_commerce_colors.dart';
+import '../blocs/product_bloc.dart';
 import '../views/e_commerce_detail_screen.dart';
 
 class ECItemCard extends StatefulWidget {
@@ -126,8 +126,7 @@ class _ECItemCardState extends State<ECItemCard> {
                                                 fontSize: 20,
                                                 width: deviceW / 2,
                                                 height: deviceH / 15,
-                                              )
-                                              ),
+                                              )),
                                           const Spacer(),
                                         ],
                                       )),
