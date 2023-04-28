@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/views/ec_receipt_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/cart/presentation/widgets/checkout_textfield.dart';
-import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import 'package:nigerian_states_and_lga/nigerian_states_and_lga.dart';
+import '../../../data/models/product.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../../../util/navigators.dart';
+import '../widgets/checkout_textfield.dart';
+import 'ec_receipt_screen.dart';
 
 class ECCheckoutScreen extends StatefulWidget {
   final Product prod;

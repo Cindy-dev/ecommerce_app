@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/product.dart';
+import '../../../util/dummy_data.dart';
 part 'product_event.dart';
 part 'product_state.dart';
 

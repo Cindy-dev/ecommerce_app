@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/account/presentation/widgets/text_form.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/dummy_data.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_button.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
+import '../../../util/dummy_data.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../../../util/navigators.dart';
+import '../widgets/text_form.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -74,7 +73,6 @@ class _AccountPageState extends State<AccountPage> {
                     controller: colorsController,
                     hintText: "Product Colors",
                     fontSize: 16),
-
                 const Text(
                   "Scroll to select product colors",
                   style: TextStyle(
@@ -191,12 +189,6 @@ class _AdminAuthState extends State<AdminAuth> {
                       return null;
                     },
                   ),
-                  // const ECButton(
-                  //   buttonColor: EcommerceColors.green,
-                  //   buttonText: 'Save Product',
-                  //   textColor: EcommerceColors.white,
-                  //   borderColor: EcommerceColors.green,
-                  // ),
                   ElevatedButton(
                       onPressed: () {
                         if (!formKey.currentState!.validate()) {

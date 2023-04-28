@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/search/presentation/widgets/e_commerce_search_result.dart';
 import '../../../data/models/product.dart';
 import '../../../util/dummy_data.dart';
 import '../../../util/e_commerce_colors.dart';
+import '../widgets/e_commerce_search_result.dart';
 import '../widgets/ec_search_header.dart';
 
 class ECSearchPage extends StatefulWidget {

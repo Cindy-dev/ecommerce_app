@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import '../../../data/models/product.dart';
+import '../../../util/e_commerce_colors.dart';
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {

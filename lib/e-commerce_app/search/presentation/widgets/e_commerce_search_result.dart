@@ -1,9 +1,9 @@
+import 'package:ecommerce_app/e-commerce_app/data/models/product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_ui/e-commerce_app/data/models/product.dart';
-import 'package:flutter_app_ui/e-commerce_app/product/presentation/views/e_commerce_detail_screen.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/e_commerce_colors.dart';
-import 'package:flutter_app_ui/e-commerce_app/util/navigators.dart';
 import '../../../cart/presentation/widgets/ec_cart_add_button.dart';
+import '../../../product/presentation/views/e_commerce_detail_screen.dart';
+import '../../../util/e_commerce_colors.dart';
+import '../../../util/navigators.dart';
 
 class ECSearchResult extends StatefulWidget {
   final Product prod;

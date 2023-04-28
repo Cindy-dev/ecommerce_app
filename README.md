@@ -1,8 +1,3 @@
-# flutter_app_ui
-This Folder will contain several flutter app with only ui implemented or full logic depending
-
-#APP 1
-First app is : 
 A simple Flutter ecommerce app to view products and make orders.
 
 ## ✨ Features
