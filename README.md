@@ -30,8 +30,10 @@ A simple Flutter ecommerce app to view products and make orders.
   <img src="assets\e_commerce_app\e_commerce_image\screenshot\wishAdd.png" width="400">
   </p>
 
+## DOWNLOAD APK
+<a href= 'https://drive.google.com/file/d/1GzGH-j8JhMFzTm1nGx1Ud8ja272hoNje/view?usp=sharing'> Click to download </a>
 
 ## 🤓 Author(s)
 **Cindy dev**
-[Twitter Follow] <a href= "https://twitter.com/cindyDev_"> Click to follow <a/>
+[Twitter Follow] <a href= "https://twitter.com/cindyDev_"> Click to follow </a>
 
