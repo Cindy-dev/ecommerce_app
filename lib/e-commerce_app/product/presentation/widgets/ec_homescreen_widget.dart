@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/e-commerce_app/util/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../cart/presentation/cubits/cart_cubit.dart';
 import '../../../util/e_commerce_colors.dart';
 import '../blocs/product_bloc.dart';
 import '../widgets/ecommerce_category_widget.dart';
@@ -105,7 +106,20 @@ class _ECommerceHomeScreenWidgetState extends State<ECommerceHomeScreenWidget> {
         const SizedBox(
           height: 13,
         ),
-        const ECItemCard()
+        BlocListener<CartCubit, CartState>(
+          listener: (context, state) {
+            if (state is CartItemAdded) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: EcommerceColors.green,
+                  content: Text('Quantity updated for ${state.product.name}'),
+                  duration: const Duration(seconds: 1),
+                ),
+              );
+            }
+          },
+          child: const ECItemCard(),
+        ),
       ],
     );
   }

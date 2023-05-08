@@ -26,7 +26,6 @@ class _ECDetailScreenState extends State<ECDetailScreen> {
     final deviceW = MediaQuery.of(context).size.width;
     return Scaffold(
       body: BlocBuilder<CartCubit, CartState>(
-        bloc: CartCubit(),
         builder: (context, state) {
           return Column(
               mainAxisSize: MainAxisSize.min,

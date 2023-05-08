@@ -80,7 +80,7 @@ class _ECCartScreenState extends State<ECCartScreen> {
                   ],
                 ),
                 GestureDetector(
-                  onTap: context.watch<CartCubit>().totalAmount() == 0
+                  onTap: context.read()<CartCubit>().totalAmount() == 0
                       ? () {}
                       : () => navigatePush(
                           context,

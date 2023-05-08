@@ -26,13 +26,6 @@ class CartCubit extends Cubit<CartState> {
 
     if (cartItemIndex != -1) {
       final existingCartItem = cartItems[cartItemIndex];
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: EcommerceColors.green,
-          content: Text('Quantity updated for ${existingCartItem.name}.'),
-          duration: const Duration(seconds: 1),
-        ),
-      );
       emit(CartItemAdded(product: existingCartItem));
     } else {
       ///the copyWith method is used to create a copy of the Product object with the selectedColor
@@ -45,13 +38,13 @@ class CartCubit extends Cubit<CartState> {
       ///The copy is then added to the cartItems list.
       ///This ensures that each item in the cart is a unique object with its own properties.
       cartItems.add(newCartItem);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: EcommerceColors.green,
-          content: Text('${newCartItem.name} added to cart.'),
-          duration: const Duration(seconds: 1),
-        ),
-      );
+      //ScaffoldMessenger.of(context).showSnackBar(
+      // SnackBar(
+      //   backgroundColor: EcommerceColors.green,
+      //   content: Text('${newCartItem.name} added to cart.'),
+      //   duration: const Duration(seconds: 1),
+      // ),
+      // );
       emit(CartItemAdded(product: newCartItem));
     }
   }

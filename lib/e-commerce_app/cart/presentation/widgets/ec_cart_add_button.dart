@@ -26,10 +26,7 @@ class ECCartAddButton extends StatefulWidget {
 class _ECCartAddButtonState extends State<ECCartAddButton> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CartCubit, CartState>(
-      bloc: CartCubit(),
-      listener: (_, state) {},
-      child: GestureDetector(
+    return GestureDetector(
         onTap: () {
           context
               .read<CartCubit>()
@@ -52,7 +49,6 @@ class _ECCartAddButtonState extends State<ECCartAddButton> {
                 fontSize: widget.fontSize),
           ),
         ),
-      ),
     );
   }
 }

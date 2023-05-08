@@ -38,7 +38,7 @@ class ECCheckoutSummary extends StatelessWidget {
           Row(
             children: [
               Text(
-                '\$${context.watch<CartCubit>().totalAmount().toString()}',
+                '\$${context.watch()<CartCubit>().totalAmount().toString()}',
                 style: const TextStyle(
                   fontSize: 16,
                   fontFamily: "Inter",
